@@ -1,0 +1,54 @@
+/******************* Global Flex ************************/
+@mixin flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  @mixin wrap {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  
+  @mixin nowrap {
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  @mixin flex-nowrap {
+    @include flex;
+    @include nowrap;
+  }
+
+  @mixin flex-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+/******************* Like Icon ************************/
+@mixin inactive-heart {
+  @include flex-nowrap;
+  flex-direction: row-reverse;
+  font-size: 1.3rem;
+  text-shadow: 0 0 3px rgba(0,0,0,1);
+  color:white;
+  transition:1s;
+}
+
+@mixin active-heart {
+  text-shadow: 0 0 0px rgba(0,0,0,0);
+  background:-moz-linear-gradient(0deg, $color-sec 0%, $color-pri 100%); 
+  background: -webkit-linear-gradient(0deg, $color-sec 0%, $color-pri 100%); 
+  background: linear-gradient(0deg, $color-sec 0%, $color-pri 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:transparent;
+}
+
+/******************* Center of the page ************************/
+@mixin align-center {
+    width: 100%;
+    text-align: center;
+  }
