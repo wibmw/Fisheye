@@ -3,31 +3,10 @@
 }
 
 .photograph-header {
-    background-color: $color-sec-light;
+    background-color: #FAFAFA;
     height: 300px;
-    margin: 30px 100px 30px 100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-
-    .photograph_info{
-
-        & article {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            @include article-h2;
-            @include article-h3-to-span;
-        }
-    }
-    .photograph_picture{
-        & img{
-            @include photographer-picture;
-        }
-    }
+    margin: 0 100px;
 }
-
 
 .contact_button {
     font-size: 20px;

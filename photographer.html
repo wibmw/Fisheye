@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,16 +10,26 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" role="link" aria-label="Fisheye" tabindex="1">    
+        <img src="assets/images/logo.png" class="logo" alt="Accueil Fisheye" />
+      </a>
     </header>
+
     <main id="main">
       <div class="photograph-header">
+        <div class="photograph_info"></div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div class="photograph_picture"></div>
       </div>
     </main>
+
+    <section class="photograph_media">
+
+    </section>
+
     <div id="contact_modal">
 			<div class="modal">
-				<header>
+				<header> 
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
@@ -31,6 +42,9 @@
 				</form>
 			</div>
 		</div>
+
+    <script src="scripts/factories/Photographer.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

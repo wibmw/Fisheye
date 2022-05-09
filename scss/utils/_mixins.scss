@@ -52,3 +52,42 @@
     width: 100%;
     text-align: center;
   }
+
+/******************* Photographer Info ************************/
+@mixin photographer-picture {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50% 50%;
+  -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
+  mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);  
+  filter: blur(0.7rem); 
+}
+
+@mixin article-h3-to-span {
+  & h3{
+    color: $color-pri-dark;
+    font-size: 1em;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  & div{
+      font-size: 0.7em;
+
+  }
+  & span{
+      color: $color-sec-dark;
+      font-size: 0.7em;
+  }
+}
+
+@mixin article-h2 {
+  & h2{
+    color: $color-pri-light;
+    font-size: 2.5em;
+    font-weight: 500;
+    margin-bottom: 0px;
+    
+  }
+}
