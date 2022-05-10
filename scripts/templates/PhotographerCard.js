@@ -1,3 +1,10 @@
+class PhotographerCard {
+    constructor(photographer) {
+        this._photographer = photographer
+    }
+
+}
+
 function photographerFactory(data, page) {
     console.log(data)
     const { name, id, picture, location, tagline, price } = data

@@ -9,6 +9,7 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+    <!-- *********  Header *********** -->
     <header>
       <a href="index.html" role="link" aria-label="Fisheye" tabindex="1">    
         <img src="assets/images/logo.png" class="logo" alt="Accueil Fisheye" />
@@ -16,17 +17,20 @@
     </header>
 
     <main id="main">
+      <!-- *********  Photograph Info *********** -->
       <div class="photograph-header">
         <div class="photograph_info"></div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         <div class="photograph_picture"></div>
       </div>
+      <!-- *********  Media list *********** -->
+      <section class="photograph_media">
+        
+      </section>
     </main>
+    <!-- *********  Likes count *********** -->
 
-    <section class="photograph_media">
-
-    </section>
-
+    <!-- *********  Modal *********** -->
     <div id="contact_modal">
 			<div class="modal">
 				<header> 
@@ -42,8 +46,9 @@
 				</form>
 			</div>
 		</div>
-
-    <script src="scripts/factories/Photographer.js"></script>
+    <script src="scripts/api/api.js"></script>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/models/photographer.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
