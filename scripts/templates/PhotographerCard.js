@@ -1,64 +1,49 @@
 class PhotographerCard {
-    constructor(photographer) {
-        this._photographer = photographer
+    constructor(photographer, page) {
+        const { name, id, picture, location, tagline, price } = photographer
+        this._name = name
+        this._id = id
+        this._picture = picture
+        this._location = location
+        this._tagline = tagline
+        this._price = price
+        this._page = page
+
+        this.$wrapperInfo = document.createElement('article')
+        this.$wrapperPicture = document.createElement('div')
     }
 
-}
-
-function photographerFactory(data, page) {
-    console.log(data)
-    const { name, id, picture, location, tagline, price } = data
-
-    //const picture = `assets/photographersID/${portrait}`
-
-    function getUserCardPicture() {
-        const img = document.createElement( 'img' )
-        img.setAttribute("src", picture)
-        img.setAttribute("alt", `Photo du photographe ${name}`)
-        return img
-    }
-
-    function getUserCardDOM() {
+    getUserCardDOM() {
         
-        if(page == 'photograph_picture'){
+        if(this._page == 'photograph_picture'){
             // return the photographer picture only
-            return (getUserCardPicture())
+            const img = `<img src="${this._picture}" alt="Photo du photographe ${this._name}"> `
+            this.$wrapperPicture.innerHTML = img
+            return this.$wrapperPicture
         }
 
-        const article = document.createElement( 'article' )
-        const a = document.createElement( 'a' )
-        const h2 = document.createElement( 'h2' )
-        const h3 = document.createElement( 'h3' )
-        const div = document.createElement( 'div' )
-        const span = document.createElement( 'span' )
+        let article = ``
 
-        h2.textContent = name;
-
-        if(page == 'photographers_section'){
+        if(this._page == 'photographers_section'){
             // return everything
-            const img = getUserCardPicture()
-            a.setAttribute("href", `photographer.html?id=${id}`)
-            a.setAttribute("aria-label", `Aller à la page du photographe ${name}`)
-            a.setAttribute("tabindex", 2)
-            
-            a.appendChild(img)
-            a.appendChild(h2)
-            article.appendChild(a)
-        }else if(page == 'photograph_info'){
+            article += `<a href="photographer.html?id=${this._id}" "aria-label="Aller à la page du photographe ${this._name}" "tabindex="2">
+                            <img src="${this._picture}" alt="Photo du photographe ${this._name}">
+                            <h2>${this._name}</h2>
+                        </a>`
+
+        }else if(this._page == 'photograph_info'){
             // return everything but the photographer picture
-            article.appendChild(h2)
+            article += `<h2>${this._name}</h2>`
         }
 
-        h3.textContent = location
-        h3.setAttribute("tabindex", 3)
-        div.textContent = tagline
-        span.textContent = `${price}€/jour`
+        article += `<h3 tabindex="3">${this._location}</h3>
+                    <div>${this._tagline}</div>
+                    <span>${this._price}€/jour</span>`
+                    
+        this.$wrapperInfo.innerHTML = article
 
-        article.appendChild(h3)
-        article.appendChild(div)
-        article.appendChild(span)
-
-        return (article)
+        return (this.$wrapperInfo)
     }
-    return { name, picture, getUserCardDOM, getUserCardPicture }
+
+
 }

@@ -1,12 +1,10 @@
 class IndexPage {
 
     async displayIndexData(photographers) {
-        const photographersSection = document.querySelector(".photographers_section")
         if(photographers){
+            // Generate Photographers Card
             photographers.forEach((photographer) => {
-                const photographerModel = photographerFactory(photographer, 'photographers_section')
-                const userCardDOM = photographerModel.getUserCardDOM()
-                photographersSection.appendChild(userCardDOM)
+                photographerFactory(photographer, 'photographers_section')
             })
         }
     }
