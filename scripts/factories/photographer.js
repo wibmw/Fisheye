@@ -9,5 +9,8 @@ function photographerFactory(data, page) {
     } else if (page == 'photographers_section') {
         document.querySelector(".photographers_section").appendChild(card)
     }
+    else {
+        console.log("Erreur PhotographerFactory")
+    }
 
 }

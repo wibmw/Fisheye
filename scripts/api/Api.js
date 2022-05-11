@@ -59,8 +59,8 @@ class MediaApi extends Api {
     // Get all media
     async getMedia() {
         const MediaData = await this.get()
-        const photographers = MediaData.map(media => new Media(media))
-        return photographers
+        const medias = MediaData.map(media => new Media(media))
+        return medias
     }
 }
 

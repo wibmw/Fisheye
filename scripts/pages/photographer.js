@@ -13,11 +13,15 @@ class PhotographerPage {
         // Get photographe's ID from the url
         const id = new URLSearchParams(window.location.search).get('id')
         // Get photographes data
-        const api = new PhotographerApi('../data/photographers.json', 'photographers')
+        const apiPhotographer = new PhotographerApi('../data/photographers.json', 'photographers')
         // Get photographe's data by ID
-        const photographer = await api.getPhotographer(id)
+        const photographer = await apiPhotographer.getPhotographer(id)
+        // Get Media data
+        const apiMedia = new PhotographerApi('../data/photographers.json', 'media')
+        const medias = await apiMedia.getMedia()
         
         this.displayPhotographerData(photographer)
+        this.displayMedia(medias)
     }
 }
 
