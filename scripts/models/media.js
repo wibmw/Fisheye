@@ -52,24 +52,24 @@ class Media{
 }
 
 
-class Image extends Media{
+class ImageM extends Media{
     constructor(data) {
         super(data)
         this._image = data.image
     }
 
     getImage(photographerName) {
-        return getSource(photographerName, this._image)
+        return this.getSource(photographerName, this._image)
     }
 }
 
-class Video extends Media{
+class VideoM extends Media{
     constructor(data) {
         super(data)
         this._video = data.video
     }
     
     getVideo(photographerName) {
-        return getSource(photographerName, this._video)
+        return this.getSource(photographerName, this._video)
     }
 }

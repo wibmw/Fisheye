@@ -8,6 +8,9 @@ body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
   font-size: 100%;
+  width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header {
@@ -24,7 +27,7 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 90px;
+  height: 100px;
 }
 
 header h1 {
@@ -96,19 +99,20 @@ header .logo {
 
 .photographers_section article h3 {
   color: #901C1C;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 600;
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
 .photographers_section article div {
-  font-size: 0.7em;
+  font-size: 0.6em;
+  font-weight: 600;
 }
 
 .photographers_section article span {
   color: #525252;
-  font-size: 0.7em;
+  font-size: 0.6em;
 }
 
 #contact_modal {
@@ -144,27 +148,21 @@ header .logo {
 
 .photograph-header .photograph_info article h2 {
   color: #D3573C;
-  font-size: 2.5em;
-  font-weight: 500;
+  font-size: 4em;
   margin-bottom: 0px;
+  margin-top: 0px;
   text-align: center;
 }
 
 .photograph-header .photograph_info article h3 {
   color: #901C1C;
-  font-size: 1em;
-  font-weight: 600;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  font-size: 1.5em;
+  margin-top: 20px;
 }
 
 .photograph-header .photograph_info article div {
-  font-size: 0.7em;
-}
-
-.photograph-header .photograph_info article span {
   color: #525252;
-  font-size: 0.7em;
+  font-size: 1.1em;
 }
 
 .photograph-header .photograph_picture img {
@@ -177,6 +175,88 @@ header .logo {
   mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
   -webkit-filter: blur(0.7rem);
           filter: blur(0.7rem);
+}
+
+.photograph_media {
+  margin: 30px 0px 30px 100px;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 7%;
+  /*grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;*/
+}
+
+.photograph_media div img {
+  height: 300px;
+  width: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-filter: blur(0.7rem);
+          filter: blur(0.7rem);
+}
+
+.photograph_media div video {
+  height: 300px;
+  width: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.photograph_media div .playMask {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 350px;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 100px;
+  opacity: 1;
+  margin-top: -305px;
+}
+
+.photograph_media div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  color: #901C1C;
+}
+
+.photograph_media div div h3 {
+  font-size: 1.5em;
+  font-weight: normal;
+  margin-top: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 290px;
+}
+
+.photograph_media div div div {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.photograph_media div div div i {
+  margin-left: 5px;
 }
 
 .contact_button {

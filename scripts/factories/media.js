@@ -1,13 +1,20 @@
-function MediaFactory(data, type) {
+function mediaFactory(media, photographersName) {
 
-    const card = new MediaCard(data, type).geMediaCard()
+    mediaType = media.constructor.name
+    mediaSection = document.querySelector('.photograph_media')
+    let mediaLink = ""
 
-    if(page == 'photograph_picture') {
-        document.querySelector(".photograph_picture").appendChild(card)
-    } else if (page == 'photograph_info') {
-        document.querySelector(".photograph_info").appendChild(card)
+    if(mediaType == 'ImageM') {
+        mediaLink = media.getImage(photographersName)
+    } else if (mediaType == 'VideoM') {
+        mediaLink = media.getVideo(photographersName)
     } else {
         console.log("Erreur MediaFactory")
     }
 
+    const card = new MediaCard(media, mediaLink, mediaType).getMediaCardDOM()
+    mediaSection.appendChild(card)
+
+    
 }
+

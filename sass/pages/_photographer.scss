@@ -1,0 +1,177 @@
+#contact_modal {
+    display: none;
+}
+
+.photograph-header {
+    background-color: $color-sec-light;
+    height: 300px;
+    margin: 30px 100px 30px 100px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+
+    .photograph_info{
+
+        & article {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            & h2{
+                color: $color-pri-light;
+                font-size: 4em;
+                margin-bottom: 0px;
+                margin-top: 0px;
+                text-align: center;
+              }
+            & h3{ 
+                color: $color-pri-dark;
+                font-size: 1.5em;
+                margin-top: 20px;
+              }
+            & div{
+                color: $color-sec-dark;
+                font-size: 1.1em;
+            }
+        }
+    }
+    .photograph_picture{
+        & img{
+            @include photographer-picture;
+        }
+    }
+}
+
+
+
+
+.photograph_media {
+    margin: 30px 0px 30px 100px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7%;
+    /*grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;*/
+    & div {
+        & img {
+                height: 300px;
+                width: 350px;
+                object-fit: cover;
+                filter: blur(0.7rem); 
+        }
+        & video {
+            height: 300px;
+            width: 350px;
+            object-fit: cover;
+            //filter: blur(0.7rem); 
+        }
+        & .playMask {
+            position: absolute;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 350px;
+            height: 300px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-size: 100px;
+            opacity: 1;
+            margin-top: -305px;
+        }
+        & div {
+            display: flex;
+            font-size: 1em;
+            justify-content: space-between;
+            align-items: baseline;
+            color: $color-pri-dark;
+            
+            & h3 {
+                font-size: 1.5em;
+                font-weight: normal;
+                margin-top: 0px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 290px;
+            }
+            & div {
+                font-size: 1.5em;
+                font-weight: bold;
+                
+                & i {
+                    margin-left: 5px;   
+                }
+            }
+        }
+    }
+    
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+}
+
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+.modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}

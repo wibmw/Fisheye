@@ -2,10 +2,21 @@ class PhotographerPage {
 
     async displayPhotographerData(photographer) {
         if (photographer) {
-            // Generate Article DOM 
+            // display Photographer's Info DOM 
             photographerFactory(photographer[0], 'photograph_info') 
-            // Generate Photographer's picture DOM
+            // display Photographer's picture DOM
             photographerFactory(photographer[0], 'photograph_picture')
+            // display Photographer's price / like DOM
+            photographerFactory(photographer[0], 'photograph_price')
+        }
+    }
+
+    async displayMediaData(medias, photographersName) {
+        if (medias) {
+            // Generate Medias Card
+            medias.forEach((media) => {
+                mediaFactory(media, photographersName)
+            })
         }
     }
 
@@ -17,11 +28,11 @@ class PhotographerPage {
         // Get photographe's data by ID
         const photographer = await apiPhotographer.getPhotographer(id)
         // Get Media data
-        const apiMedia = new PhotographerApi('../data/photographers.json', 'media')
-        const medias = await apiMedia.getMedia()
+        const apiMedia = new MediaApi('../data/photographers.json', 'media')
+        const medias = await apiMedia.getMediaOfPhotographer(id)
         
         this.displayPhotographerData(photographer)
-        this.displayMedia(medias)
+        this.displayMediaData(medias, photographer[0]._name)
     }
 }
 

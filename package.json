@@ -19,5 +19,9 @@
   "homepage": "https://github.com/wibmw/Front-End-Fisheye#readme",
   "dependencies": {
     "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0"
   }
 }
