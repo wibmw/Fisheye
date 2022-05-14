@@ -100,6 +100,7 @@ header .logo {
 .photograph-header .photograph_info article h2 {
   color: #D3573C;
   font-size: 4em;
+  font-weight: 500;
   margin-bottom: 0px;
   margin-top: 0px;
   text-align: center;
@@ -179,6 +180,22 @@ header .logo {
 }
 .photograph_media div div div i {
   margin-left: 5px;
+}
+
+.photograph_likes {
+  background-color: #D3573C;
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  margin-left: 70%;
+  border-radius: 5px;
+  padding: 20px;
+}
+.photograph_likes div {
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
 }
 
 .contact_button {

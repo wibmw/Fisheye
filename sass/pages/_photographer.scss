@@ -20,6 +20,7 @@
             & h2{
                 color: $color-pri-light;
                 font-size: 4em;
+                font-weight: 500;
                 margin-bottom: 0px;
                 margin-top: 0px;
                 text-align: center;
@@ -99,14 +100,28 @@
             & div {
                 font-size: 1.5em;
                 font-weight: bold;
-                
                 & i {
                     margin-left: 5px;   
                 }
             }
         }
     }
-    
+}
+
+.photograph_likes {
+    background-color: $color-pri-light;
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    margin-left: 70%;
+    border-radius: 5px;
+    padding: 20px;
+    & div {
+        font-size: 1.5em;
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .contact_button {

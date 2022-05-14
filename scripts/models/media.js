@@ -37,7 +37,7 @@ class Media{
         if(name){
             folder = name.split(' ')[0]
             if(folder.includes('-')){
-                folder = name.replace('-', '')
+                folder = folder.replace('-', '')
             }
             return folder
         } 

@@ -8,16 +8,16 @@ class PhotographerCard {
         this._tagline = tagline
         this._price = price
 
-        this.$wrapperInfo = document.createElement('article')
-        this.$wrapperPicture = document.createElement('div')
+        this.$wrapperArticle = document.createElement('article')
+        this.$wrapperDiv = document.createElement('div')
     }
 
     getPhotographerPicture() {
         // return the photographer picture only
         const img = `<img src="${this._picture}" alt="Photo du photographe ${this._name}"> `
-        this.$wrapperPicture.innerHTML = img
+        this.$wrapperDiv.innerHTML = img
 
-        return this.$wrapperPicture
+        return this.$wrapperDiv
     }
 
     getPhotographerInfo() {
@@ -26,9 +26,9 @@ class PhotographerCard {
                     <h3 tabindex="3">${this._location}</h3>
                     <div>${this._tagline}</div>`
                     
-        this.$wrapperInfo.innerHTML = article
+        this.$wrapperArticle.innerHTML = article
 
-        return (this.$wrapperInfo)
+        return (this.$wrapperArticle)
     }
 
     getPhotographerCard() {
@@ -41,10 +41,18 @@ class PhotographerCard {
                         <div>${this._tagline}</div>
                         <span>${this._price}€/jour</span>`
                     
-        this.$wrapperInfo.innerHTML = article
+        this.$wrapperArticle.innerHTML = article
 
-        return (this.$wrapperInfo)
+        return (this.$wrapperArticle)
     }
 
+    getPhotographerLikes(likes) {
+        // return photographer info
+        const like = `<span> ${likes} <i class="fas fa-heart"></i></span>
+                        <span>${this._price} € / jour</span>`
+                    
+        this.$wrapperDiv.innerHTML = like
 
+        return this.$wrapperDiv
+    }
 }

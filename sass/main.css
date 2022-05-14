@@ -259,6 +259,16 @@ header .logo {
   margin-left: 5px;
 }
 
+.photograph_likes {
+  background-color: #525252;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+}
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;
