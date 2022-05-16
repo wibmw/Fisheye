@@ -16,7 +16,7 @@ class MediaCard {
   }
 
   getMediaCardDOM() {
-    //this.$wrapperMedia.addAttribute('id', id)
+    
     let media = ``
 
     if (this._mediaType == 'ImageM') {
@@ -34,9 +34,9 @@ class MediaCard {
                 <h3>${this._title}</h3>
                 <div>${this._likes} <i class="fas fa-heart"></i></div>
              </div>`
-    console.log(media)
+    //console.log(media)
     this.$wrapperMedia.innerHTML = media
-    console.log(this.$wrapperMedia)
+    //console.log(this.$wrapperMedia)
     return (this.$wrapperMedia)
   }
 }

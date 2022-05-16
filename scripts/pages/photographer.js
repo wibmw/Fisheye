@@ -7,6 +7,9 @@ class PhotographerPage {
             photographerFactory(photographer, 'photograph_info') 
             // display Photographer's picture DOM
             photographerFactory(photographer, 'photograph_picture')
+            // display Modal Form DOM
+            const form = new FormModal(photographer._name)
+            form.getFormRender()
         }
     }
 
@@ -39,8 +42,34 @@ class PhotographerPage {
         this.displayPhotographerData(photographer[0])
         this.displayMediaData(medias, photographer[0])
     }
+
 }
 
+/*const contactButton = document.querySelector(".contact_button");//modal success
+const modalContact = document.getElementById("contact_modal");//modal success
+
+// launch modal event
+contactButton.addEventListener("click", displayModal());
+ 
+// launch modal form
+function displayModal() {
+    modalContact.style.display = "block";
+}
+ 
+// close modal
+function closeModal() {
+    modalContact.style.display = "none";
+}*/
 
 const page = new PhotographerPage()
 page.init()
+
+/*function displayModal() {
+    const modal = document.getElementById("contact_modal");
+	modal.style.display = "block";
+}
+
+function closeModal() {
+    const modal = document.getElementById("contact_modal");
+    modal.style.display = "none";
+}*/

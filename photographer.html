@@ -4,6 +4,7 @@
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -19,46 +20,38 @@
 
     <main id="main">
       <!-- *********  Photograph Info *********** -->
-      <div class="photograph-header">
+      <section class="photograph-header">
         <div class="photograph_info"></div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" >Contactez-moi</button>
         <div class="photograph_picture"></div>
-      </div>
+      </section>
       <!-- *********  Media list *********** -->
       <section class="photograph_media">
-        
       </section>
       <!-- *********  Likes count *********** -->
       <h4 class="photograph_likes">
-        
       </h4>
     </main>
 
-
     <!-- *********  Modal *********** -->
     <div id="contact_modal">
-			<div class="modal">
-				<header> 
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
 		</div>
+
+<!-- *********  Scripts *********** -->
+    <!-- *********  API *********** -->
     <script src="scripts/api/api.js"></script>
+    <!-- *********  Templates *********** -->
+    <script src="scripts/templates/FormModal.js"></script>    
     <script src="scripts/templates/PhotographerCard.js"></script>
     <script src="scripts/templates/MediaCard.js"></script>
+    <!-- *********  Factories *********** -->
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
+    <!-- *********  Models *********** -->
     <script src="scripts/models/photographer.js"></script>
     <script src="scripts/models/media.js"></script>
+    <!-- *********  Page *********** -->
     <script src="scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+
   </body>
 </html>
