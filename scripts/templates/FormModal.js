@@ -4,26 +4,6 @@ class FormModal {
       this.$wrapperForm = document.createElement("div")
       this.$wrapperForm.setAttribute("class", "modal")
       this._wrapperModal = document.getElementById("contact_modal")  
-      // default messages
-      this._firstNameMessage = "Le prénom doit comporter au moins 2 caractères alphabétiques !";
-      this._lastNameMessage = "Le nom doit comporter au moins 2 caractères alphabétiques !";
-      this._emailMessage = "L'adresse e-mail n'est pas valide !";
-      this._requiredFieldsMessage =  "Vous devez compléter tous les champs obligatoires !";
-    }
-
-    // launchthis.$wrapperModal form
-    displayModal(modal) {
-        modal.style.display = "block";
-    }
-        
-    // closethis.$wrapperModal
-    closeModal(modal) {
-       modal.style.display = "none";
-    }
-        
-    // check 2 chart min 
-    chart2Min(value) {
-        return /^[a-zA-Z]{2,}$/.test(value);
     }
         
     // clear validation message
@@ -40,37 +20,30 @@ class FormModal {
         
     //********************* CHECK FUNCTIONS  ***********************************/
     // check names function
-    namesCheck(name, message){
-        if (!(this.chart2Min(name.value)) || name === '') {
-            this.setValidationMessage(name, message);
-            name.valid = false;
+    namesCheck(name){
+        if (!(/^[a-zA-Z]{2,}$/.test((name.value))) || name === '') {
+            this.setValidationMessage(name, "Veuillez saisir des lettres seulement !");
+            return false;
         } else {
             this.clearValidationMessage(name);
-            name.valid = true;
-        }
-        }
-        
-    // check this.$email function
-    emailCheck(email, message){
-        if (!(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/.test(email.value)) || email === '') {
-            this.setValidationMessage(email, message);
-            email.valid = false;
-        } else {
-            this.clearValidationMessage(email);
-            email.valid = true;
+            return true;
         }
     }
-        
+    // check email function
+    emailCheck(email){
+        if (!(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/.test(email.value)) || email === '') {
+            this.setValidationMessage(email, "Veuillez saisir une adresse e-mail valide !");
+            return false;
+        } else {
+            this.clearValidationMessage(email);
+            return true;
+        }
+    }      
     
     //********************* FORM VALIDATION  ***********************************/
     formValidation(firstName, lastName, email, modalSubmit, formContent, modalSuccess) {
-        // check 3 first fields
-        this.namesCheck(firstName,this._firstNameMessage);
-        this.namesCheck(lastName,this._lastNameMessage);
-        this.emailCheck(email,this._emailMessage);
-    
-        // check city selection
-        if(firstName.valid && lastName.valid && email.valid){
+        // check all fields
+        if(this.namesCheck(firstName) && this.namesCheck(lastName) && this.emailCheck(email)){
             this.clearValidationMessage(modalSubmit);
     
             // display json in logs
@@ -81,38 +54,27 @@ class FormModal {
             console.log("/**********************************/")
             // if all is ok, display success message 
             formContent.style.display="none";
-            modalSuccess.style.display="flex";
-            //return false;
-    
+            modalSuccess.style.display="flex";    
         }else{
-            // display city selection message
-            this.setValidationMessage(modalSubmit, this._requiredFieldsMessage);
-            //return false;
+            // display required message
+            this.setValidationMessage(modalSubmit, "Veuillez compléter les champs obligatoires !");
         }
     };
         
-    //clear field
-    clearField (element) {
-        element.valid = false;
-        element.value = '';
-    }
         
     // form reset
-    clearForm (firstName, lastName, email, formContent, modalSuccess) {
-        this.clearField(firstName);
-        this.clearField(lastName);
-        this.clearField(email);
+    clearForm (formContent, modalSuccess, closeModal) {
         formContent.style.display="block";
         formContent.reset();
-        modalSuccess.style.display="none";
-    
-        this.closeModal(this._wrapperModal);
+        modalSuccess.style.display="none";  
+        closeModal.click();
     }
     
+    // Events handler
     handleEvents() {
-        // $Wrapper
+        // DOM $Wrapper
         const form = this.$wrapperForm  
-        //Modal
+        // Modal
         const modal = document.querySelector("#contact_modal")              
         // Buttons
         const contactButton = document.querySelector(".contact_button");   
@@ -126,37 +88,34 @@ class FormModal {
         const firstName = form.querySelector("#first");             
         const lastName = form.querySelector("#last");               
         const email = form.querySelector("#email");                
-
-        firstName.valid = false;
-        lastName.valid = false;
-        email.valid = false;
-
+        
         //********************* EVENTS ***********************************/
         modalSubmit.addEventListener("click", () => {
             this.formValidation(firstName, lastName, email, modalSubmit, formContent, modalSuccess)
         })
         successButton.addEventListener("click", () => {
-            this.clearForm(firstName, lastName, email, formContent, modalSuccess)
+            this.clearForm(formContent, modalSuccess, closeModal)
         })
         contactButton.addEventListener("click", () => {
                 modal.style.display = "block";
         })
-
         closeModal.addEventListener('click', () => {
                 modal.style.display = "none";
         })
-        
-        firstName.addEventListener('keyup', () => {
-            this.namesCheck(firstName,this._firstNameMessage)
+        firstName.addEventListener('change', () => {
+            this.namesCheck(firstName)
         })
-        lastName.addEventListener('keyup', () => {
-            this.namesCheck(lastName,this._lastNameMessage)
+        lastName.addEventListener('change', () => {
+            this.namesCheck(lastName)
         })
         email.addEventListener('change', () => {
-            this.emailCheck(email,this._emailMessage)
+            this.emailCheck(email)
         })
+
+        firstName.focus()
     }
 
+    
     getFormRender() {
         // DOM Wrapper
         this.$wrapperForm.innerHTML = 
@@ -191,14 +150,11 @@ class FormModal {
                         </form>
                         <!-- Modal Success Message -->
                         <div id="modalSuccess">
-                            <span>Merci pour <br/>votre inscription</span>
+                            <span>Merci pour <br/>votre message</span>
                             <input class="contact_button success_button button" value="Fermer" />
                         </div>`
 
       this.handleEvents()
       this._wrapperModal.appendChild(this.$wrapperForm)
-      
     }
 }
-  
- 
