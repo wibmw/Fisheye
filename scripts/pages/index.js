@@ -11,7 +11,7 @@ class IndexPage {
 
     async init() {
         // Get photographes data
-        const api = new PhotographerApi('/data/photographers.json', 'photographers')
+        const api = new PhotographerApi('data/photographers.json', 'photographers')
         const photographers = await api.getPhotographers()
         this.displayIndexData(photographers)
     }

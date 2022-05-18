@@ -9,6 +9,7 @@ class Api {
     }
 
     async get() {
+        console.log(this._url)
         let response = await fetch(this._url)
 
         if(response.status == 200) {
