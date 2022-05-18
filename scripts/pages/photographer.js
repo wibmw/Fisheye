@@ -39,11 +39,11 @@ class PhotographerPage {
         // If not ID, return to homepage
         if(!id){location.href = "index.html"}
         // Get photographes data
-        const apiPhotographer = new PhotographerApi('../data/photographers.json', 'photographers')
+        const apiPhotographer = new PhotographerApi('data/photographers.json', 'photographers')
         // Get photographe's data by ID
         const photographer = await apiPhotographer.getPhotographer(id)
         // Get Media data
-        const apiMedia = new MediaApi('../data/photographers.json', 'media')
+        const apiMedia = new MediaApi('data/photographers.json', 'media')
         const medias = await apiMedia.getMediaOfPhotographer(id)
         
         this.displayPhotographerData(photographer[0])
@@ -52,31 +52,7 @@ class PhotographerPage {
 
 }
 
-/*const contactButton = document.querySelector(".contact_button");//modal success
-const modalContact = document.getElementById("contact_modal");//modal success
-
-// launch modal event
-contactButton.addEventListener("click", displayModal());
- 
-// launch modal form
-function displayModal() {
-    modalContact.style.display = "block";
-}
- 
-// close modal
-function closeModal() {
-    modalContact.style.display = "none";
-}*/
 
 const page = new PhotographerPage()
 page.init()
 
-/*function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
-}
-
-function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
-}*/
