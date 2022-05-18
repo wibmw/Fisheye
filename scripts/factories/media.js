@@ -1,7 +1,6 @@
-function mediaFactory(media, photographersName) {
+function mediaFactory(media, photographersName, position) {
 
     mediaType = media.constructor.name
-    mediaSection = document.querySelector('.photograph_media')
     let mediaLink = ""
 
     if(mediaType == 'ImageM') {
@@ -12,9 +11,13 @@ function mediaFactory(media, photographersName) {
         console.log("Erreur MediaFactory")
     }
 
-    const card = new MediaCard(media, mediaLink, mediaType).getMediaCardDOM()
-    mediaSection.appendChild(card)
+    media.mediaLink = mediaLink
+    media.mediaType = mediaType
+    media.position = position
 
+    new Lightbox(media).lightboxRender()
+    new MediaCard(media).getMediaCardDOM()
+    
     
 }
 

@@ -34,6 +34,114 @@ body {
   height: 50px;
 }
 
+#main-wrapper {
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.modal {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: none;
+  height: 500px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  z-index: 2;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Global */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*...................LIGHTBOX..............*/
+.lightbox_modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 99%;
+  height: 100%;
+  background-color: white;
+  z-index: 10;
+  transition: opacity 0.3s;
+}
+.lightbox_modal div {
+  display: flex;
+}
+.lightbox_modal div .carousel {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+.lightbox_modal div .carousel .carousel-item {
+  display: none;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.lightbox_modal div .carousel .carousel-item img {
+  width: 1200px;
+  height: 900px;
+  object-fit: cover;
+}
+.lightbox_modal div .carousel .carousel-item .item-title {
+  color: #901C1C;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: -2px;
+}
+
+#close {
+  color: #901C1C;
+  font-size: 50px;
+  position: fixed;
+  top: 30px;
+  right: 8%;
+  z-index: 12;
+  cursor: pointer;
+}
+
+#precedent, #suivant {
+  color: #901C1C;
+  font-size: 50px;
+  position: fixed;
+  top: 40%;
+  z-index: 12;
+  cursor: pointer;
+}
+
+#suivant {
+  margin-left: 90%;
+}
+
+#precedent {
+  margin-left: 7%;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -152,18 +260,18 @@ header .logo {
   flex-wrap: wrap;
   gap: 7%;
 }
-.photograph_media div img {
+.photograph_media article img {
   height: 300px;
   width: 350px;
   object-fit: cover;
   filter: blur(0.7rem);
 }
-.photograph_media div video {
+.photograph_media article video {
   height: 300px;
   width: 350px;
   object-fit: cover;
 }
-.photograph_media div .playMask {
+.photograph_media article .playMask {
   position: absolute;
   display: flex;
   justify-content: space-around;
@@ -176,14 +284,14 @@ header .logo {
   opacity: 1;
   margin-top: -305px;
 }
-.photograph_media div div {
+.photograph_media article div {
   display: flex;
   font-size: 1em;
   justify-content: space-between;
   align-items: baseline;
   color: #901C1C;
 }
-.photograph_media div div h3 {
+.photograph_media article div h3 {
   font-size: 1.5em;
   font-weight: normal;
   margin-top: 0px;
@@ -192,11 +300,11 @@ header .logo {
   text-overflow: ellipsis;
   max-width: 290px;
 }
-.photograph_media div div div {
+.photograph_media article div div {
   font-size: 1.5em;
   font-weight: bold;
 }
-.photograph_media div div div i {
+.photograph_media article div div i {
   margin-left: 5px;
 }
 

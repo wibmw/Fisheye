@@ -115,7 +115,7 @@ class FormModal {
         firstName.focus()
     }
 
-    
+
     getFormRender() {
         // DOM Wrapper
         this.$wrapperForm.innerHTML = 
@@ -127,7 +127,7 @@ class FormModal {
                             <!-- First Name -->
                             <div class="formData">
                                 <label for="first">Prénom</label><br>
-                                <input class="text-control" type="text" id="first" name="first"/><br>
+                                <input class="text-control" type="text" id="first" name="first" autofocus/><br>
                             </div>
                             <!-- Last Name -->
                             <div class="formData">

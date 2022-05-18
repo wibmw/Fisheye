@@ -2,8 +2,8 @@
 /* eslint-disable semi */
 /* eslint-disable require-jsdoc */
 class MediaCard {
-  constructor(media, mediaLink, mediaType) {
-    const {id, title, likes, date, price} = media
+  constructor(media) {
+    const {id, title, likes, date, price, mediaLink, mediaType, position} = media
     this._id = id
     this._title = title
     this._likes= likes
@@ -11,8 +11,35 @@ class MediaCard {
     this._price = price
     this._mediaType= mediaType
     this._mediaLink = mediaLink
+    this._position = position
 
-    this.$wrapperMedia = document.createElement('div')
+    this.$wrapperMedia = document.createElement('article')
+    this.$wrapperMedia.setAttribute("name", `item-${position}`)
+    this._wrapperMedia = document.querySelector('.photograph_media')
+  }
+
+  // Events handler
+  mediaEventsHandler() {
+      // DOM $Wrapper
+      const media = this.$wrapperMedia   
+      let box     
+      console.log(this._mediaType)
+      // Buttons
+      if (this._mediaType == 'ImageM') {
+        box = media.querySelectorAll("img")
+        box = box[0]
+      } else if (this._mediaType == 'VideoM') {
+        box = media.querySelector(".playMask")
+      }  
+      
+      console.log(box)
+      //********************* EVENTS ***********************************/
+      box.addEventListener("click", () => {
+          document.querySelector('.lightbox_modal').style.display = "block";
+          const item = document.querySelectorAll(`li[name="item-${this._position}"]`);
+          item[0].style.display = "block";
+      })
+
   }
 
   getMediaCardDOM() {
@@ -34,9 +61,10 @@ class MediaCard {
                 <h3>${this._title}</h3>
                 <div>${this._likes} <i class="fas fa-heart"></i></div>
              </div>`
-    //console.log(media)
+    
     this.$wrapperMedia.innerHTML = media
-    //console.log(this.$wrapperMedia)
-    return (this.$wrapperMedia)
+    
+    this.mediaEventsHandler()
+    this._wrapperMedia.appendChild(this.$wrapperMedia)
   }
 }

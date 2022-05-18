@@ -1,7 +1,7 @@
 class PhotographerPage {
     
 
-    async displayPhotographerData(photographer) {
+    displayPhotographerData(photographer) {
         if (photographer) {
             // display Photographer's Info DOM 
             photographerFactory(photographer, 'photograph_info') 
@@ -13,14 +13,19 @@ class PhotographerPage {
         }
     }
 
-    async displayMediaData(medias, photographer) {
+    displayMediaData(medias, photographer) {
         let likes = 0
+        let position = 1
+        const name = photographer._name
+        const carroussel = new Carroussel(name)
+        carroussel.carrousselRender()
 
         if (medias) {
             // Generate Medias Card
             medias.forEach((media) => {
-                mediaFactory(media, photographer._name)
+                mediaFactory(media, name, position)
                 likes += media.likes
+                position++
             })
         }
 
@@ -31,6 +36,8 @@ class PhotographerPage {
     async init() {
         // Get photographe's ID from the url
         const id = new URLSearchParams(window.location.search).get('id')
+        // If not ID, return to homepage
+        if(!id){location.href = "index.html"}
         // Get photographes data
         const apiPhotographer = new PhotographerApi('../data/photographers.json', 'photographers')
         // Get photographe's data by ID

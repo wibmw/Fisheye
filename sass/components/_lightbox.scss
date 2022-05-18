@@ -41,66 +41,77 @@
     border:0
  }
   
- .carousel {
-    position: relative;
-    padding: 0;
-    margin: 0;
- }
-  
- .carousel-item {
-    height: 200px;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    list-style-type: none;
- }
-  
- .item-0 {
-    background-color: tomato;
- }
-  
- .item-1 {
-    background-color: blue;
-    display: none;
- }
-  
- .item-2 {
-    background-color: green;
-    display: none;
- }
-  
- .img {
-    height: 40px;
-    width: 40px;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
- }
-  
- .prev-image {
-    left: 20px;
- }
-  
- .fa-arrow-circle-left,
- .fa-arrow-circle-right {
-    font-size: 30px;
- }
-  
- .next-image {
-    right: 20px;
- }
-  
- .caroussel-title {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
- }
- 
+/*...................LIGHTBOX..............*/
+
+.lightbox_modal {
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 99%; 
+   height: 100%;
+   background-color: white;
+   z-index: 10;
+   transition: opacity .3s;
+
+   & div {
+      display: flex;
+      & .carousel{
+         display: flex;
+        // width: 70%;
+         margin-left: auto;
+         margin-right: auto;
+         .carousel-item {
+            display: none;
+            flex-direction: column;
+            //width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            //height: 75%;
+   
+            & img {
+               width: 1200px;
+               height: 900px;
+               object-fit: cover;
+            }
+      
+            & .item-title {
+               color : $color-pri-dark;
+               font-size: 24px;
+               font-weight: 400;
+               margin-top: -2px;
+            }
+         }
+   
+      }
+   }
+
+}
+
+#close{
+   color: $color-pri-dark;
+   font-size: 50px;
+   position: fixed;
+   top: 30px;
+   right: 8%;
+   z-index: 12;
+   cursor: pointer;
+}
+
+#precedent, #suivant {
+   color: $color-pri-dark;
+   font-size: 50px;
+   position: fixed;
+   top: 40%;
+   z-index: 12;
+   cursor: pointer;
+}
+
+#suivant {
+   margin-left: 90%;
+}
+#precedent {
+   margin-left: 7%;
+}
+
+
