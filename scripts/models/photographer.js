@@ -30,7 +30,7 @@ class Photographer {
     }
 
     get picture(){
-        return `assets/photographersID/${this._portrait}`
+        return `assets/PhotographersID/${this._portrait}`
     }
 }
 
