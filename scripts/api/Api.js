@@ -30,8 +30,8 @@ class PhotographerApi extends Api {
     // Get only one photographer
     async getPhotographer(id) {
         const photographersData = await this.get()
-        const photographerData = photographersData.filter(photographer => photographer.id == id)
-        const photographer = photographerData.map(photographer => new Photographer(photographer))
+        const photographerData = await photographersData.filter(photographer => photographer.id == id)
+        const photographer = await photographerData.map(photographer => new Photographer(photographer))
         return photographer
 
     }
@@ -39,7 +39,7 @@ class PhotographerApi extends Api {
     // Get all photographers
     async getPhotographers() {
         const photographersData = await this.get()
-        const photographers = photographersData.map(photographer => new Photographer(photographer))
+        const photographers = await photographersData.map(photographer => new Photographer(photographer))
         return photographers
     }
 
