@@ -9,11 +9,17 @@ class Api {
     }
 
     async get() {
-        return fetch(this._url)
-            .then(res => res.json())
-            .then(res => this._type == 'photographers' ? res.photographers : res.media)
-            .catch(err => console.log('an error occurs', err))
+        let response = await fetch(this._url)
+
+        if(response.status == 200) {
+            let json = await response.json()
+            json = this._type == 'photographers' ? json.photographers : json.media
+            return json
+        }
+
+        throw new Error(response.status)
     }
+
 }
 
 
