@@ -39,11 +39,11 @@ class PhotographerPage {
         // If not ID, return to homepage
         if(!id){location.href = "index.html"}
         // Get photographes data
-        const apiPhotographer = new PhotographerApi('data/photographers.json', 'photographers')
+        const apiPhotographer = new PhotographerApi('/data/photographers.json', 'photographers')
         // Get photographe's data by ID
         const photographer = await apiPhotographer.getPhotographer(id)
         // Get Media data
-        const apiMedia = new MediaApi('data/photographers.json', 'media')
+        const apiMedia = new MediaApi('/data/photographers.json', 'media')
         const medias = await apiMedia.getMediaOfPhotographer(id)
         
         this.displayPhotographerData(photographer[0])
