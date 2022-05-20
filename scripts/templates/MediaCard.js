@@ -26,8 +26,8 @@ class MediaCard {
       console.log(this._mediaType)
       // Buttons
       if (this._mediaType == 'ImageM') {
-        box = media.querySelectorAll("img")
-        box = box[0]
+        box = media.querySelector("img")
+        //box = box[0]
       } else if (this._mediaType == 'VideoM') {
         box = media.querySelector(".playMask")
       }  
@@ -36,8 +36,8 @@ class MediaCard {
       //********************* EVENTS ***********************************/
       box.addEventListener("click", () => {
           document.querySelector('.lightbox_modal').style.display = "block";
-          const item = document.querySelectorAll(`li[name="item-${this._position}"]`);
-          item[0].style.display = "block";
+          const item = document.querySelector(`li[name="item-${this._position}"]`);
+          this._mediaType == 'ImageM' ? item.setAttribute("class", "active-item") : item.setAttribute("class", "active-item-video")
       })
 
   }
@@ -53,7 +53,6 @@ class MediaCard {
                   <source src="${this._mediaLink}" type="video/mp4" />
               </video>
               <div class="playMask">
-                <span class="far fa-play-circle"></span>
               </div>`
     }
 

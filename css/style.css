@@ -34,32 +34,6 @@ body {
   height: 50px;
 }
 
-#main-wrapper {
-  align-items: center;
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  width: 100vw;
-}
-
-.modal {
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
-  display: none;
-  height: 500px;
-  justify-content: center;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px;
-  z-index: 2;
-}
-
 .no-scroll {
   overflow: hidden;
 }
@@ -94,26 +68,50 @@ body {
 }
 .lightbox_modal div .carousel {
   display: flex;
+  padding-top: 2%;
   margin-left: auto;
   margin-right: auto;
 }
-.lightbox_modal div .carousel .carousel-item {
-  display: none;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-}
-.lightbox_modal div .carousel .carousel-item img {
-  width: 1200px;
-  height: 900px;
+.lightbox_modal div .carousel img {
+  width: 130vh;
+  height: 80vh;
   object-fit: cover;
-  scale: 0.9;
 }
-.lightbox_modal div .carousel .carousel-item .item-title {
+.lightbox_modal div .carousel .play-button {
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s;
+  font-size: 100px;
+  color: white;
+  border: 0;
+  align-self: center;
+}
+.lightbox_modal div .carousel .item-title {
   color: #901C1C;
   font-size: 24px;
   font-weight: 400;
   margin-top: -2px;
+}
+
+.active-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.active-item-video {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 142vh;
+  height: 90vh;
+}
+
+.carousel-item {
+  display: none;
 }
 
 #close {
@@ -126,7 +124,7 @@ body {
   cursor: pointer;
 }
 
-#precedent, #suivant {
+#previous, #next {
   color: #901C1C;
   font-size: 50px;
   position: fixed;
@@ -135,11 +133,11 @@ body {
   cursor: pointer;
 }
 
-#suivant {
+#next {
   margin-left: 90%;
 }
 
-#precedent {
+#previous {
   margin-left: 7%;
 }
 
@@ -268,8 +266,8 @@ header .logo {
   filter: blur(0.7rem);
 }
 .photograph_media article video {
-  height: 300px;
-  width: 350px;
+  height: 305px;
+  width: 355px;
   object-fit: cover;
 }
 .photograph_media article .playMask {
@@ -277,8 +275,8 @@ header .logo {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 350px;
-  height: 300px;
+  height: 305px;
+  width: 355px;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 100px;
