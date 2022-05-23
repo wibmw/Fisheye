@@ -23,7 +23,7 @@ class MediaCard {
       // DOM $Wrapper
       const media = this.$wrapperMedia   
       let box     
-      console.log(this._mediaType)
+
       // Buttons
       if (this._mediaType == 'ImageM') {
         box = media.querySelector("img")
@@ -32,7 +32,6 @@ class MediaCard {
         box = media.querySelector(".playMask")
       }  
       
-      console.log(box)
       //********************* EVENTS ***********************************/
       box.addEventListener("click", () => {
           document.querySelector('.lightbox_modal').style.display = "block";

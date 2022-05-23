@@ -31,6 +31,8 @@ class PhotographerPage {
 
         // display Photographer's price / like DOM
         photographerFactory(photographer, 'photograph_likes', likes)
+        new SorterForm(medias, name).render()
+        
     }
 
     async init() {
