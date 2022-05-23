@@ -48,7 +48,7 @@ class PhotographerCard {
 
     getPhotographerLikes(likes) {
         // return photographer info
-        const like = `<span> ${likes} <i class="fas fa-heart"></i></span>
+        const like = `<i class="fas fa-heart"><span class="totalLikes"> ${likes} </span></i>
                         <span>${this._price} € / jour</span>`
                     
         this.$wrapperDiv.innerHTML = like

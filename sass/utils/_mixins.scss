@@ -61,7 +61,7 @@
   border-radius: 50% 50%;
   -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
   mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);  
-  filter: blur(0.7rem); 
+  //filter: blur(0.7rem); 
 }
 
 @mixin article-h3-to-span {

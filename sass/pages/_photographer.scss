@@ -48,17 +48,17 @@
 
 
 .photograph_media {
-    margin: 30px 0px 30px 100px;
+    margin: 30px 100px 30px 100px;
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 7%;
+    gap: 6%;
     & article {
         & img {
                 height: 300px;
                 width: 350px;
                 object-fit: cover;
-                filter: blur(0.7rem); 
+                //filter: blur(0.7rem); 
         }
         & video {
             height: 305px;
@@ -94,11 +94,13 @@
                 text-overflow: ellipsis;
                 max-width: 290px;
             }
-            & div {
+            & i {
+                display: flex;
+                flex-flow : row-reverse;
                 font-size: 1.5em;
                 font-weight: bold;
-                & i {
-                    margin-left: 5px;   
+                & div {
+                    margin-right: 5px;   
                 }
             }
         }
@@ -118,6 +120,17 @@
         font-size: 1.5em;
         display: flex;
         justify-content: space-between;
+        align-items: baseline;
+        font-weight: 600;
+        & i {
+            display: flex;
+            flex-flow : row-reverse;
+             
+            & .totalLikes {
+                font-size: 1.2em;
+                margin-right: 5px;
+            }
+        }
     }
 }
 

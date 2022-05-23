@@ -22,6 +22,7 @@ class MediaCard {
   mediaEventsHandler() {
       // DOM $Wrapper
       const media = this.$wrapperMedia   
+      const likes = media.querySelector(".likes")
       let box     
 
       // Buttons
@@ -37,6 +38,17 @@ class MediaCard {
           document.querySelector('.lightbox_modal').style.display = "block";
           const item = document.querySelector(`li[name="item-${this._position}"]`);
           this._mediaType == 'ImageM' ? item.setAttribute("class", "active-item") : item.setAttribute("class", "active-item-video")
+      })
+
+      likes.addEventListener("click", () => {
+        const totalLikes = document.querySelector(`.totalLikes`)
+        if(this._likes == likes.textContent) {
+          likes.textContent = parseInt(likes.textContent) + 1
+          totalLikes.textContent = parseInt(totalLikes.textContent) + 1
+        }else {
+          likes.textContent = parseInt(likes.textContent) - 1
+          totalLikes.textContent = parseInt(totalLikes.textContent) - 1
+        }
       })
 
   }
@@ -57,7 +69,7 @@ class MediaCard {
 
     media += `<div>
                 <h3>${this._title}</h3>
-                <div>${this._likes} <i class="fas fa-heart"></i></div>
+                <i class="fas fa-heart"><div class="likes">${this._likes}</div> </i>
              </div>`
     
     this.$wrapperMedia.innerHTML = media

@@ -92,7 +92,7 @@
     background-color: $color-pri-dark;
     
     transition: $timing all ease-in-out;
-    z-index: 100;
+    z-index: 2;
 
     input:focus + label {
       background: #def;

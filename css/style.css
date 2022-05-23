@@ -6,7 +6,8 @@
 /******************* Photographer Info ************************/
 body {
   margin: 0;
-  width: 1440px;
+  width: 100vw;
+  min-width: 1024px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -34,6 +35,7 @@ body {
   height: 50px;
 }
 
+/*...................ACCECIBILITY..............*/
 .no-scroll {
   overflow: hidden;
 }
@@ -73,7 +75,7 @@ body {
   margin-right: auto;
 }
 .lightbox_modal div .carousel img {
-  width: 130vh;
+  width: 50vw;
   height: 80vh;
   object-fit: cover;
 }
@@ -97,6 +99,7 @@ body {
   margin-top: -2px;
 }
 
+/*...................ACTIVE ITEM..............*/
 .active-item {
   display: flex;
   flex-direction: column;
@@ -106,7 +109,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 142vh;
+  width: 70vw;
   height: 90vh;
 }
 
@@ -114,6 +117,7 @@ body {
   display: none;
 }
 
+/*...................BUTTONS..............*/
 #close {
   color: #901C1C;
   font-size: 50px;
@@ -228,7 +232,7 @@ body {
   color: white;
   background-color: #901C1C;
   transition: 0.3s all ease-in-out;
-  z-index: 100;
+  z-index: 2;
 }
 .dropdown-el input:focus + label {
   background: #def;
@@ -337,7 +341,6 @@ header .logo {
   border-radius: 50% 50%;
   -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
   mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
-  filter: blur(0.7rem);
 }
 .photographers_section article a h2 {
   color: #D3573C;
@@ -404,21 +407,19 @@ header .logo {
   border-radius: 50% 50%;
   -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
   mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
-  filter: blur(0.7rem);
 }
 
 .photograph_media {
-  margin: 30px 0px 30px 100px;
+  margin: 30px 100px 30px 100px;
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 7%;
+  gap: 6%;
 }
 .photograph_media article img {
   height: 300px;
   width: 350px;
   object-fit: cover;
-  filter: blur(0.7rem);
 }
 .photograph_media article video {
   height: 305px;
@@ -454,12 +455,14 @@ header .logo {
   text-overflow: ellipsis;
   max-width: 290px;
 }
-.photograph_media article div div {
+.photograph_media article div i {
+  display: flex;
+  flex-flow: row-reverse;
   font-size: 1.5em;
   font-weight: bold;
 }
-.photograph_media article div div i {
-  margin-left: 5px;
+.photograph_media article div i div {
+  margin-right: 5px;
 }
 
 .photograph_likes {
@@ -476,6 +479,16 @@ header .logo {
   font-size: 1.5em;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  font-weight: 600;
+}
+.photograph_likes div i {
+  display: flex;
+  flex-flow: row-reverse;
+}
+.photograph_likes div i .totalLikes {
+  font-size: 1.2em;
+  margin-right: 5px;
 }
 
 #contact_modal {
