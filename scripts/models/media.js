@@ -51,8 +51,8 @@ class Media{
     }
 }
 
-
-class ImageM extends Media{
+// Image Media
+export class ImageM extends Media{
     constructor(data) {
         super(data)
         this._image = data.image
@@ -63,7 +63,8 @@ class ImageM extends Media{
     }
 }
 
-class VideoM extends Media{
+// Video Media
+export class VideoM extends Media{
     constructor(data) {
         super(data)
         this._video = data.video

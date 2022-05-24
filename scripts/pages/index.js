@@ -1,3 +1,5 @@
+import { PhotographerApi } from '../api/Api.js'
+import { photographerFactory } from '../factories/photographer.js'
 class IndexPage {
 
     async displayIndexData(photographers) {
@@ -16,7 +18,6 @@ class IndexPage {
         this.displayIndexData(photographers)
     }
 }
-
 
 const page = new IndexPage()
 page.init()

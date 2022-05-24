@@ -1,4 +1,4 @@
-class PhotographerCard {
+export class PhotographerCard {
     constructor(photographer) {
         const { name, id, picture, location, tagline, price } = photographer
         this._name = name

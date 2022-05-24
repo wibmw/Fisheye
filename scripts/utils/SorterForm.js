@@ -1,4 +1,7 @@
-class SorterForm {
+import { ProxyRatingSorter } from '../proxy/cacheProxy.js'
+import { mediaFactory } from '../factories/media.js'
+
+export class SorterForm {
     constructor(medias, name) {
         this._medias = medias
         this._name = name
@@ -14,10 +17,9 @@ class SorterForm {
         this.clearWrappers()
         let likes = 0
         let position = 1
-        console.log(sorter)
+        // Generate the sorted medias galery and carousel
         if (!!sorter) {
             const sortedData = await this.ProxyRatingSorter.sorter(this._medias, sorter)
-
             const SortedMovies = sortedData.data
 
             SortedMovies.forEach(media => {
@@ -35,6 +37,7 @@ class SorterForm {
     }
 
     onChangeSorter() {
+        // Sorter management
         this.$wrapper.querySelectorAll('.dropdown-el').forEach( (item) => {
             item.addEventListener("click", (e) => {
                 e.preventDefault();
@@ -53,11 +56,13 @@ class SorterForm {
     }
 
     clearWrappers() {
+        // Reset media and carousel content
         this.$mediasWrapper.innerHTML = ""
         this.$carouselWrapper.innerHTML = ""
     }
 
     render() {
+        // Generate the sorter element
         const sorterForm = 
         `<label for="sorter-select">Triez par : </label>
         <span class="dropdown-el">
@@ -65,21 +70,12 @@ class SorterForm {
             <input type="radio" name="sortType" value="DATE" id="sort-best"><label for="sort-best">Date</label>
             <input type="radio" name="sortType" value="TITRE" id="sort-low"><label for="sort-low">Titre</label>
         </span>`
-               /*`<label for="sorter-select">Triez par : </label>
-                <select name="sorter-select" id="sorter_select">
-                    <option value=""><div class='badge badge-success'>Relish</div></option>
-                    <option value="POP">Popularité</option>
-                    <option value="DATE">Date</option>
-                    <option value="TITRE">Titre</option>
-                </select>
-`
-*/
+
         this.$wrapper.innerHTML = sorterForm
         this.onChangeSorter()
        
         this.$sorterFormWrapper.appendChild(this.$wrapper)
         
-        //document.addEventListener("click", this.closeAllSelect())
     }
 }
 

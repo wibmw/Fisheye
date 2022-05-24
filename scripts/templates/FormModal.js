@@ -1,11 +1,11 @@
-class FormModal {
+export class FormModal {
     constructor(photographerName) {
       this._photographerName = photographerName
       this.$wrapperForm = document.createElement("div")
       this.$wrapperForm.setAttribute("class", "modal")
       this._wrapperModal = document.getElementById("contact_modal")  
     }
-        
+    //********************* DISPLAY MESSAGES  ***********************************/    
     // clear validation message
     clearValidationMessage(element) {
         element.closest(".formData").setAttribute("data-error-visible", "false");
@@ -97,10 +97,10 @@ class FormModal {
             this.clearForm(formContent, modalSuccess, closeModal)
         })
         contactButton.addEventListener("click", () => {
-                modal.style.display = "block";
+            modal.style.display = "block";
         })
         closeModal.addEventListener('click', () => {
-                modal.style.display = "none";
+            modal.style.display = "none";
         })
         firstName.addEventListener('change', () => {
             this.namesCheck(firstName)
@@ -117,7 +117,7 @@ class FormModal {
 
 
     getFormRender() {
-        // DOM Wrapper
+        // DOM Wrapper Generate the form
         this.$wrapperForm.innerHTML = 
                         `<header> 
                             <h2>Contactez-moi ${this._photographerName}</h2>

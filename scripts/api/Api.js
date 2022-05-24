@@ -1,3 +1,5 @@
+import { Photographer } from '../models/photographer.js'
+import { ImageM, VideoM } from '../models/media.js'
 class Api {
     /**
      * 
@@ -9,7 +11,7 @@ class Api {
     }
 
     async get() {
-        //console.log(this._url)
+        // Fetch and return the JSON File
         let response = await fetch(this._url)
 
         if(response.status == 200) {
@@ -17,14 +19,11 @@ class Api {
             json = this._type == 'photographers' ? json.photographers : json.media
             return json
         }
-
         throw new Error(response.status)
     }
-
 }
 
-
-class PhotographerApi extends Api {
+export class PhotographerApi extends Api {
     /**
      * 
      * @param {string} url 
@@ -39,21 +38,21 @@ class PhotographerApi extends Api {
         const photographersData = await this.get()
         const photographerData = await photographersData.filter(photographer => photographer.id == id)
         const photographer = await photographerData.map(photographer => new Photographer(photographer))
+        
         return photographer
-
     }
     
     // Get all photographers
     async getPhotographers() {
         const photographersData = await this.get()
         const photographers = await photographersData.map(photographer => new Photographer(photographer))
+        
         return photographers
     }
-
 }
 
 
-class MediaApi extends Api {
+export class MediaApi extends Api {
     /**
      * 
      * @param {string} url 
@@ -63,11 +62,12 @@ class MediaApi extends Api {
         super(url, type)
     }
 
-    // Get all media
+    // Get all medias
     async getMediaOfPhotographer(id) {
         let mediaData = await this.get()
         mediaData = await mediaData.filter(media => media.photographerId == id)
         const medias = await mediaData.map(media => media.image ? new ImageM(media) : new VideoM(media))
+        
         return medias
     }
 }

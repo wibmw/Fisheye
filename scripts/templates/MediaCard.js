@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable semi */
 /* eslint-disable require-jsdoc */
-class MediaCard {
+export class MediaCard {
   constructor(media) {
     const {id, title, likes, date, price, mediaLink, mediaType, position} = media
     this._id = id
@@ -28,7 +28,6 @@ class MediaCard {
       // Buttons
       if (this._mediaType == 'ImageM') {
         box = media.querySelector("img")
-        //box = box[0]
       } else if (this._mediaType == 'VideoM') {
         box = media.querySelector(".playMask")
       }  
@@ -39,22 +38,21 @@ class MediaCard {
           const item = document.querySelector(`li[name="item-${this._position}"]`);
           this._mediaType == 'ImageM' ? item.setAttribute("class", "active-item") : item.setAttribute("class", "active-item-video")
       })
-
+      // Likes management
       likes.addEventListener("click", () => {
-        const totalLikes = document.querySelector(`.totalLikes`)
-        if(this._likes == likes.textContent) {
-          likes.textContent = parseInt(likes.textContent) + 1
-          totalLikes.textContent = parseInt(totalLikes.textContent) + 1
-        }else {
-          likes.textContent = parseInt(likes.textContent) - 1
-          totalLikes.textContent = parseInt(totalLikes.textContent) - 1
-        }
+          const totalLikes = document.querySelector(`.totalLikes`)
+          if(this._likes == likes.textContent) {
+            likes.textContent = parseInt(likes.textContent) + 1
+            totalLikes.textContent = parseInt(totalLikes.textContent) + 1
+          }else {
+            likes.textContent = parseInt(likes.textContent) - 1
+            totalLikes.textContent = parseInt(totalLikes.textContent) - 1
+          }
       })
-
   }
 
   getMediaCardDOM() {
-    
+    // Generate the media cards
     let media = ``
 
     if (this._mediaType == 'ImageM') {

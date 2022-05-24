@@ -1,6 +1,12 @@
+import { PhotographerApi, MediaApi } from '../api/Api.js'
+import { photographerFactory } from '../factories/photographer.js'
+import { mediaFactory } from '../factories/media.js'
+import { FormModal } from '../templates/FormModal.js'
+import { Carroussel } from '../templates/LightboxModal.js'
+import { SorterForm } from '../utils/SorterForm.js'
+
 class PhotographerPage {
     
-
     displayPhotographerData(photographer) {
         if (photographer) {
             // display Photographer's Info DOM 
@@ -31,8 +37,7 @@ class PhotographerPage {
 
         // display Photographer's price / like DOM
         photographerFactory(photographer, 'photograph_likes', likes)
-        new SorterForm(medias, name).render()
-        
+        new SorterForm(medias, name).render()      
     }
 
     async init() {
@@ -51,9 +56,7 @@ class PhotographerPage {
         this.displayPhotographerData(photographer[0])
         this.displayMediaData(medias, photographer[0])
     }
-
 }
-
 
 const page = new PhotographerPage()
 page.init()

@@ -1,6 +1,9 @@
-function photographerFactory(data, page, likes) {
+import { PhotographerCard } from '../templates/PhotographerCard.js'
+
+// ************* PHOTOGRAPHER FACTORY ****************************//
+export function photographerFactory(data, page, likes) {
     const card = new PhotographerCard(data)
-    
+    // Select type of protographer information needed
     if(page == 'photograph_picture') {
         document.querySelector(".photograph_picture").appendChild(card.getPhotographerPicture())
     } else if (page == 'photograph_info') {

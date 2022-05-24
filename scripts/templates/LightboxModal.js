@@ -1,4 +1,4 @@
-class Lightbox {
+export class Lightbox {
     constructor(media) {
         const {id, title, likes, date, price, mediaLink, mediaType, position} = media
         this._id = id
@@ -10,6 +10,7 @@ class Lightbox {
         this._mediaLink = mediaLink
         this._position = position
 
+        // Create Carousel Element
         this.$wrapperLightbox = document.createElement("li")
         this.$wrapperLightbox.setAttribute("name", `item-${position}`)
         this.$wrapperLightbox.setAttribute("class", "carousel-item")
@@ -44,12 +45,11 @@ class Lightbox {
    
 }
 
-class Carroussel {
+export class Carroussel {
     constructor(photographerName) {
         this._name = photographerName
-
-        this.$wrapperCarroussel = document.createElement("div")
         this._modalCarroussel = document.querySelector('.lightbox_modal')
+        this.$wrapperCarroussel = document.createElement("div")
     }
 
     // Get displayed item
@@ -106,10 +106,10 @@ class Carroussel {
             document.querySelector('.lightbox_modal').style.display = "none"
             this.setCarouselItem(this.getActualItem())
         })
-
     }
 
     carrousselRender() {
+        // Generate the nav elements
         this.$wrapperCarroussel.innerHTML = 
             `<ul class="carousel" aria-label="Our selection of Recipes">
             </ul>
