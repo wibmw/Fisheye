@@ -1,18 +1,17 @@
-import { Lightbox } from '../templates/LightboxModal.js'
-import { MediaCard } from '../templates/MediaCard.js'
+import Lightbox from '../templates/LightboxModal.js'
+import MediaCard from '../templates/MediaCard.js'
 
 // ************* MEDIA FACTORY ****************************//
-export function mediaFactory(media, photographersName, position) {
-
-    let mediaType = media.constructor.name
-    let mediaLink = ""
+export default function mediaFactory(media, photographersName, position) {
+    const mediaType = media.constructor.name
+    let mediaLink = ''
     // check Img or Video type
-    if(mediaType == 'ImageM') {
+    if (mediaType === 'ImageM') {
         mediaLink = media.getImage(photographersName)
-    } else if (mediaType == 'VideoM') {
+    } else if (mediaType === 'VideoM') {
         mediaLink = media.getVideo(photographersName)
     } else {
-        console.log("Erreur MediaFactory")
+        console.log('Erreur MediaFactory')
     }
 
     // We add necessary datas to the medias
@@ -22,7 +21,4 @@ export function mediaFactory(media, photographersName, position) {
 
     new Lightbox(media).lightboxRender()
     new MediaCard(media).getMediaCardDOM()
-    
-    
 }
-

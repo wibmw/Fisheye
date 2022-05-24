@@ -1,0 +1,101 @@
+/**************** Contact Modal ****************/
+#contact_modal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgb(255 255 255 / 50%);;
+    top: 0;
+    color: black;
+    overflow: auto;
+    & .modal {
+        border-radius: 5px;
+        background-color: #DB8876;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 600px;
+        position: relative;
+        margin: 3%;
+        margin-left: 25%;
+        padding: 0px 40px 40px 40px;
+        & header {
+            display: flex;
+            align-items: baseline;
+            height: 200px;
+            & h2 {
+                font-size: 64px;
+                font-weight: normal;
+                margin-top: 20px;
+            }
+        }
+        & label {
+            color: #312E2E;
+            font-size: 36px;
+        }
+
+        & textarea {
+            width: 600px;
+            height: 170px;
+            resize: none;
+            font-size: 2em;
+            border-radius: 7px;
+            margin-bottom: 20px
+        }
+    }
+}
+
+input {
+            font-size: 2em;
+            width: 100%;
+            height: 68px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px
+}
+
+/**************** Modal Success ****************/
+#modalSuccess {
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    & span {
+        position: absolute;
+        text-align: center;
+        font-size: 3em;
+        font-weight: 500;
+    }
+    & input {
+        margin-top: 250%;
+        text-align: center;
+        overflow: scroll;
+        padding: 12px 0 12px;
+    }
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+/**************** Error control ****************/
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 2em;
+    font-weight: 600;
+    color: $color-pri-dark;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: left;
+    transition: 0.3s;
+  
+  }
+  .formData[data-error-visible="true"]::after {
+    opacity: 1;
+    margin-bottom: 5px;
+  }
+  .formData[data-error-visible="true"] .text-control {
+    border: 2px solid $color-pri-dark;
+  }
+  

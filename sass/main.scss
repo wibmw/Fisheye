@@ -1,19 +1,17 @@
 @import "./utils/variables";
 @import "./utils/mixins";
-//@import "./utils/animations";
 
 @import "./base/base";
 @import "./base/typography";
 
 @import "./components/buttons";
+@import "./components/contactForm";
 @import "./components/lightbox";
+@import "./components/likes";
 @import "./components/sort";
 
 @import "./layout/header";
-//@import "./layout/footer";
+@import "./layout/photographerHeader";
 
 @import "./pages/index";
 @import "./pages/photographer";
-
-//@import "./layout/desktop";
-//@import "./layout/tablet";

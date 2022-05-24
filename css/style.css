@@ -1,5 +1,5 @@
 /******************* COLORS ************************/
-/******************* Animation ************************/
+/******************* Sorter ************************/
 /******************* Global Flex ************************/
 /******************* Like Icon ************************/
 /******************* Center of the page ************************/
@@ -17,6 +17,7 @@ body {
   font-size: 100%;
 }
 
+/**************** Buttons ****************/
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -33,6 +34,107 @@ body {
 
 .submit_button {
   height: 50px;
+}
+
+/**************** Contact Modal ****************/
+#contact_modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 0;
+  color: black;
+  overflow: auto;
+}
+#contact_modal .modal {
+  border-radius: 5px;
+  background-color: #DB8876;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+  position: relative;
+  margin: 3%;
+  margin-left: 25%;
+  padding: 0px 40px 40px 40px;
+}
+#contact_modal .modal header {
+  display: flex;
+  align-items: baseline;
+  height: 200px;
+}
+#contact_modal .modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+#contact_modal .modal label {
+  color: #312E2E;
+  font-size: 36px;
+}
+#contact_modal .modal textarea {
+  width: 600px;
+  height: 170px;
+  resize: none;
+  font-size: 2em;
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
+
+input {
+  font-size: 2em;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/**************** Modal Success ****************/
+#modalSuccess {
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+}
+#modalSuccess span {
+  position: absolute;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 500;
+}
+#modalSuccess input {
+  margin-top: 250%;
+  text-align: center;
+  overflow: scroll;
+  padding: 12px 0 12px;
+}
+
+.modal header img {
+  cursor: pointer;
+}
+
+/**************** Error control ****************/
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 2em;
+  font-weight: 600;
+  color: #901C1C;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.formData[data-error-visible=true]::after {
+  opacity: 1;
+  margin-bottom: 5px;
+}
+
+.formData[data-error-visible=true] .text-control {
+  border: 2px solid #901C1C;
 }
 
 /*...................ACCECIBILITY..............*/
@@ -145,6 +247,34 @@ body {
   margin-left: 7%;
 }
 
+/**************** Photographer's likes ****************/
+.photograph_likes {
+  background-color: #D3573C;
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  margin-left: 70%;
+  border-radius: 5px;
+  padding: 20px;
+}
+.photograph_likes div {
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 600;
+}
+.photograph_likes div i {
+  display: flex;
+  flex-flow: row-reverse;
+}
+.photograph_likes div i .totalLikes {
+  font-size: 1.2em;
+  margin-right: 5px;
+}
+
+/**************** Sorter Medias ****************/
 .sorter_media {
   margin: 30px 100px 30px 100px;
   position: relative;
@@ -152,70 +282,7 @@ body {
   font-size: 1.2em;
   font-weight: 600;
 }
-.sorter_media #sorter_select {
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: #901C1C;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.select-selected {
-  background-color: DodgerBlue;
-}
-
-/* Style the arrow inside the select element: */
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
-
-/* style the items (options), including the selected item: */
-.select-items div, .select-selected {
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-}
-
-/* Style items (options): */
-.select-items {
-  position: absolute;
-  background-color: DodgerBlue;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-el {
+.sorter_media .dropdown-el {
   min-width: 2em;
   position: absolute;
   display: inline-block;
@@ -234,18 +301,18 @@ body {
   transition: 0.3s all ease-in-out;
   z-index: 2;
 }
-.dropdown-el input:focus + label {
-  background: #def;
+.sorter_media .dropdown-el input:focus + label {
+  background: #F2F2F2;
 }
-.dropdown-el input {
+.sorter_media .dropdown-el input {
   width: 1px;
   height: 1px;
   display: inline-block;
   position: absolute;
   opacity: 0.01;
 }
-.dropdown-el label {
-  border-top: 0.06em solid #d9d9d9;
+.sorter_media .dropdown-el label {
+  border-top: 0.06em solid #F2F2F2;
   display: block;
   height: 2em;
   line-height: 2em;
@@ -255,22 +322,22 @@ body {
   position: relative;
   transition: 0.3s color ease-in-out;
 }
-.dropdown-el label:nth-child(2) {
+.sorter_media .dropdown-el label:nth-child(2) {
   margin-top: 2em;
-  border-top: 0.06em solid #d9d9d9;
+  border-top: 0.06em solid #F2F2F2;
 }
-.dropdown-el input:checked + label {
+.sorter_media .dropdown-el input:checked + label {
   display: block;
   border-top: none;
   position: absolute;
   top: 0;
   width: 100%;
 }
-.dropdown-el input:checked + label:nth-child(2) {
+.sorter_media .dropdown-el input:checked + label:nth-child(2) {
   margin-top: 0;
   position: relative;
 }
-.dropdown-el::after {
+.sorter_media .dropdown-el::after {
   content: "";
   position: absolute;
   right: 0.8em;
@@ -279,27 +346,28 @@ body {
   border-color: white transparent transparent transparent;
   transition: 0.4s all ease-in-out;
 }
-.dropdown-el.expanded {
+.sorter_media .dropdown-el.expanded {
   background: #901C1C;
   border-radius: 0.25em;
   padding: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
   max-height: 15em;
 }
-.dropdown-el.expanded label {
-  border-top: 0.06em solid #d9d9d9;
+.sorter_media .dropdown-el.expanded label {
+  border-top: 0.06em solid #F2F2F2;
 }
-.dropdown-el.expanded label:hover {
+.sorter_media .dropdown-el.expanded label:hover {
   color: white;
 }
-.dropdown-el.expanded input:checked + label {
+.sorter_media .dropdown-el.expanded input:checked + label {
   color: white;
 }
-.dropdown-el.expanded::after {
+.sorter_media .dropdown-el.expanded::after {
   transform: rotate(-180deg);
   top: 0.55em;
 }
 
+/**************** Home header ****************/
 header {
   display: flex;
   flex-direction: row;
@@ -316,6 +384,48 @@ header .logo {
   margin-left: 100px;
 }
 
+/**************** Photographer's Information Header ****************/
+.photograph-header {
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 30px 100px 30px 100px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  align-items: center;
+  justify-items: center;
+}
+.photograph-header .photograph_info article {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.photograph-header .photograph_info article h2 {
+  color: #D3573C;
+  font-size: 4em;
+  font-weight: 500;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+}
+.photograph-header .photograph_info article h3 {
+  color: #901C1C;
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+.photograph-header .photograph_info article div {
+  color: #525252;
+  font-size: 1.1em;
+}
+.photograph-header .photograph_picture img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50% 50%;
+  -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
+  mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
+}
+
+/**************** Photographers's list ****************/
 .photographers_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -365,56 +475,15 @@ header .logo {
   font-size: 0.6em;
 }
 
-#contact_modal {
-  display: none;
-}
-
-.photograph-header {
-  background-color: #FAFAFA;
-  height: 300px;
-  margin: 30px 100px 30px 100px;
-  display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
-  align-items: center;
-  justify-items: center;
-}
-.photograph-header .photograph_info article {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.photograph-header .photograph_info article h2 {
-  color: #D3573C;
-  font-size: 4em;
-  font-weight: 500;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  text-align: center;
-}
-.photograph-header .photograph_info article h3 {
-  color: #901C1C;
-  font-size: 1.5em;
-  margin-top: 20px;
-}
-.photograph-header .photograph_info article div {
-  color: #525252;
-  font-size: 1.1em;
-}
-.photograph-header .photograph_picture img {
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
-  border-radius: 50% 50%;
-  -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
-  mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
-}
-
+/**************** Photographer's Media Gallery ****************/
 .photograph_media {
   margin: 30px 100px 30px 100px;
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 6%;
+  gap: 5%;
+  align-content: center;
+  justify-content: space-between;
 }
 .photograph_media article img {
   height: 300px;
@@ -463,130 +532,6 @@ header .logo {
 }
 .photograph_media article div i div {
   margin-right: 5px;
-}
-
-.photograph_likes {
-  background-color: #D3573C;
-  position: sticky;
-  bottom: 0;
-  right: 0;
-  width: 300px;
-  margin-left: 70%;
-  border-radius: 5px;
-  padding: 20px;
-}
-.photograph_likes div {
-  font-size: 1.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-weight: 600;
-}
-.photograph_likes div i {
-  display: flex;
-  flex-flow: row-reverse;
-}
-.photograph_likes div i .totalLikes {
-  font-size: 1.2em;
-  margin-right: 5px;
-}
-
-#contact_modal {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-color: rgba(255, 255, 255, 0.5);
-  top: 0;
-  color: black;
-  overflow: auto;
-}
-#contact_modal .modal {
-  border-radius: 5px;
-  background-color: #DB8876;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 600px;
-  position: relative;
-  margin: 3%;
-  margin-left: 25%;
-  padding: 0px 40px 40px 40px;
-}
-#contact_modal .modal header {
-  display: flex;
-  align-items: baseline;
-  height: 200px;
-}
-#contact_modal .modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  margin-top: 20px;
-}
-#contact_modal .modal label {
-  color: #312E2E;
-  font-size: 36px;
-}
-#contact_modal .modal textarea {
-  width: 600px;
-  height: 170px;
-  resize: none;
-  font-size: 2em;
-  border-radius: 7px;
-  margin-bottom: 20px;
-}
-
-input {
-  font-size: 2em;
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-#modalSuccess {
-  display: none;
-  align-items: center;
-  justify-content: space-around;
-}
-#modalSuccess span {
-  position: absolute;
-  text-align: center;
-  font-size: 3em;
-  font-weight: 500;
-}
-#modalSuccess input {
-  margin-top: 250%;
-  text-align: center;
-  overflow: scroll;
-  padding: 12px 0 12px;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-/**************** Error control ****************/
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 2em;
-  font-weight: 600;
-  color: #901C1C;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: left;
-  transition: 0.3s;
-}
-
-.formData[data-error-visible=true]::after {
-  opacity: 1;
-  margin-bottom: 5px;
-}
-
-.formData[data-error-visible=true] .text-control {
-  border: 2px solid #901C1C;
 }
 
 /*# sourceMappingURL=style.css.map */

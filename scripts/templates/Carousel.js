@@ -1,0 +1,79 @@
+export default class Carroussel {
+    constructor(photographerName) {
+        this.name = photographerName
+        this.modalCarroussel = document.querySelector('.lightbox_modal')
+        this.$wrapperCarroussel = document.createElement('div')
+    }
+
+    // Get displayed item
+    getActualItem() {
+        return document.querySelector('.active-item') ? document.querySelector('.active-item') : document.querySelector('.active-item-video')
+    }
+
+    // Get actual item position
+    getActualPosition() {
+        const actualItem = this.getActualItem()
+        return parseInt(actualItem.getAttribute('name').split('-')[1])
+    }
+
+    // Get the lastest position
+    getLatestPosition() {
+        return parseInt(document.querySelectorAll('li').length)
+    }
+
+    // Display new item
+    setActiveItem(item) {
+        item.querySelector('img') ? item.setAttribute('class', 'active-item') : item.setAttribute('class', 'active-item-video')
+    }
+
+    // Hide last item
+    setCarouselItem(item) {
+        item.setAttribute('class', 'carousel-item')
+    }
+
+    // Events handler
+    carrousselEventsHandler() {
+        // DOM $Wrapper
+        const carroussel = this.$wrapperCarroussel
+        // Buttons
+        const leftButton = carroussel.querySelector('.fa-chevron-left')
+        const rightButton = carroussel.querySelector('.fa-chevron-right')
+        const closeButton = carroussel.querySelector('.fa-times')
+
+        //* ******************** EVENTS ***********************************/
+        // Display next item
+        rightButton.addEventListener('click', () => {
+            const nextPosition = this.getActualPosition() + 1
+            const nextItem = document.querySelector(`li[name="item-${nextPosition}"]`) ? document.querySelector(`li[name="item-${nextPosition}"]`) : document.querySelector('li[name="item-1"]')
+
+            this.setCarouselItem(this.getActualItem())
+            this.setActiveItem(nextItem)
+        })
+        // Display previous item
+        leftButton.addEventListener('click', () => {
+            const previousPosition = this.getActualPosition() - 1
+            const lastPosition = this.getLatestPosition()
+            const previousItem = document.querySelector(`li[name="item-${previousPosition}"]`) ? document.querySelector(`li[name="item-${previousPosition}"]`) : document.querySelector(`li[name="item-${lastPosition}"]`)
+
+            this.setCarouselItem(this.getActualItem())
+            this.setActiveItem(previousItem)
+        })
+        // Close the lightbox
+        closeButton.addEventListener('click', () => {
+            document.querySelector('.lightbox_modal').style.display = 'none'
+            this.setCarouselItem(this.getActualItem())
+        })
+    }
+
+    carrousselRender() {
+        // Generate the nav elements
+        this.$wrapperCarroussel.innerHTML = `<ul class="carousel" aria-label="Our selection of Recipes">
+            </ul>
+            <i class="fas fa-chevron-left" id="previous"  aria-label="image précédente" aria-hidden="true"></i> 
+            <i class="fas fa-chevron-right"  id="next" aria-label="image suivante" aria-hidden="true"></i>
+            <i class="fas fa-times" id="close" aria-label="fermer la lightbox" aria-hidden="true"></i>`
+
+        this.carrousselEventsHandler()
+        this.modalCarroussel.appendChild(this.$wrapperCarroussel)
+    }
+}

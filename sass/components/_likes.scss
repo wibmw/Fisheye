@@ -1,0 +1,27 @@
+/**************** Photographer's likes ****************/
+.photograph_likes {
+    background-color: $color-pri-light;
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    margin-left: 70%;
+    border-radius: 5px;
+    padding: 20px;
+    & div {
+        font-size: 1.5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-weight: 600;
+        & i {
+            display: flex;
+            flex-flow : row-reverse;
+             
+            & .totalLikes {
+                font-size: 1.2em;
+                margin-right: 5px;
+            }
+        }
+    }
+}

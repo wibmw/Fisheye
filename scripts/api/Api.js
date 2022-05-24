@@ -1,10 +1,6 @@
-import { Photographer } from '../models/photographer.js'
-import { ImageM, VideoM } from '../models/media.js'
+import Photographer from '../models/photographer.js'
+import * as Media from '../models/media.js'
 class Api {
-    /**
-     * 
-     * @param {string} url 
-     */
     constructor(url, type) {
         this._url = url
         this._type = type 
@@ -24,11 +20,6 @@ class Api {
 }
 
 export class PhotographerApi extends Api {
-    /**
-     * 
-     * @param {string} url 
-     * @param {string} type
-     */
     constructor(url, type) {
         super(url, type)
     }
@@ -53,11 +44,6 @@ export class PhotographerApi extends Api {
 
 
 export class MediaApi extends Api {
-    /**
-     * 
-     * @param {string} url 
-     * @param {string} type
-     */
      constructor(url, type) {
         super(url, type)
     }
@@ -66,7 +52,7 @@ export class MediaApi extends Api {
     async getMediaOfPhotographer(id) {
         let mediaData = await this.get()
         mediaData = await mediaData.filter(media => media.photographerId == id)
-        const medias = await mediaData.map(media => media.image ? new ImageM(media) : new VideoM(media))
+        const medias = await mediaData.map(media => media.image ? new Media.ImageM(media) : new Media.VideoM(media))
         
         return medias
     }

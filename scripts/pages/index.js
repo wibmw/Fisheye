@@ -1,5 +1,5 @@
-import { PhotographerApi } from '../api/Api.js'
-import { photographerFactory } from '../factories/photographer.js'
+import * as Api from '../api/Api.js'
+import photographerFactory from '../factories/photographer.js'
 class IndexPage {
 
     async displayIndexData(photographers) {
@@ -13,7 +13,7 @@ class IndexPage {
 
     async init() {
         // Get photographes data
-        const api = new PhotographerApi('data/photographers.json', 'photographers')
+        const api = new Api.PhotographerApi('data/photographers.json', 'photographers')
         const photographers = await api.getPhotographers()
         this.displayIndexData(photographers)
     }

@@ -1,166 +1,98 @@
+/**************** Sorter Medias ****************/
 .sorter_media {
     margin: 30px 100px 30px 100px;
     position: relative;
     font-family: Arial;
     font-size: 1.2em;
     font-weight: 600;
-    & #sorter_select {
-        font-weight: bold;
-        color: white;
-        padding: 11px;
-        width: 170px;
-        height: 70px;
-        border: none;
-        background-color: #901C1C;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-        //display: none
-        
-    }
-}
- 
-  
-  .select-selected {
-    background-color: DodgerBlue;
-  }
-  
-  /* Style the arrow inside the select element: */
-  .select-selected:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: #fff transparent transparent transparent;
-  }
-  
-  /* Point the arrow upwards when the select box is open (active): */
-  .select-selected.select-arrow-active:after {
-    border-color: transparent transparent #fff transparent;
-    top: 7px;
-  }
-  
-  /* style the items (options), including the selected item: */
-  .select-items div,.select-selected {
-    color: #ffffff;
-    padding: 8px 16px;
-    border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer;
-  }
-  
-  /* Style items (options): */
-  .select-items {
-    position: absolute;
-    background-color: DodgerBlue;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 99;
-  }
-  
-  /* Hide the items when the select box is closed: */
-  .select-hide {
-    display: none;
-  }
-  
-  .select-items div:hover, .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-
-//************************************************************************************************
-
-.dropdown-el {    
-    min-width: 2em;
-    position: absolute;
-    display: inline-block;
-    min-height: 2em;
-    max-height:2em;
-    overflow:hidden;
-    cursor: pointer;
-    text-align: left;
-    white-space: nowrap;
-    
-    margin-top: -15px;
-    margin-left: 30px;
-    outline: none;
-    border-radius: 0.2em;
-    color: white;
-    background-color: $color-pri-dark;
-    
-    transition: $timing all ease-in-out;
-    z-index: 2;
-
-    input:focus + label {
-      background: #def;
-    }
-    input {
-      width: 1px;
-      height: 1px;
+    & .dropdown-el {    
+      min-width: 2em;
+      position: absolute;
       display: inline-block;
-      position: absolute;
-      opacity: 0.01;
-    }
-    label {
-      border-top: .06em solid #d9d9d9;
-      display:block;
-      height: 2em;
-      line-height: 2em;
-      padding-left: 1em;
-      padding-right: 3em;
+      min-height: 2em;
+      max-height:2em;
+      overflow:hidden;
       cursor: pointer;
-      position: relative;
-      transition: $timing color ease-in-out;  
-      &:nth-child(2) {
-        margin-top: 2em;
-        border-top: .06em solid #d9d9d9;
-      }
-    }
-    input:checked + label {
-      display:block;
-      border-top: none;
-      position: absolute;
-      top: 0;
-      width: 100%;
+      text-align: left;
+      white-space: nowrap;
+      margin-top: -15px;
+      margin-left: 30px;
+      outline: none;
+      border-radius: 0.2em;
+      color: white;
+      background-color: $color-pri-dark;
+      transition: $timing all ease-in-out;
+      z-index: 2;
   
-      &:nth-child(2) {
-        margin-top: 0;
-        position: relative;
+      input:focus + label {
+        background: $back-color;
       }
-    }
-    
-    &::after {
-      content:"";
-      position: absolute;
-      right: 0.8em;
-      top: 0.9em;
-      border: .3em solid $color;
-      border-color: $color transparent transparent transparent;
-      transition: .4s all ease-in-out;
-    }
-    &.expanded {
-      background: $color-pri-dark;
-      border-radius: .25em;
-      padding: 0;
-      box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
-      max-height:15em;
-      
+      input {
+        width: 1px;
+        height: 1px;
+        display: inline-block;
+        position: absolute;
+        opacity: 0.01;
+      }
       label {
-        border-top: .06em solid #d9d9d9;
-        &:hover {
-          color:$color;
+        border-top: .06em solid $back-color;
+        display:block;
+        height: 2em;
+        line-height: 2em;
+        padding-left: 1em;
+        padding-right: 3em;
+        cursor: pointer;
+        position: relative;
+        transition: $timing color ease-in-out;  
+        &:nth-child(2) {
+          margin-top: 2em;
+          border-top: .06em solid $back-color;
         }
       }
       input:checked + label {
-        color:$color;
+        display:block;
+        border-top: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        &:nth-child(2) {
+          margin-top: 0;
+          position: relative;
+        }
       }
-      
       &::after {
-        transform: rotate(-180deg);
-        top:.55em;
+        content:"";
+        position: absolute;
+        right: 0.8em;
+        top: 0.9em;
+        border: .3em solid $color;
+        border-color: $color transparent transparent transparent;
+        transition: .4s all ease-in-out;
+      }
+      &.expanded {
+        background: $color-pri-dark;
+        border-radius: .25em;
+        padding: 0;
+        box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+        max-height:15em;
+        label {
+          border-top: .06em solid $back-color;
+          &:hover {
+            color:$color;
+          }
+        }
+        input:checked + label {
+          color:$color;
+        }
+        
+        &::after {
+          transform: rotate(-180deg);
+          top:.55em;
+        }
       }
     }
-  }
+
+}
+
+
+

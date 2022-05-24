@@ -1,0 +1,42 @@
+/**************** Photographer's Information Header ****************/
+.photograph-header {
+    background-color: $color-sec-light;
+    height: 300px;
+    margin: 30px 100px 30px 100px;
+    display: grid; 
+    grid-template-columns: 2fr 1fr 2fr;
+    align-items: center;
+    justify-items: center;
+
+    .photograph_info{
+
+        & article {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            & h2{
+                color: $color-pri-light;
+                font-size: 4em;
+                font-weight: 500;
+                margin-bottom: 0px;
+                margin-top: 0px;
+                text-align: center;
+              }
+            & h3{ 
+                color: $color-pri-dark;
+                font-size: 1.5em;
+                margin-top: 20px;
+              }
+            & div{
+                color: $color-sec-dark;
+                font-size: 1.1em;
+            }
+        }
+    }
+
+    .photograph_picture{
+        & img{
+            @include photographer-picture;
+        }
+    }
+}
