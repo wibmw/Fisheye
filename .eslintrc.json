@@ -18,12 +18,5 @@
         "class-methods-use-this": "off",
         "no-restricted-globals": "off",
         "radix": ["error", "as-needed"]
-        "import/extensions": [
-            <severity>,
-            "never" | "always" | "ignorePackages",
-            {
-              <extension>: "never" | "always" | "ignorePackages"
-            }
-          ]
     }
 }

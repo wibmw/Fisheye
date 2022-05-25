@@ -12,11 +12,13 @@
                 height: 300px;
                 width: 350px;
                 object-fit: cover;
+                border-radius: 10px;
                 //filter: blur(0.7rem); 
         }
         & video {
             height: 305px;
             width: 355px;
+            border-radius: 10px;
             object-fit: cover;
         }
         & .playMask {
@@ -54,9 +56,22 @@
                 font-size: 1.5em;
                 font-weight: bold;
                 & div {
-                    margin-right: 5px;   
+                    margin-right: 5px;
+                    font-family: Calibri;
                 }
             }
         }
     }
 }
+
+/**************** Like Style ****************/
+.active-heart {
+    text-shadow: 0 0 0px rgba(0,0,0,0);
+    background:-moz-linear-gradient(0deg, $color-pri-light 40%, $color-sec-light 100%); 
+    background: -webkit-linear-gradient(0deg, $color-pri-light 40%, $color-sec-light 100%);
+    background: linear-gradient(0deg, $color-pri-light 40%, $color-sec-light 100%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color:transparent;
+  }

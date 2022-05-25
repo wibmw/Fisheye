@@ -5,3 +5,8 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+:focus-visible {
+    outline: 3px solid $color-pri-dark;
+    border-radius: 10px;
+  }

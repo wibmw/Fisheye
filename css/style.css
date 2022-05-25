@@ -4,6 +4,7 @@
 /******************* Like Icon ************************/
 /******************* Center of the page ************************/
 /******************* Photographer Info ************************/
+/******************* Accessibility ************************/
 body {
   margin: 0;
   width: 100vw;
@@ -12,8 +13,13 @@ body {
   margin-right: auto;
 }
 
+:focus-visible {
+  outline: 3px solid #901C1C;
+  border-radius: 10px;
+}
+
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: Calibri;
   font-size: 100%;
 }
 
@@ -46,6 +52,7 @@ body {
   top: 0;
   color: black;
   overflow: auto;
+  z-index: 100;
 }
 #contact_modal .modal {
   border-radius: 5px;
@@ -180,6 +187,7 @@ input {
   width: 50vw;
   height: 80vh;
   object-fit: cover;
+  border-radius: 10px;
 }
 .lightbox_modal div .carousel .play-button {
   background-color: rgba(255, 255, 255, 0);
@@ -193,6 +201,9 @@ input {
   color: white;
   border: 0;
   align-self: center;
+}
+.lightbox_modal div .carousel .plyr {
+  border-radius: 10px;
 }
 .lightbox_modal div .carousel .item-title {
   color: #901C1C;
@@ -272,14 +283,14 @@ input {
 .photograph_likes div i .totalLikes {
   font-size: 1.2em;
   margin-right: 5px;
+  font-family: Calibri;
 }
 
 /**************** Sorter Medias ****************/
 .sorter_media {
   margin: 30px 100px 30px 100px;
   position: relative;
-  font-family: Arial;
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: 600;
 }
 .sorter_media .dropdown-el {
@@ -324,7 +335,7 @@ input {
 }
 .sorter_media .dropdown-el label:nth-child(2) {
   margin-top: 2em;
-  border-top: 0.06em solid #F2F2F2;
+  border-top: 0px;
 }
 .sorter_media .dropdown-el input:checked + label {
   display: block;
@@ -352,9 +363,7 @@ input {
   padding: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
   max-height: 15em;
-}
-.sorter_media .dropdown-el.expanded label {
-  border-top: 0.06em solid #F2F2F2;
+  padding: 10px;
 }
 .sorter_media .dropdown-el.expanded label:hover {
   color: white;
@@ -411,6 +420,7 @@ header .logo {
   color: #901C1C;
   font-size: 1.5em;
   margin-top: 20px;
+  font-weight: 500;
 }
 .photograph-header .photograph_info article div {
   color: #525252;
@@ -459,18 +469,21 @@ header .logo {
   margin-bottom: 0px;
   text-align: center;
 }
-.photographers_section article h3 {
+.photographers_section article div {
+  text-align: center;
+}
+.photographers_section article div h3 {
   color: #901C1C;
   font-size: 0.9em;
   font-weight: 600;
   margin-top: 0px;
   margin-bottom: 0px;
 }
-.photographers_section article div {
+.photographers_section article div div {
   font-size: 0.6em;
   font-weight: 600;
 }
-.photographers_section article span {
+.photographers_section article div span {
   color: #525252;
   font-size: 0.6em;
 }
@@ -489,10 +502,12 @@ header .logo {
   height: 300px;
   width: 350px;
   object-fit: cover;
+  border-radius: 10px;
 }
 .photograph_media article video {
   height: 305px;
   width: 355px;
+  border-radius: 10px;
   object-fit: cover;
 }
 .photograph_media article .playMask {
@@ -532,6 +547,19 @@ header .logo {
 }
 .photograph_media article div i div {
   margin-right: 5px;
+  font-family: Calibri;
+}
+
+/**************** Like Style ****************/
+.active-heart {
+  text-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  background: -moz-linear-gradient(0deg, #D3573C 40%, #FAFAFA 100%);
+  background: -webkit-linear-gradient(0deg, #D3573C 40%, #FAFAFA 100%);
+  background: linear-gradient(0deg, #D3573C 40%, #FAFAFA 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /*# sourceMappingURL=style.css.map */

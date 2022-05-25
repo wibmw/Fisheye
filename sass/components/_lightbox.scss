@@ -41,6 +41,7 @@
                width: 50vw;
                height: 80vh;
                object-fit: cover;
+               border-radius: 10px;
             }
             & .play-button {
                background-color: rgba(255, 255, 255, 0);
@@ -54,6 +55,9 @@
                color: white;
                border: 0;
                align-self: center;
+            }
+            & .plyr {
+               border-radius: 10px;
             }
             & .item-title {
                color : $color-pri-dark;

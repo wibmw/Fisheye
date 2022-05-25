@@ -1,18 +1,465 @@
 /******************* COLORS ************************/
-/******************* Animation ************************/
+/******************* Sorter ************************/
 /******************* Global Flex ************************/
 /******************* Like Icon ************************/
 /******************* Center of the page ************************/
 /******************* Photographer Info ************************/
+/******************* Accessibility ************************/
 body {
-  font-family: "DM Sans", sans-serif;
   margin: 0;
-  font-size: 100%;
-  width: 1440px;
+  width: 100vw;
+  min-width: 1024px;
   margin-left: auto;
   margin-right: auto;
 }
 
+:focus-visible {
+  outline: 3px solid #901C1C;
+  border-radius: 10px;
+}
+
+body {
+  font-family: Calibri;
+  font-size: 100%;
+}
+
+/**************** Buttons ****************/
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.submit_button {
+  height: 50px;
+}
+
+/**************** Contact Modal ****************/
+#contact_modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 0;
+  color: black;
+  overflow: auto;
+  z-index: 100;
+}
+
+#contact_modal .modal {
+  border-radius: 5px;
+  background-color: #DB8876;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 600px;
+  position: relative;
+  margin: 3%;
+  margin-left: 25%;
+  padding: 0px 40px 40px 40px;
+}
+
+#contact_modal .modal header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  height: 200px;
+}
+
+#contact_modal .modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+
+#contact_modal .modal label {
+  color: #312E2E;
+  font-size: 36px;
+}
+
+#contact_modal .modal textarea {
+  width: 600px;
+  height: 170px;
+  resize: none;
+  font-size: 2em;
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
+
+input {
+  font-size: 2em;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/**************** Modal Success ****************/
+#modalSuccess {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#modalSuccess span {
+  position: absolute;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 500;
+}
+
+#modalSuccess input {
+  margin-top: 250%;
+  text-align: center;
+  overflow: scroll;
+  padding: 12px 0 12px;
+}
+
+.modal header img {
+  cursor: pointer;
+}
+
+/**************** Error control ****************/
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 2em;
+  font-weight: 600;
+  color: #901C1C;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+  margin-bottom: 5px;
+}
+
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid #901C1C;
+}
+
+/*...................ACCECIBILITY..............*/
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Global */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*...................LIGHTBOX..............*/
+.lightbox_modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 99%;
+  height: 100%;
+  background-color: white;
+  z-index: 10;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
+.lightbox_modal div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.lightbox_modal div .carousel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lightbox_modal div .carousel img {
+  width: 50vw;
+  height: 80vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+
+.lightbox_modal div .carousel .play-button {
+  background-color: rgba(255, 255, 255, 0);
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-size: 100px;
+  color: white;
+  border: 0;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.lightbox_modal div .carousel .plyr {
+  border-radius: 10px;
+}
+
+.lightbox_modal div .carousel .item-title {
+  color: #901C1C;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: -2px;
+}
+
+/*...................ACTIVE ITEM..............*/
+.active-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.active-item-video {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 70vw;
+  height: 90vh;
+}
+
+.carousel-item {
+  display: none;
+}
+
+/*...................BUTTONS..............*/
+#close {
+  color: #901C1C;
+  font-size: 50px;
+  position: fixed;
+  top: 30px;
+  right: 8%;
+  z-index: 12;
+  cursor: pointer;
+}
+
+#previous, #next {
+  color: #901C1C;
+  font-size: 50px;
+  position: fixed;
+  top: 40%;
+  z-index: 12;
+  cursor: pointer;
+}
+
+#next {
+  margin-left: 90%;
+}
+
+#previous {
+  margin-left: 7%;
+}
+
+/**************** Photographer's likes ****************/
+.photograph_likes {
+  background-color: #D3573C;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  margin-left: 70%;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.photograph_likes div {
+  font-size: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  font-weight: 600;
+}
+
+.photograph_likes div i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+}
+
+.photograph_likes div i .totalLikes {
+  font-size: 1.2em;
+  margin-right: 5px;
+  font-family: Calibri;
+}
+
+/**************** Sorter Medias ****************/
+.sorter_media {
+  margin: 30px 100px 30px 100px;
+  position: relative;
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.sorter_media .dropdown-el {
+  min-width: 2em;
+  position: absolute;
+  display: inline-block;
+  min-height: 2em;
+  max-height: 2em;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  margin-top: -15px;
+  margin-left: 30px;
+  outline: none;
+  border-radius: 0.2em;
+  color: white;
+  background-color: #901C1C;
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+  z-index: 2;
+}
+
+.sorter_media .dropdown-el input:focus + label {
+  background: #F2F2F2;
+}
+
+.sorter_media .dropdown-el input {
+  width: 1px;
+  height: 1px;
+  display: inline-block;
+  position: absolute;
+  opacity: 0.01;
+}
+
+.sorter_media .dropdown-el label {
+  border-top: 0.06em solid #F2F2F2;
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  padding-left: 1em;
+  padding-right: 3em;
+  cursor: pointer;
+  position: relative;
+  -webkit-transition: 0.3s color ease-in-out;
+  transition: 0.3s color ease-in-out;
+}
+
+.sorter_media .dropdown-el label:nth-child(2) {
+  margin-top: 2em;
+  border-top: 0px;
+}
+
+.sorter_media .dropdown-el input:checked + label {
+  display: block;
+  border-top: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.sorter_media .dropdown-el input:checked + label:nth-child(2) {
+  margin-top: 0;
+  position: relative;
+}
+
+.sorter_media .dropdown-el::after {
+  content: "";
+  position: absolute;
+  right: 0.8em;
+  top: 0.9em;
+  border: 0.3em solid white;
+  border-color: white transparent transparent transparent;
+  -webkit-transition: .4s all ease-in-out;
+  transition: .4s all ease-in-out;
+}
+
+.sorter_media .dropdown-el.expanded {
+  background: #901C1C;
+  border-radius: .25em;
+  padding: 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+          box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+  max-height: 15em;
+  padding: 10px;
+}
+
+.sorter_media .dropdown-el.expanded label:hover {
+  color: white;
+}
+
+.sorter_media .dropdown-el.expanded input:checked + label {
+  color: white;
+}
+
+.sorter_media .dropdown-el.expanded::after {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  top: .55em;
+}
+
+/**************** Home header ****************/
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -40,6 +487,66 @@ header .logo {
   margin-left: 100px;
 }
 
+/**************** Photographer's Information Header ****************/
+.photograph-header {
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 30px 100px 30px 100px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr 2fr;
+      grid-template-columns: 2fr 1fr 2fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+}
+
+.photograph-header .photograph_info article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.photograph-header .photograph_info article h2 {
+  color: #D3573C;
+  font-size: 4em;
+  font-weight: 500;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.photograph-header .photograph_info article h3 {
+  color: #901C1C;
+  font-size: 1.5em;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.photograph-header .photograph_info article div {
+  color: #525252;
+  font-size: 1.1em;
+}
+
+.photograph-header .photograph_picture img {
+  height: 200px;
+  width: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50% 50%;
+  -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
+  mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
+}
+
+/**************** Photographers's list ****************/
 .photographers_section {
   display: -ms-grid;
   display: grid;
@@ -85,8 +592,6 @@ header .logo {
   border-radius: 50% 50%;
   -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
   mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
-  -webkit-filter: blur(0.7rem);
-          filter: blur(0.7rem);
 }
 
 .photographers_section article a h2 {
@@ -97,7 +602,11 @@ header .logo {
   text-align: center;
 }
 
-.photographers_section article h3 {
+.photographers_section article div {
+  text-align: center;
+}
+
+.photographers_section article div h3 {
   color: #901C1C;
   font-size: 0.9em;
   font-weight: 600;
@@ -105,109 +614,50 @@ header .logo {
   margin-bottom: 0px;
 }
 
-.photographers_section article div {
+.photographers_section article div div {
   font-size: 0.6em;
   font-weight: 600;
 }
 
-.photographers_section article span {
+.photographers_section article div span {
   color: #525252;
   font-size: 0.6em;
 }
 
-#contact_modal {
-  display: none;
-}
-
-.photograph-header {
-  background-color: #FAFAFA;
-  height: 300px;
-  margin: 30px 100px 30px 100px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  justify-items: center;
-}
-
-.photograph-header .photograph_info article {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.photograph-header .photograph_info article h2 {
-  color: #D3573C;
-  font-size: 4em;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  text-align: center;
-}
-
-.photograph-header .photograph_info article h3 {
-  color: #901C1C;
-  font-size: 1.5em;
-  margin-top: 20px;
-}
-
-.photograph-header .photograph_info article div {
-  color: #525252;
-  font-size: 1.1em;
-}
-
-.photograph-header .photograph_picture img {
-  height: 200px;
-  width: 200px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50% 50%;
-  -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
-  mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
-  -webkit-filter: blur(0.7rem);
-          filter: blur(0.7rem);
-}
-
+/**************** Photographer's Media Gallery ****************/
 .photograph_media {
-  margin: 30px 0px 30px 100px;
+  margin: 30px 100px 30px 100px;
   max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 7%;
-  /*grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-items: center;*/
+  gap: 5%;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.photograph_media div img {
+.photograph_media article img {
   height: 300px;
   width: 350px;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-filter: blur(0.7rem);
-          filter: blur(0.7rem);
+  border-radius: 10px;
 }
 
-.photograph_media div video {
-  height: 300px;
-  width: 350px;
+.photograph_media article video {
+  height: 305px;
+  width: 355px;
+  border-radius: 10px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.photograph_media div .playMask {
+.photograph_media article .playMask {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -217,8 +667,8 @@ header .logo {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 350px;
-  height: 300px;
+  height: 305px;
+  width: 355px;
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 100px;
@@ -226,7 +676,7 @@ header .logo {
   margin-top: -305px;
 }
 
-.photograph_media div div {
+.photograph_media article div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -240,7 +690,7 @@ header .logo {
   color: #901C1C;
 }
 
-.photograph_media div div h3 {
+.photograph_media article div h3 {
   font-size: 1.5em;
   font-weight: normal;
   margin-top: 0px;
@@ -250,114 +700,30 @@ header .logo {
   max-width: 290px;
 }
 
-.photograph_media div div div {
+.photograph_media article div i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
   font-size: 1.5em;
   font-weight: bold;
 }
 
-.photograph_media div div div i {
-  margin-left: 5px;
+.photograph_media article div i div {
+  margin-right: 5px;
+  font-family: Calibri;
 }
 
-.photograph_likes {
-  background-color: #525252;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 0;
-}
-
-.contact_button {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: #901C1C;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.modal {
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
-
-.modal header {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
-}
-
-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-form label {
-  color: #312E2E;
-  font-size: 36px;
-}
-
-form div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-  -webkit-box-align: self-start;
-      -ms-flex-align: self-start;
-          align-items: self-start;
-  margin-bottom: 26px;
-}
-
-form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
+/**************** Like Style ****************/
+.active-heart {
+  text-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(40%, #D3573C), to(#FAFAFA));
+  background: linear-gradient(0deg, #D3573C 40%, #FAFAFA 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 /*# sourceMappingURL=main.css.map */

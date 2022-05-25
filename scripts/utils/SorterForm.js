@@ -1,5 +1,6 @@
 import ProxyRatingSorter from '../proxy/cacheProxy.js'
 import mediaFactory from '../factories/media.js'
+import * as ModalAccessibility from '../utils/modalAccessibility.js'
 
 export default class SorterForm {
     constructor(medias, name) {
@@ -22,16 +23,16 @@ export default class SorterForm {
             const sortedData = await this.ProxyRatingSorter.sorter(this.medias, sorter)
             const SortedMovies = sortedData.data
 
-            SortedMovies.forEach(media => {
+            SortedMovies.forEach((media) => {
                 mediaFactory(media, this.name, position)
                 likes += media.likes
-                position++
+                position += 1
             })
         } else {
-            this.medias.forEach(media => {
+            this.medias.forEach((media) => {
                 mediaFactory(media, this.name, position)
                 likes += media.likes
-                position++
+                position += 1
             })
         }
     }
@@ -52,7 +53,10 @@ export default class SorterForm {
                     this.sorterMovies(selectedItem.value)
                 }
             })
-        });
+            ModalAccessibility.onEnterClick(item)
+        })
+        /* this.$wrapper.querySelector('label[for="sort-best"]').click()
+        this.$wrapper.querySelector('.dropdown-el').classList.toggle('expanded') */
     }
 
     clearWrappers() {
@@ -64,11 +68,11 @@ export default class SorterForm {
     render() {
         // Generate the sorter element
         const sorterForm = `
-                        <label for="sorter-select">Triez par : </label>
-                        <span class="dropdown-el">
-                            <input type="radio" name="sortType" value="POP" id="sort-relevance"><label for="sort-relevance">Popularité</label>
-                            <input type="radio" name="sortType" value="DATE" id="sort-best"><label for="sort-best">Date</label>
-                            <input type="radio" name="sortType" value="TITRE" id="sort-low"><label for="sort-low">Titre</label>
+                        <label for="sorter-select" tabindex="6">Trier par : </label>
+                        <span class="dropdown-el" >
+                            <input type="radio" name="sortType" value="POP" id="sort-best"><label for="sort-best" tabindex="6" >Popularité</label>
+                            <input type="radio" name="sortType" value="DATE" id="sort-date"><label for="sort-date" tabindex="6">Date</label>
+                            <input type="radio" name="sortType" value="TITRE" id="sort-title"><label for="sort-title" tabindex="6">Titre</label>
                         </span>`
 
         this.$wrapper.innerHTML = sorterForm

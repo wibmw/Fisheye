@@ -17,20 +17,19 @@ export default class Lightbox {
         this.$wrapperLightbox.setAttribute('name', `item-${position}`)
         this.$wrapperLightbox.setAttribute('class', 'carousel-item')
         this.$wrapperLightbox.setAttribute('aria-hidden', 'true')
-
         this.modalLightbox = document.querySelector('.carousel')
     }
 
     lightboxRender() {
         let box = ''
         if (this.mediaType === 'ImageM') {
-            box = `<img src="${this.mediaLink}" alt="${this.title}">
+            box = `<img src="${this.mediaLink}" alt="${this.title}" tabindex="2">
                         <h3 class="item-title">${this.title}</h3>`
         } else if (this.mediaType === 'VideoM') {
-            box = `<video class="player" controls>
+            box = `<video class="player" controls tabindex="2">
                         <source src="${this.mediaLink}" type="video/mp4" />
                         </video>
-                        <h3 class="item-title">${this.title}</h3>`
+                        <h3 class="item-title" tabindex="3">${this.title}</h3>`
 
             /* <button class="play-button far fa-play-circle" type="button" title="Lire la Video" aria-disabled="false">
                             <span class="sr-only" aria-live="polite">Lire la Video</span>

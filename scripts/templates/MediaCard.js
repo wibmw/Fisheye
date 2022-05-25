@@ -1,6 +1,10 @@
+import * as ModalAccessibility from '../utils/modalAccessibility.js'
+
 export default class MediaCard {
     constructor(media) {
-        const { id, title, likes, date, price, mediaLink, mediaType, position } = media
+        const {
+            id, title, likes, date, price, mediaLink, mediaType, position,
+        } = media
         this.id = id
         this.title = title
         this.likes = likes
@@ -20,6 +24,7 @@ export default class MediaCard {
         // DOM $Wrapper
         const media = this.$wrapperMedia
         const likes = media.querySelector('.likes')
+        const icone = likes.closest('i')
         let box
 
         // Buttons
@@ -31,19 +36,23 @@ export default class MediaCard {
 
         //* ******************** EVENTS ***********************************/
         box.addEventListener('click', () => {
-            document.querySelector('.lightbox_modal').style.display = 'block'
             const item = document.querySelector(`li[name="item-${this.position}"]`)
-            this.mediaType == 'ImageM' ? item.setAttribute('class', 'active-item') : item.setAttribute('class', 'active-item-video')
+            this.mediaType === 'ImageM' ? item.setAttribute('class', 'active-item') : item.setAttribute('class', 'active-item-video')
+            ModalAccessibility.onOpenLightboxModal()
         })
+        ModalAccessibility.onEnterClick(box)
+
         // Likes management
-        likes.addEventListener('click', () => {
+        icone.addEventListener('click', () => {
             const totalLikes = document.querySelector('.totalLikes')
-            if (this.likes === likes.textContent) {
+            if (this.likes == likes.textContent) {
                 likes.textContent = parseInt(likes.textContent) + 1
                 totalLikes.textContent = parseInt(totalLikes.textContent) + 1
+                icone.classList.add('active-heart')
             } else {
                 likes.textContent = parseInt(likes.textContent) - 1
                 totalLikes.textContent = parseInt(totalLikes.textContent) - 1
+                icone.classList.remove('active-heart')
             }
         })
     }
@@ -51,24 +60,23 @@ export default class MediaCard {
     getMediaCardDOM() {
     // Generate the media cards
         let media = ''
-
+        const index = this.position + 6
         if (this.mediaType === 'ImageM') {
-            media = `<img src="${this.mediaLink}" alt="${this.title}"> `
+            media = `<img src="${this.mediaLink}" alt="${this.title}, closeup view" tabindex="${index}"> `
         } else if (this.mediaType === 'VideoM') {
             media = `<video class="player">
-                  <source src="${this.mediaLink}" type="video/mp4" />
-              </video>
-              <div class="playMask">
-              </div>`
+                        <source src="${this.mediaLink}" type="video/mp4" />
+                    </video>
+                    <div class="playMask" tabindex="${index}" aria-label="${this.title}, closeup view">
+                    </div>`
         }
 
         media += `<div>
-                <h3>${this.title}</h3>
-                <i class="fas fa-heart"><div class="likes">${this.likes}</div> </i>
-             </div>`
+                    <h3 tabindex="${index}">${this.title}</h3>
+                    <i class="fas fa-heart"><div class="likes" tabindex="${index}" aria-label="likes">${this.likes}</div> </i>
+                 </div>`
 
         this.$wrapperMedia.innerHTML = media
-
         this.mediaEventsHandler()
         this.wrapperMedia.appendChild(this.$wrapperMedia)
     }

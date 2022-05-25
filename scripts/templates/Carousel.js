@@ -1,3 +1,5 @@
+import * as ModalAccessibility from '../utils/modalAccessibility.js'
+
 export default class Carroussel {
     constructor(photographerName) {
         this.name = photographerName
@@ -40,6 +42,9 @@ export default class Carroussel {
         const rightButton = carroussel.querySelector('.fa-chevron-right')
         const closeButton = carroussel.querySelector('.fa-times')
 
+        ModalAccessibility.onEnterClick(leftButton)
+        ModalAccessibility.onEnterClick(rightButton)
+        ModalAccessibility.onEnterClick(closeButton)
         //* ******************** EVENTS ***********************************/
         // Display next item
         rightButton.addEventListener('click', () => {
@@ -67,11 +72,10 @@ export default class Carroussel {
 
     carrousselRender() {
         // Generate the nav elements
-        this.$wrapperCarroussel.innerHTML = `<ul class="carousel" aria-label="Our selection of Recipes">
-            </ul>
-            <i class="fas fa-chevron-left" id="previous"  aria-label="image précédente" aria-hidden="true"></i> 
-            <i class="fas fa-chevron-right"  id="next" aria-label="image suivante" aria-hidden="true"></i>
-            <i class="fas fa-times" id="close" aria-label="fermer la lightbox" aria-hidden="true"></i>`
+        this.$wrapperCarroussel.innerHTML = `<ul class="carousel" aria-label="Our selection of Recipes"></ul>
+            <i class="fas fa-chevron-left" id="previous"  aria-label="image précédente" aria-hidden="true" tabindex="1"></i> 
+            <i class="fas fa-chevron-right"  id="next" aria-label="image suivante" aria-hidden="true" tabindex="1"></i>
+            <i class="fas fa-times" id="close" aria-label="fermer la lightbox" aria-hidden="true" tabindex="1"></i>`
 
         this.carrousselEventsHandler()
         this.modalCarroussel.appendChild(this.$wrapperCarroussel)

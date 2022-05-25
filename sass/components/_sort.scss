@@ -2,8 +2,7 @@
 .sorter_media {
     margin: 30px 100px 30px 100px;
     position: relative;
-    font-family: Arial;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: 600;
     & .dropdown-el {    
       min-width: 2em;
@@ -46,7 +45,7 @@
         transition: $timing color ease-in-out;  
         &:nth-child(2) {
           margin-top: 2em;
-          border-top: .06em solid $back-color;
+          border-top: 0px;
         }
       }
       input:checked + label {
@@ -75,8 +74,9 @@
         padding: 0;
         box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
         max-height:15em;
+        padding: 10px;
         label {
-          border-top: .06em solid $back-color;
+          //border-top: .06em solid $back-color;
           &:hover {
             color:$color;
           }
