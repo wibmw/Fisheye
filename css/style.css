@@ -19,7 +19,7 @@ body {
 }
 
 body {
-  font-family: Calibri;
+  font-family: "Open Sans", "DM Sans", sans-serif;
   font-size: 100%;
 }
 
@@ -63,8 +63,7 @@ body {
   justify-content: space-between;
   width: 600px;
   position: relative;
-  margin: 3%;
-  margin-left: 25%;
+  margin: 2% auto 2% auto;
   padding: 0px 40px 40px 40px;
 }
 #contact_modal .modal header {
@@ -281,9 +280,9 @@ input {
   flex-flow: row-reverse;
 }
 .photograph_likes div i .totalLikes {
-  font-size: 1.2em;
+  font-size: 1.5rem;
   margin-right: 5px;
-  font-family: Calibri;
+  font-family: "Open Sans";
 }
 
 /**************** Sorter Medias ****************/
@@ -309,7 +308,7 @@ input {
   border-radius: 0.2em;
   color: white;
   background-color: #901C1C;
-  transition: 0.3s all ease-in-out;
+  transition: 0.25s all ease-in-out;
   z-index: 2;
 }
 .sorter_media .dropdown-el input:focus + label {
@@ -331,7 +330,7 @@ input {
   padding-right: 3em;
   cursor: pointer;
   position: relative;
-  transition: 0.3s color ease-in-out;
+  transition: 0.25s color ease-in-out;
 }
 .sorter_media .dropdown-el label:nth-child(2) {
   margin-top: 2em;
@@ -355,7 +354,7 @@ input {
   top: 0.9em;
   border: 0.3em solid white;
   border-color: white transparent transparent transparent;
-  transition: 0.4s all ease-in-out;
+  transition: 0.25s all ease-in-out;
 }
 .sorter_media .dropdown-el.expanded {
   background: #901C1C;
@@ -373,7 +372,7 @@ input {
 }
 .sorter_media .dropdown-el.expanded::after {
   transform: rotate(-180deg);
-  top: 0.55em;
+  top: 0.55rem;
 }
 
 /**************** Home header ****************/
@@ -432,7 +431,7 @@ header .logo {
   object-fit: cover;
   border-radius: 50% 50%;
   -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
-  mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
+  mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
 }
 
 /**************** Photographers's list ****************/
@@ -460,11 +459,11 @@ header .logo {
   object-fit: cover;
   border-radius: 50% 50%;
   -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
-  mask-image: radial-gradient(circle, black 50%, rgba(0, 0, 0, 0.5) 50%);
+  mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
 }
 .photographers_section article a h2 {
   color: #D3573C;
-  font-size: 2.5em;
+  font-size: 2.5rem;
   font-weight: 500;
   margin-bottom: 0px;
   text-align: center;
@@ -474,18 +473,18 @@ header .logo {
 }
 .photographers_section article div h3 {
   color: #901C1C;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   font-weight: 600;
   margin-top: 0px;
   margin-bottom: 0px;
 }
 .photographers_section article div div {
-  font-size: 0.6em;
+  font-size: 0.6rem;
   font-weight: 600;
 }
 .photographers_section article div span {
   color: #525252;
-  font-size: 0.6em;
+  font-size: 0.6rem;
 }
 
 /**************** Photographer's Media Gallery ****************/
@@ -503,8 +502,9 @@ header .logo {
   width: 350px;
   object-fit: cover;
   border-radius: 10px;
+  cursor: pointer;
 }
-.photograph_media article video {
+.photograph_media article .plyr--video {
   height: 305px;
   width: 355px;
   border-radius: 10px;
@@ -517,11 +517,13 @@ header .logo {
   align-items: center;
   height: 305px;
   width: 355px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   color: #fff;
   font-size: 100px;
   opacity: 1;
   margin-top: -305px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 .photograph_media article div {
   display: flex;
@@ -544,10 +546,11 @@ header .logo {
   flex-flow: row-reverse;
   font-size: 1.5em;
   font-weight: bold;
+  cursor: pointer;
 }
 .photograph_media article div i div {
   margin-right: 5px;
-  font-family: Calibri;
+  font-family: "Open Sans";
 }
 
 /**************** Like Style ****************/

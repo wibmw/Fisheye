@@ -1,3 +1,5 @@
+import * as ModalAccessibility from '../utils/modalAccessibility.js'
+
 export default class FormModal {
     constructor(photographerName) {
         this.photographerName = photographerName
@@ -66,7 +68,7 @@ export default class FormModal {
         formContent.style.display = 'block'
         formContent.reset()
         modalSuccess.style.display = 'none'
-        closeModal.click()
+        ModalAccessibility.onCloseContactModal(document.querySelector('#contact_modal'))
     }
 
     // Events handler
@@ -91,15 +93,17 @@ export default class FormModal {
         //* ******************** EVENTS ***********************************/
         modalSubmit.addEventListener('click', () => {
             this.formValidation(firstName, lastName, email, modalSubmit, formContent, modalSuccess)
+            successButton.focus()
         })
         successButton.addEventListener('click', () => {
             this.clearForm(formContent, modalSuccess, closeModal)
         })
         contactButton.addEventListener('click', () => {
-            modal.style.display = 'block'
+            ModalAccessibility.onOpenContactModal(modal)
+            firstName.focus()
         })
         closeModal.addEventListener('click', () => {
-            modal.style.display = 'none'
+            this.clearForm(formContent, modalSuccess, closeModal)
         })
         firstName.addEventListener('change', () => {
             this.namesCheck(firstName)
@@ -110,8 +114,17 @@ export default class FormModal {
         email.addEventListener('change', () => {
             this.emailCheck(email)
         })
-
-        firstName.focus()
+        modal.style.display = 'none'
+        ModalAccessibility.onEnterClick(modalSubmit)
+        ModalAccessibility.onEnterClick(successButton)
+        ModalAccessibility.onEnterClick(closeModal)
+        ModalAccessibility.onEscapeClick(modal)
+        modal.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeModal.click()
+                event.preventDefault()
+            }
+        })
     }
 
     getFormRender() {

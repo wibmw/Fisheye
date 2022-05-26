@@ -9,6 +9,7 @@
     color: black;
     overflow: auto;
     z-index: 100;
+    
     & .modal {
         border-radius: 5px;
         background-color: #DB8876;
@@ -18,8 +19,7 @@
         justify-content: space-between;
         width: 600px;
         position: relative;
-        margin: 3%;
-        margin-left: 25%;
+        margin: 2% auto 2% auto;
         padding: 0px 40px 40px 40px;
         & header {
             display: flex;

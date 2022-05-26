@@ -16,7 +16,6 @@ export default class SorterForm {
 
     async sorterMovies(sorter) {
         this.clearWrappers()
-        let likes = 0
         let position = 1
         // Generate the sorted medias galery and carousel
         if (sorter) {
@@ -25,13 +24,11 @@ export default class SorterForm {
 
             SortedMovies.forEach((media) => {
                 mediaFactory(media, this.name, position)
-                likes += media.likes
                 position += 1
             })
         } else {
             this.medias.forEach((media) => {
                 mediaFactory(media, this.name, position)
-                likes += media.likes
                 position += 1
             })
         }
@@ -45,18 +42,19 @@ export default class SorterForm {
                 e.stopPropagation()
                 item.classList.toggle('expanded')
                 const selectedItem = this.$wrapper.querySelector(`#${e.target.htmlFor}`)
-
-                if (selectedItem.checked) {
-                    selectedItem.toggleAttribute('checked')
-                } else {
-                    selectedItem.toggleAttribute('checked')
-                    this.sorterMovies(selectedItem.value)
+                if (selectedItem) {
+                    if (selectedItem.checked) {
+                        selectedItem.toggleAttribute('checked')
+                    } else {
+                        selectedItem.toggleAttribute('checked')
+                        this.sorterMovies(selectedItem.value)
+                    }
                 }
             })
             ModalAccessibility.onEnterClick(item)
         })
-        /* this.$wrapper.querySelector('label[for="sort-best"]').click()
-        this.$wrapper.querySelector('.dropdown-el').classList.toggle('expanded') */
+        this.$wrapper.querySelector('label[for="sort-best"]').click()
+        this.$wrapper.querySelector('.dropdown-el').classList.toggle('expanded')
     }
 
     clearWrappers() {

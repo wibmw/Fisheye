@@ -1,5 +1,4 @@
 import * as Api from '../api/Api.js'
-import mediaFactory from '../factories/media.js'
 import photographerFactory from '../factories/photographer.js'
 import FormModal from '../templates/FormModal.js'
 import Carroussel from '../templates/Carousel.js'
@@ -19,24 +18,15 @@ class PhotographerPage {
     }
 
     displayMediaData(medias, photographer) {
-        let likes = 0
-        let position = 1
         const { name } = photographer
         const carroussel = new Carroussel(name)
         carroussel.carrousselRender()
 
-        if (medias) {
-            // Generate Medias Card
-            medias.forEach((media) => {
-                mediaFactory(media, name, position)
-                likes += media.likes
-                position += 1
-            })
-        }
-
+        new SorterForm(medias, name).render()
+        let likes = 0
+        medias.forEach((media) => { likes += media.likes})
         // display Photographer's price / like DOM
         photographerFactory(photographer, 'photograph_likes', likes)
-        new SorterForm(medias, name).render()
     }
 
     async init() {

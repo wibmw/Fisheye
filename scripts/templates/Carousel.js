@@ -42,9 +42,6 @@ export default class Carroussel {
         const rightButton = carroussel.querySelector('.fa-chevron-right')
         const closeButton = carroussel.querySelector('.fa-times')
 
-        ModalAccessibility.onEnterClick(leftButton)
-        ModalAccessibility.onEnterClick(rightButton)
-        ModalAccessibility.onEnterClick(closeButton)
         //* ******************** EVENTS ***********************************/
         // Display next item
         rightButton.addEventListener('click', () => {
@@ -65,9 +62,15 @@ export default class Carroussel {
         })
         // Close the lightbox
         closeButton.addEventListener('click', () => {
-            document.querySelector('.lightbox_modal').style.display = 'none'
+            ModalAccessibility.onCloseLightboxModal(closeButton)
             this.setCarouselItem(this.getActualItem())
         })
+        // Accessibility Events handler
+        ModalAccessibility.onEnterClick(leftButton)
+        ModalAccessibility.onEnterClick(rightButton)
+        ModalAccessibility.onEnterClick(closeButton)
+        ModalAccessibility.onKeyDown(this.modalCarroussel)
+        this.modalCarroussel.style.display = 'none'
     }
 
     carrousselRender() {

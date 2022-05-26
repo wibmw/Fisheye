@@ -23,17 +23,14 @@ export default class Lightbox {
     lightboxRender() {
         let box = ''
         if (this.mediaType === 'ImageM') {
-            box = `<img src="${this.mediaLink}" alt="${this.title}" tabindex="2">
-                        <h3 class="item-title">${this.title}</h3>`
+            box = `<img src="${this.mediaLink}" alt="${this.title}" tabindex="${this.position}" aria-disabled="true">
+                        <h3 class="item-title" tabindex="${this.position}">${this.title}</h3>`
         } else if (this.mediaType === 'VideoM') {
-            box = `<video class="player" controls tabindex="2">
+            box = `<video class="player" controls tabindex="${this.position}" aria-disabled="true">
                         <source src="${this.mediaLink}" type="video/mp4" />
-                        </video>
-                        <h3 class="item-title" tabindex="3">${this.title}</h3>`
-
-            /* <button class="play-button far fa-play-circle" type="button" title="Lire la Video" aria-disabled="false">
-                            <span class="sr-only" aria-live="polite">Lire la Video</span>
-                        </button> */
+                        <span class="sr-only" aria-live="polite">Lire la Video</span>
+                    </video>
+                    <h3 class="item-title" tabindex="${this.position}">${this.title}</h3>`
         }
 
         this.$wrapperLightbox.innerHTML = box

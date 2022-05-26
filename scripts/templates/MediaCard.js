@@ -39,6 +39,7 @@ export default class MediaCard {
             const item = document.querySelector(`li[name="item-${this.position}"]`)
             this.mediaType === 'ImageM' ? item.setAttribute('class', 'active-item') : item.setAttribute('class', 'active-item-video')
             ModalAccessibility.onOpenLightboxModal()
+            document.querySelector('#close').focus()
         })
         ModalAccessibility.onEnterClick(box)
 
@@ -79,5 +80,8 @@ export default class MediaCard {
         this.$wrapperMedia.innerHTML = media
         this.mediaEventsHandler()
         this.wrapperMedia.appendChild(this.$wrapperMedia)
+
+        const player = new Plyr('video', { captions: { active: true } })
+        window.player = player
     }
 }

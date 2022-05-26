@@ -13,13 +13,15 @@
                 width: 350px;
                 object-fit: cover;
                 border-radius: 10px;
+                cursor: pointer;
                 //filter: blur(0.7rem); 
         }
-        & video {
+        & .plyr--video {
             height: 305px;
             width: 355px;
             border-radius: 10px;
             object-fit: cover;
+            
         }
         & .playMask {
             position: absolute;
@@ -28,11 +30,13 @@
             align-items: center;
             height: 305px;
             width: 355px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.2);
             color: #fff;
             font-size: 100px;
             opacity: 1;
             margin-top: -305px;
+            cursor: pointer;
+            border-radius: 10px;
         }
         & div {
             display: flex;
@@ -55,9 +59,10 @@
                 flex-flow : row-reverse;
                 font-size: 1.5em;
                 font-weight: bold;
+                cursor: pointer;
                 & div {
                     margin-right: 5px;
-                    font-family: Calibri;
+                    font-family: "Open Sans";
                 }
             }
         }
