@@ -1,13 +1,10 @@
 export default class Lightbox {
     constructor(media) {
         const {
-            id, title, likes, date, price, mediaLink, mediaType, position,
+            id, title, mediaLink, mediaType, position,
         } = media
         this.id = id
         this.title = title
-        this.likes = likes
-        this.date = date
-        this.price = price
         this.mediaType = mediaType
         this.mediaLink = mediaLink
         this.position = position
@@ -16,22 +13,20 @@ export default class Lightbox {
         this.$wrapperLightbox = document.createElement('li')
         this.$wrapperLightbox.setAttribute('name', `item-${position}`)
         this.$wrapperLightbox.setAttribute('class', 'carousel-item')
-        this.$wrapperLightbox.setAttribute('aria-hidden', 'true')
         this.modalLightbox = document.querySelector('.carousel')
     }
 
     lightboxRender() {
         let box = ''
         if (this.mediaType === 'ImageM') {
-            box = `<img src="${this.mediaLink}" alt="${this.title}" tabindex="${this.position}" aria-disabled="true">
-                        <h3 class="item-title" tabindex="${this.position}">${this.title}</h3>`
+            box = `<img src="${this.mediaLink}" alt="${this.title}" tabindex="${this.position}" aria-label="Photo de ${this.title}">`
         } else if (this.mediaType === 'VideoM') {
-            box = `<video class="player" controls tabindex="${this.position}" aria-disabled="true">
+            box = `<video class="player" controls tabindex="${this.position}" aria-label="Video de ${this.title}">>
                         <source src="${this.mediaLink}" type="video/mp4" />
                         <span class="sr-only" aria-live="polite">Lire la Video</span>
-                    </video>
-                    <h3 class="item-title" tabindex="${this.position}">${this.title}</h3>`
+                    </video>`
         }
+        box += `<h3 class="item-title" tabindex="${this.position}">${this.title}</h3>`
 
         this.$wrapperLightbox.innerHTML = box
         this.modalLightbox.appendChild(this.$wrapperLightbox)

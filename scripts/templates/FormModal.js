@@ -131,37 +131,37 @@ export default class FormModal {
         // DOM Wrapper Generate the form
         this.$wrapperForm.innerHTML = `<header> 
                             <h2>Contactez-moi ${this.photographerName}</h2>
-                            <img id="closeModal" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte"/>
+                            <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" aria-label="Fermer le formulaire de contacte" autofocus/>
                         </header>
                         <form  id="contactForm" action="photographer.html" onsubmit="return formValidation();" novalidate>
                             <!-- First Name -->
                             <div class="formData">
                                 <label for="first">Prénom</label><br>
-                                <input class="text-control" type="text" id="first" name="first" autofocus/><br>
+                                <input class="text-control" type="text" id="first" name="first" placeholder="Entrer votre prénom" aria-label="Entrer votre prénom"/><br>
                             </div>
                             <!-- Last Name -->
                             <div class="formData">
                                 <label for="last">Nom</label><br>
-                                <input class="text-control" type="text" id="last" name="last"/><br>
+                                <input class="text-control" type="text" id="last" name="last" placeholder="Entrer votre nom" aria-label="Entrer votre nom"/><br>
                             </div>
                             <!-- Email -->
                             <div class="formData">
                                 <label for="email">E-mail</label><br>
-                                <input class="text-control" type="email" id="email" name="email"/><br>
+                                <input class="text-control" type="email" id="email" name="email" placeholder="Entrer votre email" aria-label="Entrer votre email"/><br>
                             </div>
                             <!-- Message -->
                             <div class="formData">
                                 <label for="message">Message</label><br>
-                                <textarea class="text-control" type="text" id="message" name="message" rows="3" cols="50"></textarea><br>
+                                <textarea class="text-control" type="text" id="message" name="message" rows="3" cols="50" placeholder="Entrer votre message" aria-label="Entrer votre message"></textarea><br>
                             </div>
                             <div class="formData">
-                                <input class="contact_button submit_button button" value="Envoyer"></button>
+                                <input type="button" role="button" class="contact_button submit_button button" value="Envoyer" aria-label="Envoyer votre message"></button>
                             </div>
                         </form>
                         <!-- Modal Success Message -->
                         <div id="modalSuccess">
                             <span>Merci pour <br/>votre message</span>
-                            <input class="contact_button success_button button" value="Fermer" />
+                            <input role="button" class="contact_button success_button button" value="Fermer" aria-label="Fermer le formulaire de contacte" />
                         </div>`
 
         this.handleEvents()

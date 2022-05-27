@@ -63,18 +63,18 @@ export default class MediaCard {
         let media = ''
         const index = this.position + 6
         if (this.mediaType === 'ImageM') {
-            media = `<img src="${this.mediaLink}" alt="${this.title}, closeup view" tabindex="${index}"> `
+            media = `<img src="${this.mediaLink}" alt="${this.title}, closeup view" tabindex="${index}" aria-label="Photo de ${this.title}"> `
         } else if (this.mediaType === 'VideoM') {
-            media = `<video class="player">
+            media = `<video class="player" aria-disabled="true" tabindex="-1">
                         <source src="${this.mediaLink}" type="video/mp4" />
                     </video>
-                    <div class="playMask" tabindex="${index}" aria-label="${this.title}, closeup view">
+                    <div class="playMask" tabindex="${index}" aria-label="${this.title}, closeup view" aria-label="Video de ${this.title}">
                     </div>`
         }
 
         media += `<div>
                     <h3 tabindex="${index}">${this.title}</h3>
-                    <i class="fas fa-heart"><div class="likes" tabindex="${index}" aria-label="likes">${this.likes}</div> </i>
+                    <i class="fas fa-heart" aria-label="likes"><div class="likes" tabindex="${index}" >${this.likes}</div> </i>
                  </div>`
 
         this.$wrapperMedia.innerHTML = media

@@ -67,10 +67,10 @@ export default class SorterForm {
         // Generate the sorter element
         const sorterForm = `
                         <label for="sorter-select" tabindex="6">Trier par : </label>
-                        <span class="dropdown-el" >
-                            <input type="radio" name="sortType" value="POP" id="sort-best"><label for="sort-best" tabindex="6" >Popularité</label>
-                            <input type="radio" name="sortType" value="DATE" id="sort-date"><label for="sort-date" tabindex="6">Date</label>
-                            <input type="radio" name="sortType" value="TITRE" id="sort-title"><label for="sort-title" tabindex="6">Titre</label>
+                        <span class="dropdown-el" role="listbox">
+                            <input type="radio" name="sortType" value="POP" id="sort-best"><label for="sort-best" tabindex="6" aria-label="Trier par popularité" >Popularité</label>
+                            <input type="radio" name="sortType" value="DATE" id="sort-date"><label for="sort-date" tabindex="6" aria-label="Trier par date" >Date</label>
+                            <input type="radio" name="sortType" value="TITRE" id="sort-title"><label for="sort-title" tabindex="6" aria-label="Trier par titre" >Titre</label>
                         </span>`
 
         this.$wrapper.innerHTML = sorterForm

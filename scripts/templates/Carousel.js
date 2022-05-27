@@ -75,10 +75,10 @@ export default class Carroussel {
 
     carrousselRender() {
         // Generate the nav elements
-        this.$wrapperCarroussel.innerHTML = `<ul class="carousel" aria-label="Our selection of Recipes"></ul>
-            <i class="fas fa-chevron-left" id="previous"  aria-label="image précédente" aria-hidden="true" tabindex="1"></i> 
-            <i class="fas fa-chevron-right"  id="next" aria-label="image suivante" aria-hidden="true" tabindex="1"></i>
-            <i class="fas fa-times" id="close" aria-label="fermer la lightbox" aria-hidden="true" tabindex="1"></i>`
+        this.$wrapperCarroussel.innerHTML = `<ul class="carousel"></ul>
+            <i class="fas fa-chevron-left" id="previous" role="button" aria-label="Aller à l'image précédente" tabindex="1"></i> 
+            <i class="fas fa-chevron-right"  id="next" role="button" aria-label="Aller à l'image suivante" tabindex="1"></i>
+            <i class="fas fa-times" id="close" role="button" aria-label="Fermer la lightbox" tabindex="1"></i>`
 
         this.carrousselEventsHandler()
         this.modalCarroussel.appendChild(this.$wrapperCarroussel)

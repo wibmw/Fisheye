@@ -3,17 +3,15 @@ const body = document.querySelector('body')
 const main = document.querySelector('#main')
 
 function onModal(target) {
-    //main.toggleAttribute('aria-hidden')
-    //main.toggleAttribute('aria-disabled')
-    main.style.display === 'none' ? main.style.display = 'block' : main.style.display = 'none'
+    main.style.display = main.style.display === 'none' ? 'block' : 'none'
     body.classList.toggle('no-scroll')
     target.toggleAttribute('aria-hidden')
-    target.style.display === 'none' ? target.style.display = 'block' : target.style.display = 'none'
+    target.style.display = target.style.display === 'none' ? 'block' : 'none'
 }
 /** *************** CONTACT  **************************** */
 const contactModal = document.querySelector('#contact_modal')
-const contactOpenButton = document.querySelector('.contact_button')
-const contactCloseButton = document.querySelector('#closeModal')
+// const contactOpenButton = document.querySelector('.contact_button')
+// const contactCloseButton = document.querySelector('#closeModal')
 
 export const onOpenContactModal = () => {
     onModal(contactModal)
@@ -24,12 +22,10 @@ export const onCloseContactModal = () => {
 }
 /** *************** LIGHTBOX  **************************** */
 const lightboxModal = document.querySelector('.lightbox_modal')
-const lightboxCloseButton = document.querySelector('#close')
+// const lightboxCloseButton = document.querySelector('#close')
 
 export const onOpenLightboxModal = () => {
     onModal(lightboxModal)
-    lightboxModal.querySelector('.active-item img') ? lightboxModal.querySelector('.active-item img').toggleAttribute('aria-disabled') : lightboxModal.querySelector('.active-item div').toggleAttribute('aria-disabled')
-    //lightboxModal.querySelector('.active-item plyr') ? lightboxModal.querySelector('.active-item plyr').toggleAttribute('aria-disabled') : lightboxModal.querySelector('.active-item div').toggleAttribute('aria-disabled')
 }
 //
 export const onCloseLightboxModal = () => {

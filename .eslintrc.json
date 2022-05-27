@@ -16,7 +16,12 @@
         "indent": ["error", 4],
         "linebreak-style": ["error", "windows"],
         "class-methods-use-this": "off",
+        "no-unused-expressions": "off",
         "no-restricted-globals": "off",
-        "radix": ["error", "as-needed"]
+        "no-undef": "off",
+        "eqeqeq": "off",
+        "radix": ["error","as-needed"],
+        "import/extensions": ["error", "always"],
+        "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["target"] }]
     }
 }

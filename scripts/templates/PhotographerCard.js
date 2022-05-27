@@ -1,6 +1,9 @@
 export default class PhotographerCard {
     constructor(photographer) {
-        const { name, id, picture, location, tagline, price, index } = photographer
+        const {
+            name, id, picture, location, tagline, price, index,
+        } = photographer
+
         this.name = name
         this.id = id
         this.picture = picture
@@ -33,8 +36,8 @@ export default class PhotographerCard {
 
     getPhotographerCard() {
         // return photographer Card
-        const article = `<a href="photographer.html?id=${this.id}" aria-label="Aller à la page du photographe ${this.name}" tabindex="${this.index}">
-                            <img src="${this.picture}" alt="Photo du photographe ${this.name}">
+        const article = `<a href="photographer.html?id=${this.id}" role="link" aria-label="Aller à la page du photographe ${this.name}" tabindex="${this.index}">
+                            <img src="${this.picture}" alt="Aller à la page du photographe ${this.name}">
                             <h2>${this.name}</h2>
                         </a>
                         <div tabindex="${this.index}">
