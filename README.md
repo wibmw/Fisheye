@@ -14,6 +14,7 @@ Troisième projet du parcours "Développeur web" chez OpenClassroom. L'objectif 
 
 - **Page d’accueil**
 - **Pages de menu (x4)**
+  
 
 ### Animation
 
