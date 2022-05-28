@@ -1,6 +1,6 @@
 import ProxyRatingSorter from '../proxy/cacheProxy.js'
 import mediaFactory from '../factories/media.js'
-import * as ModalAccessibility from '../utils/modalAccessibility.js'
+import * as ModalAccessibility from './modalAccessibility.js'
 
 export default class SorterForm {
     constructor(medias, name) {
@@ -66,9 +66,9 @@ export default class SorterForm {
     render() {
         // Generate the sorter element
         const sorterForm = `
-                        <label for="sorter-select" tabindex="6">Trier par : </label>
-                        <span class="dropdown-el" role="listbox">
-                            <input type="radio" name="sortType" value="POP" id="sort-best"><label for="sort-best" tabindex="6" aria-label="Trier par popularité" >Popularité</label>
+                        <label for="sorter-select">Trier par : </label>
+                        <span class="dropdown-el" name="dropdownSort" role="listbox">
+                            <input type="radio" name="sortType" role="lis" value="POP" id="sort-best"><label for="sort-best" tabindex="6" aria-label="Trier par popularité" >Popularité</label>
                             <input type="radio" name="sortType" value="DATE" id="sort-date"><label for="sort-date" tabindex="6" aria-label="Trier par date" >Date</label>
                             <input type="radio" name="sortType" value="TITRE" id="sort-title"><label for="sort-title" tabindex="6" aria-label="Trier par titre" >Titre</label>
                         </span>`

@@ -81,7 +81,7 @@ export default class MediaCard {
         this.mediaEventsHandler()
         this.wrapperMedia.appendChild(this.$wrapperMedia)
 
-        const player = new Plyr('video', { captions: { active: true } })
-        window.player = player
+       /* const player = new Plyr('video', { captions: { active: true } })
+        window.player = player */
     }
 }

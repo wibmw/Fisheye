@@ -14,14 +14,16 @@
                 object-fit: cover;
                 border-radius: 10px;
                 cursor: pointer;
+                background: $back-color-picks;
+                box-shadow: 0px 4px 12px rgb(0 0 0 / 50%); 
                 //filter: blur(0.7rem); 
         }
-        & .plyr--video {
+        & video {
             height: 305px;
             width: 355px;
             border-radius: 10px;
-            object-fit: cover;
-            
+            background: $back-color-picks;
+            box-shadow: 0px 4px 12px rgb(0 0 0 / 50%); 
         }
         & .playMask {
             position: absolute;

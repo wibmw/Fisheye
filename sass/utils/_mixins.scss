@@ -60,8 +60,8 @@
   width: 200px;
   object-fit: cover;
   border-radius: 50% 50%;
-  -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
-  mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);  
+  background: $back-color-picks;
+  box-shadow: 0px 4px 12px rgb(0 0 0 / 25%); 
   //filter: blur(0.7rem); 
 }
 
@@ -80,7 +80,7 @@
         font-weight: 600;
     }
     & span{
-        color: $color-sec-dark;
+        color: #757575;
         font-size: 0.6rem;      
     }
   }

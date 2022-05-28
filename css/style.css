@@ -404,7 +404,6 @@ header .logo {
 }
 .photograph-header .photograph_info article {
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 .photograph-header .photograph_info article h2 {
@@ -430,8 +429,8 @@ header .logo {
   width: 200px;
   object-fit: cover;
   border-radius: 50% 50%;
-  -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
-  mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
+  background: #C4C4C4;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 /**************** Photographers's list ****************/
@@ -458,8 +457,8 @@ header .logo {
   width: 200px;
   object-fit: cover;
   border-radius: 50% 50%;
-  -webkit-mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
-  mask-image: radial-gradient(circle, black 65%, rgba(0, 0, 0, 0.1) 70%);
+  background: #C4C4C4;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 }
 .photographers_section article a h2 {
   color: #D3573C;
@@ -483,7 +482,7 @@ header .logo {
   font-weight: 600;
 }
 .photographers_section article div span {
-  color: #525252;
+  color: #757575;
   font-size: 0.6rem;
 }
 
@@ -503,12 +502,15 @@ header .logo {
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
+  background: #C4C4C4;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
 }
-.photograph_media article .plyr--video {
+.photograph_media article video {
   height: 305px;
   width: 355px;
   border-radius: 10px;
-  object-fit: cover;
+  background: #C4C4C4;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
 }
 .photograph_media article .playMask {
   position: absolute;

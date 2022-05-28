@@ -22,6 +22,6 @@
         "eqeqeq": "off",
         "radix": ["error","as-needed"],
         "import/extensions": ["error", "always"],
-        "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["target"] }]
+        "no-param-reassign": ["error", { "props": false}]
     }
 }

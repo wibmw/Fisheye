@@ -51,9 +51,7 @@ export default class FormModal {
             // display json in logs
             const data = new FormData(formContent)
             const value = Object.fromEntries(data.entries())
-            console.log("/*********** Form's Datas ***********/")
-            console.log({ value })
-            console.log('/**********************************/')
+            console.log("/*********** Form's Datas ***********/\n", value, '\n/**********************************/')
             // if all is ok, display success message
             formContent.style.display = 'none'
             modalSuccess.style.display = 'flex'
@@ -64,7 +62,7 @@ export default class FormModal {
     }
 
     // form reset
-    clearForm(formContent, modalSuccess, closeModal) {
+    clearForm(formContent, modalSuccess) {
         formContent.style.display = 'block'
         formContent.reset()
         modalSuccess.style.display = 'none'
@@ -131,7 +129,7 @@ export default class FormModal {
         // DOM Wrapper Generate the form
         this.$wrapperForm.innerHTML = `<header> 
                             <h2>Contactez-moi ${this.photographerName}</h2>
-                            <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" aria-label="Fermer le formulaire de contacte" autofocus/>
+                            <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" autofocus/>
                         </header>
                         <form  id="contactForm" action="photographer.html" onsubmit="return formValidation();" novalidate>
                             <!-- First Name -->

@@ -12,7 +12,6 @@
 
         & article {
             display: flex;
-            align-items: center;
             flex-direction: column;
             & h2{
                 color: $color-pri-light;
@@ -41,3 +40,4 @@
         }
     }
 }
+
