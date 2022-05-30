@@ -19,14 +19,14 @@ export default class Lightbox {
     lightboxRender() {
         let box = ''
         if (this.mediaType === 'ImageM') {
-            box = `<img src="${this.mediaLink}" alt="${this.title}" tabindex="${this.position}" aria-label="Photo de ${this.title}">`
+            box = `<img src="${this.mediaLink}" alt="${this.title}" title="Photo de ${this.title}">`
         } else if (this.mediaType === 'VideoM') {
-            box = `<video class="player" controls tabindex="${this.position}" aria-label="Video de ${this.title}">>
+            box = `<video class="player" controls title="Video de ${this.title}">>
                         <source src="${this.mediaLink}" type="video/mp4" />
                         <span class="sr-only" aria-live="polite">Lire la Video</span>
                     </video>`
         }
-        box += `<h3 class="item-title" tabindex="${this.position}">${this.title}</h3>`
+        box += `<h3 class="item-title">${this.title}</h3>`
 
         this.$wrapperLightbox.innerHTML = box
         this.modalLightbox.appendChild(this.$wrapperLightbox)

@@ -62,6 +62,7 @@
                 font-size: 1.5em;
                 font-weight: bold;
                 cursor: pointer;
+                // transition: 1s all ease-in-out;
                 & div {
                     margin-right: 5px;
                     font-family: "Open Sans";
@@ -81,4 +82,5 @@
     -moz-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color:transparent;
+    //transition: 1s all ease-in-out;
   }

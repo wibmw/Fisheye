@@ -18,7 +18,7 @@ export default class PhotographerCard {
 
     getPhotographerPicture() {
         // return the photographer picture only
-        const img = `<img src="${this.picture}" tabindex="5" alt="Photo du photographe ${this.name}"> `
+        const img = `<img src="${this.picture}" alt="Photo du photographe ${this.name}"> `
         this.$wrapperDiv.innerHTML = img
 
         return this.$wrapperDiv
@@ -26,9 +26,9 @@ export default class PhotographerCard {
 
     getPhotographerInfo() {
         // return photographer info
-        const article = `<h2 tabindex="2">${this.name}</h2>
-                    <div tabindex="3"><h3>${this.location}</h3>
-                    <div>${this.tagline}</div><div>`
+        const article = `<h2>${this.name}</h2>
+                        <div><h3>${this.location}</h3>
+                        <div>${this.tagline}</div><div>`
         this.$wrapperArticle.innerHTML = article
 
         return (this.$wrapperArticle)
@@ -36,11 +36,11 @@ export default class PhotographerCard {
 
     getPhotographerCard() {
         // return photographer Card
-        const article = `<a href="photographer.html?id=${this.id}" role="link" aria-label="Aller à la page du photographe ${this.name}" tabindex="${this.index}">
+        const article = `<a href="photographer.html?id=${this.id}" title="Aller à la page du photographe ${this.name}">
                             <img src="${this.picture}" alt="Aller à la page du photographe ${this.name}">
                             <h2>${this.name}</h2>
                         </a>
-                        <div tabindex="${this.index}">
+                        <div>
                         <h3 >${this.location}</h3>
                         <div>${this.tagline}</div>
                         <span>${this.price}€/jour</span><div>`

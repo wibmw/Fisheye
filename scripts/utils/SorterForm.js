@@ -34,27 +34,41 @@ export default class SorterForm {
         }
     }
 
+    unselect() {
+        this.$wrapper.querySelector('label[for="sort-best"').setAttribute('class', 'unselected')
+        this.$wrapper.querySelector('label[for="sort-date"').setAttribute('class', 'unselected')
+        this.$wrapper.querySelector('label[for="sort-title"').setAttribute('class', 'unselected')
+    }
+
+    clearSelect() {
+        this.$wrapper.querySelector('label[for="sort-best"').setAttribute('class', '')
+        this.$wrapper.querySelector('label[for="sort-date"').setAttribute('class', '')
+        this.$wrapper.querySelector('label[for="sort-title"').setAttribute('class', '')
+    }
+
     onChangeSorter() {
         // Sorter management
-        this.$wrapper.querySelectorAll('.dropdown-el').forEach((item) => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault()
-                e.stopPropagation()
-                item.classList.toggle('expanded')
-                const selectedItem = this.$wrapper.querySelector(`#${e.target.htmlFor}`)
-                if (selectedItem) {
-                    if (selectedItem.checked) {
-                        selectedItem.toggleAttribute('checked')
-                    } else {
-                        selectedItem.toggleAttribute('checked')
-                        this.sorterMovies(selectedItem.value)
-                    }
-                }
-            })
-            ModalAccessibility.onEnterClick(item)
+        const dropdown = this.$wrapper.querySelector('.dropdown-el')
+        const bestSorter = this.$wrapper.querySelector('#sort-best')
+        dropdown.addEventListener('click', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            const selectedItem = this.$wrapper.querySelector(`#${e.target.htmlFor}`)
+            if (!dropdown.classList.contains('expanded')) {
+                this.clearSelect()
+                dropdown.classList.toggle('expanded')
+            } else if (selectedItem) {
+                dropdown.classList.toggle('expanded')
+                this.unselect()
+                e.target.setAttribute('class', 'selected')
+                this.sorterMovies(selectedItem.value)
+            } else {
+                bestSorter.click()
+            }
         })
-        this.$wrapper.querySelector('label[for="sort-best"]').click()
-        this.$wrapper.querySelector('.dropdown-el').classList.toggle('expanded')
+        ModalAccessibility.onEnterClick(dropdown)
+        this.sorterMovies('POP')
+        // dropdown.classList.toggle('expanded')
     }
 
     clearWrappers() {
@@ -68,9 +82,12 @@ export default class SorterForm {
         const sorterForm = `
                         <label for="sorter-select">Trier par : </label>
                         <span class="dropdown-el" name="dropdownSort" role="listbox">
-                            <input type="radio" name="sortType" role="lis" value="POP" id="sort-best"><label for="sort-best" tabindex="6" aria-label="Trier par popularité" >Popularité</label>
-                            <input type="radio" name="sortType" value="DATE" id="sort-date"><label for="sort-date" tabindex="6" aria-label="Trier par date" >Date</label>
-                            <input type="radio" name="sortType" value="TITRE" id="sort-title"><label for="sort-title" tabindex="6" aria-label="Trier par titre" >Titre</label>
+                            <input type="radio" name="sortbest" aria-select="true" value="POP" id="sort-best">
+                                <label for="sort-best"  aria-label="Trier par popularité" >Popularité</label>
+                            <input type="radio" name="sortdate" aria-select="true" value="DATE" id="sort-date">
+                                <label for="sort-date" class="unselected" aria-label="Trier par date" >Date</label>
+                            <input type="radio" name="sorttitle" aria-select="true" value="TITRE" id="sort-title">
+                                <label for="sort-title" class="unselected" aria-label="Trier par titre" >Titre</label>
                         </span>`
 
         this.$wrapper.innerHTML = sorterForm

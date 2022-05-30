@@ -7,7 +7,6 @@
 /******************* Accessibility ************************/
 body {
   margin: 0;
-  width: 100vw;
   min-width: 1024px;
   margin-left: auto;
   margin-right: auto;
@@ -36,6 +35,11 @@ body {
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
+}
+
+.contact_button:hover, .contact_button:focus {
+  background-color: #D3573C;
+  color: black;
 }
 
 .submit_button {
@@ -293,68 +297,50 @@ input {
   font-weight: 600;
 }
 .sorter_media .dropdown-el {
-  min-width: 2em;
   position: absolute;
-  display: inline-block;
-  min-height: 2em;
   max-height: 2em;
   overflow: hidden;
   cursor: pointer;
-  text-align: left;
-  white-space: nowrap;
   margin-top: -15px;
   margin-left: 30px;
-  outline: none;
   border-radius: 0.2em;
   color: white;
   background-color: #901C1C;
-  transition: 0.25s all ease-in-out;
+  transition: 0.25s ease-in-out;
+  padding: 10px;
   z-index: 2;
-}
-.sorter_media .dropdown-el input:focus + label {
-  background: #F2F2F2;
 }
 .sorter_media .dropdown-el input {
   width: 1px;
   height: 1px;
-  display: inline-block;
   position: absolute;
   opacity: 0.01;
 }
 .sorter_media .dropdown-el label {
   border-top: 0.06em solid #F2F2F2;
   display: block;
-  height: 2em;
   line-height: 2em;
   padding-left: 1em;
   padding-right: 3em;
   cursor: pointer;
-  position: relative;
-  transition: 0.25s color ease-in-out;
 }
 .sorter_media .dropdown-el label:nth-child(2) {
-  margin-top: 2em;
   border-top: 0px;
 }
-.sorter_media .dropdown-el input:checked + label {
-  display: block;
-  border-top: none;
-  position: absolute;
-  top: 0;
-  width: 100%;
+.sorter_media .dropdown-el label.selected {
+  border: 0px;
 }
-.sorter_media .dropdown-el input:checked + label:nth-child(2) {
-  margin-top: 0;
-  position: relative;
+.sorter_media .dropdown-el label.unselected {
+  display: none;
 }
 .sorter_media .dropdown-el::after {
   content: "";
   position: absolute;
   right: 0.8em;
-  top: 0.9em;
+  top: 1.3em;
   border: 0.3em solid white;
   border-color: white transparent transparent transparent;
-  transition: 0.25s all ease-in-out;
+  transition: 0.75s;
 }
 .sorter_media .dropdown-el.expanded {
   background: #901C1C;
@@ -364,15 +350,10 @@ input {
   max-height: 15em;
   padding: 10px;
 }
-.sorter_media .dropdown-el.expanded label:hover {
-  color: white;
-}
-.sorter_media .dropdown-el.expanded input:checked + label {
-  color: white;
-}
 .sorter_media .dropdown-el.expanded::after {
   transform: rotate(-180deg);
-  top: 0.55rem;
+  top: 1em;
+  transition: 0.75s;
 }
 
 /**************** Home header ****************/
@@ -388,6 +369,7 @@ header h1 {
   margin-right: 100px;
 }
 header .logo {
+  width: 200px;
   height: 50px;
   margin-left: 100px;
 }

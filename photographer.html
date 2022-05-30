@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <mеtа nаmе="dеѕсrірtіоn" соntеnt="FishEye - Galerie du Photographe" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&family=DM+Sans&display=swap" rel="stylesheet">
@@ -13,36 +14,36 @@
   </head>
   <body>
     <!-- *********  Header *********** -->
-    <header>
-      <a href="index.html" role="link" aria-label="Fisheye" tabindex="1">    
-        <img src="assets/images/logo.png" class="logo" alt="Accueil Fisheye" />
-      </a><br>
+    <header role="banner">
+        <a href="/#" title="Accueil Fisheye">    
+          <img src="assets/images/logo.png" class="logo" alt="" />
+        </a>
     </header>
 
-    <main id="main" aria-disabled="false">
+    <main id="main">
       <!-- *********  Photograph Info *********** -->
-      <section class="photograph-header">
+      <section class="photograph-header" title="Informations du photographe">
         <div class="photograph_info"></div>
-        <button class="contact_button" role="button" aria-label="Contacter le photographe" tabindex="4" >Contactez-moi</button>
-        <div class="photograph_picture" tabindex="5" ></div>
+        <button class="contact_button" aria-label="Contacter le photographe" >Contactez-moi</button>
+        <div class="photograph_picture" ></div>
       </section>
       <!-- *********  Sort Media *********** -->
-      <aside class="sorter_media">
+      <aside class="sorter_media" title="Trier les médias">
       </aside>
       <!-- *********  Media list *********** -->
-      <section class="photograph_media">
+      <section class="photograph_media" title="Liste des médias">
       </section>
       <!-- *********  Likes count *********** -->
-      <aside class="photograph_likes">
+      <aside class="photograph_likes" title="Likes du photographe">
       </aside>
     </main>
 
     <!-- *********  Modal *********** -->
-    <div id="contact_modal" aria-hidden="true" role="dialog">
+    <div id="contact_modal" aria-hidden="true" role="dialog" title="Formulaire de contacte">
 		</div>
 
     <!-- *********  Lightbox Modal *********** -->
-    <div class="lightbox_modal" aria-hidden="true" role="dialog" ></div>
+    <div class="lightbox_modal" aria-hidden="true" role="dialog" title="Galerie des médias"></div>
 
     <!-- *********  Scripts *********** -->
     <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>

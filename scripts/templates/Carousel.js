@@ -76,9 +76,9 @@ export default class Carroussel {
     carrousselRender() {
         // Generate the nav elements
         this.$wrapperCarroussel.innerHTML = `<ul class="carousel"></ul>
-            <i class="fas fa-chevron-left" id="previous" role="button" aria-label="Aller à l'image précédente" tabindex="1"></i> 
-            <i class="fas fa-chevron-right"  id="next" role="button" aria-label="Aller à l'image suivante" tabindex="1"></i>
-            <i class="fas fa-times" id="close" role="button" aria-label="Fermer la lightbox" tabindex="1"></i>`
+            <i class="fas fa-chevron-left" id="previous"  aria-label="Aller à l'image précédente" ></i> 
+            <i class="fas fa-chevron-right"  id="next" aria-label="Aller à l'image suivante" ></i>
+            <i class="fas fa-times" id="close" aria-label="Fermer la lightbox"></i>`
 
         this.carrousselEventsHandler()
         this.modalCarroussel.appendChild(this.$wrapperCarroussel)

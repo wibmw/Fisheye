@@ -5,68 +5,49 @@
     font-size: 1.4em;
     font-weight: 600;
     & .dropdown-el {    
-      min-width: 2em;
       position: absolute;
-      display: inline-block;
-      min-height: 2em;
       max-height:2em;
       overflow:hidden;
       cursor: pointer;
-      text-align: left;
-      white-space: nowrap;
       margin-top: -15px;
       margin-left: 30px;
-      outline: none;
       border-radius: 0.2em;
       color: white;
       background-color: $color-pri-dark;
-      transition: $timing all ease-in-out;
+      transition: $timing ease-in-out;
+      padding: 10px;
       z-index: 2;
-  
-      input:focus + label {
-        background: $back-color;
-      }
       input {
         width: 1px;
         height: 1px;
-        display: inline-block;
         position: absolute;
         opacity: 0.01;
       }
       label {
         border-top: .06em solid $back-color;
         display:block;
-        height: 2em;
         line-height: 2em;
         padding-left: 1em;
         padding-right: 3em;
         cursor: pointer;
-        position: relative;
-        transition: $timing color ease-in-out;  
         &:nth-child(2) {
-          margin-top: 2em;
           border-top: 0px;
         }
-      }
-      input:checked + label {
-        display:block;
-        border-top: none;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        &:nth-child(2) {
-          margin-top: 0;
-          position: relative;
+        &.selected {
+          border: 0px;
+        }
+        &.unselected {
+          display: none;
         }
       }
       &::after {
         content:"";
         position: absolute;
         right: 0.8em;
-        top: 0.9em;
+        top: 1.3em;
         border: .3em solid $color;
         border-color: $color transparent transparent transparent;
-        transition: $timing all ease-in-out;
+        transition: .75s;
       }
       &.expanded {
         background: $color-pri-dark;
@@ -75,21 +56,10 @@
         box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
         max-height:15em;
         padding: 10px;
-        // transition: .25s;
-        label {
-          //border-top: .06em solid $back-color;
-          &:hover {
-            color:$color;
-          }
-        }
-        input:checked + label {
-          color:$color;
-        }
-        
         &::after {
           transform: rotate(-180deg);
-          top:.55rem;
-          //transition: .25s;
+          top: 1em;
+          transition: .75s;
         }
       }
     }
