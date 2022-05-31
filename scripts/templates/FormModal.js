@@ -129,7 +129,7 @@ export default class FormModal {
         // DOM Wrapper Generate the form
         this.$wrapperForm.innerHTML = `<header> 
                             <h2>Contactez-moi ${this.photographerName}</h2>
-                            <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" autofocus/>
+                            <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" tabindex="1" autofocus/>
                         </header>
                         <form  id="contactForm" action="photographer.html" onsubmit="return formValidation();" novalidate>
                             <!-- First Name -->

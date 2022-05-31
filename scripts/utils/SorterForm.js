@@ -80,14 +80,14 @@ export default class SorterForm {
     render() {
         // Generate the sorter element
         const sorterForm = `
-                        <label for="sorter-select">Trier par : </label>
-                        <span class="dropdown-el" name="dropdownSort" role="listbox">
-                            <input type="radio" name="sortbest" aria-select="true" value="POP" id="sort-best">
-                                <label for="sort-best"  aria-label="Trier par popularité" >Popularité</label>
-                            <input type="radio" name="sortdate" aria-select="true" value="DATE" id="sort-date">
-                                <label for="sort-date" class="unselected" aria-label="Trier par date" >Date</label>
-                            <input type="radio" name="sorttitle" aria-select="true" value="TITRE" id="sort-title">
-                                <label for="sort-title" class="unselected" aria-label="Trier par titre" >Titre</label>
+                        <label for="dropdownSort">Trier par : </label>
+                        <span class="dropdown-el" id="dropdownSort" aria-label="Liste de trie" role="listbox" tabindex="3">
+                            <input type="radio" name="sortbest" role="option" value="POP" id="sort-best">
+                                <label for="sort-best"  aria-label="Trier par popularité" tabindex="3">Popularité</label>
+                            <input type="radio" name="sortdate" role="option"  value="DATE" id="sort-date">
+                                <label for="sort-date" class="unselected" aria-label="Trier par date" tabindex="3">Date</label>
+                            <input type="radio" name="sorttitle" role="option" value="TITRE" id="sort-title">
+                                <label for="sort-title" class="unselected" aria-label="Trier par titre" tabindex="3">Titre</label>
                         </span>`
 
         this.$wrapper.innerHTML = sorterForm

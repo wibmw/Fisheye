@@ -2,12 +2,10 @@
 <html lang="fr">
 
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <mеtа nаmе="dеѕсrірtіоn" соntеnt="FishEye - Galerie du Photographe" />
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
@@ -15,8 +13,8 @@
   <body>
     <!-- *********  Header *********** -->
     <header role="banner">
-        <a href="/#" title="Accueil Fisheye">    
-          <img src="assets/images/logo.png" class="logo" alt="" />
+        <a href="./" title="Accueil Fisheye" tabindex="1">    
+          <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
         </a>
     </header>
 
@@ -24,7 +22,7 @@
       <!-- *********  Photograph Info *********** -->
       <section class="photograph-header" title="Informations du photographe">
         <div class="photograph_info"></div>
-        <button class="contact_button" aria-label="Contacter le photographe" >Contactez-moi</button>
+        <button class="contact_button" aria-label="Contacter le photographe" tabindex="2">Contactez-moi</button>
         <div class="photograph_picture" ></div>
       </section>
       <!-- *********  Sort Media *********** -->
@@ -45,10 +43,13 @@
     <!-- *********  Lightbox Modal *********** -->
     <div class="lightbox_modal" aria-hidden="true" role="dialog" title="Galerie des médias"></div>
 
-    <!-- *********  Scripts *********** -->
-    <script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
+
     <!-- *********  Page *********** -->
     <script src="scripts/pages/photographer.js" type="module"></script>
 
   </body>
 </html>
+
+    <!--link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" /-->
+        <!-- *********  Scripts *********** -->
+    <!--script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script-->

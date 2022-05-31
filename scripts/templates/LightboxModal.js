@@ -21,7 +21,7 @@ export default class Lightbox {
         if (this.mediaType === 'ImageM') {
             box = `<img src="${this.mediaLink}" alt="${this.title}" title="Photo de ${this.title}">`
         } else if (this.mediaType === 'VideoM') {
-            box = `<video class="player" controls title="Video de ${this.title}">>
+            box = `<video class="player" controls title="Video de ${this.title}" >
                         <source src="${this.mediaLink}" type="video/mp4" />
                         <span class="sr-only" aria-live="polite">Lire la Video</span>
                     </video>`

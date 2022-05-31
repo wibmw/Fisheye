@@ -17,6 +17,9 @@
       transition: $timing ease-in-out;
       padding: 10px;
       z-index: 2;
+      &:focus-visible {
+        outline: 6px solid $color-pri-light;
+      }
       input {
         width: 1px;
         height: 1px;
@@ -30,6 +33,9 @@
         padding-left: 1em;
         padding-right: 3em;
         cursor: pointer;
+        &:focus-visible {
+          outline: 3px solid white;
+        }
         &:nth-child(2) {
           border-top: 0px;
         }
@@ -50,16 +56,11 @@
         transition: .75s;
       }
       &.expanded {
-        background: $color-pri-dark;
-        border-radius: .25em;
-        padding: 0;
-        box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
         max-height:15em;
-        padding: 10px;
         &::after {
           transform: rotate(-180deg);
           top: 1em;
-          transition: .75s;
+          //transition: .25s;
         }
       }
     }

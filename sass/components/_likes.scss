@@ -2,6 +2,7 @@
 .photograph_likes {
     background-color: $color-pri-light;
     position: sticky;
+    position: -webkit-sticky;
     bottom: 0;
     right: 0;
     width: 300px;

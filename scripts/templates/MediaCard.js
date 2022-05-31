@@ -56,33 +56,34 @@ export default class MediaCard {
                 icone.classList.remove('active-heart')
             }
         })
+        ModalAccessibility.onEnterClick(icone)
     }
 
     getMediaCardDOM() {
     // Generate the media cards
         let media = ''
-        // const index = this.position + 6
+        const index = this.position + 4
         if (this.mediaType === 'ImageM') {
-            media = `<img src="${this.mediaLink}" alt="${this.title}, closeup view" title="Photo de ${this.title}"> `
+            media = `<img src="${this.mediaLink}" alt="${this.title}, closeup view" aria-label="Photo de ${this.title}"  tabindex="${index}"> `
         } else if (this.mediaType === 'VideoM') {
-            media = `<video class="player" aria-hidden="true" tabindex="-1">
-                        <source src="${this.mediaLink}" type="video/mp4" />
-                    </video>
-                    <div class="playMask" title="${this.title}, closeup view" aria-descriptedBy>
-                    <span class="sr-only" aria-live="polite">Lire la Video</span>
+            media = `  <video class="player" aria-hidden="true" tabindex="-1">
+                            <source src="${this.mediaLink}" type="video/mp4" />
+                        </video>
+                    <div class="playMask" aria-label="${this.title}, closeup view" tabindex="${index}">
+                        <span class="sr-only" aria-live="polite">Lire la Video</span>
                     </div>`
         }
 
         media += `<div>
                     <h3>${this.title}</h3>
-                    <i class="fas fa-heart" aria-label="likes"><div class="likes" >${this.likes}</div> </i>
+                    <i class="fas fa-heart" aria-label="likes" tabindex="${index}"><div class="likes" >${this.likes}</div> </i>
                  </div>`
 
         this.$wrapperMedia.innerHTML = media
         this.mediaEventsHandler()
         this.wrapperMedia.appendChild(this.$wrapperMedia)
 
-       /* const player = new Plyr('video', { captions: { active: true } })
-        window.player = player */
+        // const player = new Plyr('video', { captions: { active: false } })
+        // window.player = player
     }
 }

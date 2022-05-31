@@ -18,7 +18,7 @@ export default class PhotographerCard {
 
     getPhotographerPicture() {
         // return the photographer picture only
-        const img = `<img src="${this.picture}" alt="Photo du photographe ${this.name}"> `
+        const img = `<img src="${this.picture}" alt="" aria-label="Photo du photographe ${this.name}"> `
         this.$wrapperDiv.innerHTML = img
 
         return this.$wrapperDiv
@@ -36,8 +36,8 @@ export default class PhotographerCard {
 
     getPhotographerCard() {
         // return photographer Card
-        const article = `<a href="photographer.html?id=${this.id}" title="Aller à la page du photographe ${this.name}">
-                            <img src="${this.picture}" alt="Aller à la page du photographe ${this.name}">
+        const article = `<a href="photographer.html?id=${this.id}" title="Aller à la page du photographe ${this.name}" aria-label="${this.name}">
+                            <img src="${this.picture}" alt="">
                             <h2>${this.name}</h2>
                         </a>
                         <div>
