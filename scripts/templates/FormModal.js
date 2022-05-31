@@ -6,6 +6,7 @@ export default class FormModal {
         this.$wrapperForm = document.createElement('div')
         this.$wrapperForm.setAttribute('class', 'modal')
         this.wrapperModal = document.getElementById('contact_modal')
+        this.wrapperModal.setAttribute('aria-labelledBy', 'formTitle')
     }
 
     //* ******************** DISPLAY MESSAGES  ***********************************/
@@ -127,30 +128,31 @@ export default class FormModal {
 
     getFormRender() {
         // DOM Wrapper Generate the form
-        this.$wrapperForm.innerHTML = `<header> 
-                            <h2>Contactez-moi ${this.photographerName}</h2>
+        this.$wrapperForm.innerHTML = `
+                        <header> 
+                            <h2 id="formTitle">Contactez-moi ${this.photographerName}</h2>
                             <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" tabindex="1" autofocus/>
                         </header>
                         <form  id="contactForm" action="photographer.html" onsubmit="return formValidation();" novalidate>
                             <!-- First Name -->
                             <div class="formData">
-                                <label for="first">Prénom</label><br>
-                                <input class="text-control" type="text" id="first" name="first" placeholder="Entrer votre prénom" aria-label="Entrer votre prénom"/><br>
+                                <label id="firstLabel" for="first">Prénom</label><br>
+                                <input class="text-control" type="text" id="first" name="first" placeholder="Entrer votre prénom" aria-labelledBy="firstLabel"/><br>
                             </div>
                             <!-- Last Name -->
                             <div class="formData">
-                                <label for="last">Nom</label><br>
-                                <input class="text-control" type="text" id="last" name="last" placeholder="Entrer votre nom" aria-label="Entrer votre nom"/><br>
+                                <label id="lastLabel" for="last">Nom</label><br>
+                                <input class="text-control" type="text" id="last" name="last" placeholder="Entrer votre nom" aria-labelledBy="lastLabel"/><br>
                             </div>
                             <!-- Email -->
                             <div class="formData">
-                                <label for="email">E-mail</label><br>
-                                <input class="text-control" type="email" id="email" name="email" placeholder="Entrer votre email" aria-label="Entrer votre email"/><br>
+                                <label id="emailLabel" for="email">E-mail</label><br>
+                                <input class="text-control" type="email" id="email" name="email" placeholder="Entrer votre email" aria-labelledBy="emailLabel"/><br>
                             </div>
                             <!-- Message -->
                             <div class="formData">
-                                <label for="message">Message</label><br>
-                                <textarea class="text-control" type="text" id="message" name="message" rows="3" cols="50" placeholder="Entrer votre message" aria-label="Entrer votre message"></textarea><br>
+                                <label id="messageLabel" for="message">Message</label><br>
+                                <textarea class="text-control" type="text" id="message" name="message" rows="3" cols="50" placeholder="Entrer votre message" aria-labelledBy="messageLabel"></textarea><br>
                             </div>
                             <div class="formData">
                                 <input type="button" role="button" class="contact_button submit_button button" value="Envoyer" aria-label="Envoyer votre message"></button>
