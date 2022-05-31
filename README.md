@@ -1,60 +1,105 @@
-# ohmyfood
+![FishEye](https://wibmw.github.io/Front-End-Fisheye/assets/images/logo.png) 
 
-Troisième projet du parcours "Développeur web" chez OpenClassroom. L'objectif d'intégrer puis de dynamiser une page web avec des animations CSS en utilisant le préprocesseur Sass
 
+
+## Contexte
+> Site web de photographes freelances, nous proposons une plateforme unique pour
+montrer les photos des photographes, sur une belle page et les contacter pour des événements ou des tirages.
 
 ## Objectifs
+Dans ce projet, nous allons devoir coder une application accessible qui
+contient des données et plusieurs fonctionnalités assez conséquentes.
+Quand nous nous retrouvons confronté à ce genre de situation, le mieux
+est de tenter de découper l'application en une succession de tâches plus
+abordables à réaliser successivement.
 
-1. Développer un site proposant le menu de 4 grands restaurants parisiens.
-2. Permettre la réservation en ligne et la composition de menus.
-
-## Livrables
-
-### Pages à intégrer selon les maquettes
-
-- **Page d’accueil**
-- **Pages de menu (x4)**
+## Etapes & Fonctionnalités
+- **Etape 1 :** Prendre en main les éléments, la maquette et
+la base de code
+- **Etape 2 :** Importer les datas
+- **Etape 3 :** Intégrer la page d'accueil
+- **Etape 4 :** Gérer la navigation entre la page accueil et la
+page photographe
+- **Etape 5 :** Afficher le contenu statique de la page
+photographe
+- **Etape 6 :** Créer la modale de contact
+- **Etape 7 :** Gérer les médias de la Lightbox
+- **Etape 8 :** Afficher et gérer les likes
+- **Etape 9 :** Créer le système de tri
+- **Etape 10 :** Vérifier le code avec un linter
   
+---
+### Prototype des fonctionnalités :
 
-### Animation
+Nous devons créer les pages suivantes pour le prototype :
+- **Page d'accueil :**
+○ Liste de tous les photographes avec leur nom, leur slogan, leur
+localisation, leur prix/heure et une image miniature de leur choix.
+○ Lorsque l'utilisateur clique sur la vignette d'un photographe, il est
+amené à sa page.
+- **Page des photographes (le contenu de la page sera généré de manière
+dynamique en fonction du photographe) :**
+  - Affiche une galerie des travaux du photographe.
+  - Les photographes peuvent montrer à la fois des photos et des vidéos.
+    - Dans le cas des vidéos, montrer une image miniature dans la
+galerie.
+  - Chaque média comprend un titre et un nombre de likes.
+    - Lorsque l'utilisateur clique sur l'icône "Like", le nombre de likes
+affiché est incrémenté.
+    - Le nombre de likes total d’un photographe doit correspondre à la
+somme des likes de chacun de ses médias.
+  - Les médias peuvent être triés par popularité ou par titre.
+  - Lorsque l'utilisateur clique sur un média, celui-ci doit s’ouvrir dans une
+lightbox :
+    - Lorsque la lightbox est affichée, il y a une croix dans le coin pour
+fermer la fenêtre.
+    - Des boutons de navigation permettent de passer d'un élément
+média à l'autre dans la lightbox (les utilisateurs peuvent cliquer
+sur ces boutons pour naviguer).
+    - Les touches fléchées du clavier permettent également de
+naviguer entre les médias dans la lightbox.
+  - Afficher un bouton pour contacter le photographe.
+    - Le formulaire de contact est une modale qui s'affiche par-dessus
+le reste.
+    - Il comprend des champs pour les noms, l'adresse électronique et
+le message.
+    - Plus tard, le bouton de contact enverra un message au
+photographe. Pour l'instant, seulement afficher le contenu des
+trois champs dans les logs de la console.
 
-**Boutons**
-- Au survol, la couleur de fond des boutons principaux devra légèrement s’éclaircir. L’ombre portée devra également être plus visible.
-- À terme, les visiteurs pourront sauvegarder leurs menus préférés. Pour ça, unbouton "J’aime" en forme de cœur est présent sur la maquette. Au clic, il devra se remplir progressivement. Pour cette première version, l’effet peut être apparaître au survol au lieu du clic.
-
-**Page d’accueil**
-- Quand l’application aura plus de menus, un “loading spinner” sera nécessaire. Sur cette maquette, nous souhaitons en avoir un aperçu. Il devra apparaître pendant 1 à 3 secondes quand on arrive sur la page d'accueil, couvrir l'intégralité de l'écran, et utiliser les animations CSS (pas de librairie). Le design de ce loader n’est pas défini,toute proposition est donc la bienvenue tant qu’elle est cohérente avec la chartegraphique du site.
-
-**Pages de menu**
-- À l’arrivée sur la page, les plats devront apparaître progressivement avec un léger décalage dans le temps. Ils pourront soit apparaître un par un, soit par groupe “Entrée”, “Plat” et “Dessert”. Un exemple de l’effet attendu est fourni.
-- Le visiteur peut ajouter les plats qu'il souhaite à sa commande en cliquant dessus. Cela fait apparaître une petite coche à droite du plat. Cette coche devra coulisser dela droite vers la gauche. Pour cette première version, l’effet peut apparaître au survolau lieu du clic. Si l’intitulé du plat est trop long, il devra être rogné avec des points de suspension. Un exemple de l’effet attendu est fourni
-
+  
+---
 ## Technologies
 
-**Autorisés:** HTML / CSS / Sass
+**Autorisés:** 	
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
 
-**Recommandée:** HTML / Sass
+**Linter:**     
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 
-**Interdit:** Javascript / Frameworks CSS / Inline CSS
-
+---
 ## Notes
+###Maquette Figma :
 
-**Polices :**
-- Logo & titres: Shrikhand
-- Texte: Roboto
+[Figma](https://www.figma.com/file/Q3yNeD7WTK9QHDldg9vaRl/UI-Design-FishEye-FR)
 
-**Couleurs :**
-- Primaire: #9356DC
-- Secondaire: #FF79DA
-- Tertiaire: #99E2D0
+###Polices :
+- Logo & titres: __*DM Sans - Open Sans*__
+- Texte: __*DM Sans - Open Sans*__
 
-**Contraintes :**
-- Approche mobile-first: oui
-- Maquette mobile : oui
-- Maquette desktop : à improviser
-- Validation W3C HTML : à passer, warning autorisés
-- Validation W3C CSS : à passer, warning autorisés
-- Compatibilité : Dernières versions de Chrome, Firefox & Safari
+###Couleurs :
+***Primaire :***
+-  🟥 __*#901C1C*__
+-  🟧 __*#D3573C*__
+***Secondaire :***
+-  🟧 __*#99E2D0*__
+-  ⬜️ __*#525252*__
+-  ⬜ __*#FAFAFA*__
 
-
-
+###Contraintes :
+- **Approche desktop-first:** oui
+- **Maquette desktop :** oui
+- **Validation W3C HTML :** à passer, warning autorisés
+- **Validation W3C CSS :** à passer, warning autorisés
+- **Validation AChecker :** à passer, warning autorisés
+- **Compatibilité :** Dernières versions de Chrome et Firefox 
