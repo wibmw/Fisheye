@@ -8,13 +8,39 @@ function onModal(target) {
     target.toggleAttribute('aria-hidden')
     target.style.display = target.style.display === 'none' ? 'block' : 'none'
 }
+
+export const trapFocus = (modal) => {
+    // add all the elements inside modal which you want to make focusable
+    const focusableElements = Array.from(modal.querySelectorAll('button[type=submit], i[tabindex="1"], img[id="closeModal"], input, textarea, li[class="active-item"], [tabindex]:not([tabindex="-1"])'))
+    // const modal = document.querySelector('#exampleModal'); // select the modal by it's id
+    const firstFocusableElement = focusableElements[0]
+    const lastFocusableElement = focusableElements[focusableElements.length - 1]
+
+    document.addEventListener('keydown', (e) => {
+        const isTabPressed = e.key === 'Tab' || e.code === '9'
+        if (!isTabPressed) {
+            return
+        }
+
+        if (e.shiftKey) { // if shift key pressed for shift + tab combination
+            if (document.activeElement === firstFocusableElement) {
+                lastFocusableElement.focus() // add focus for the last focusable element
+                e.preventDefault()
+            }
+        } else if (document.activeElement === lastFocusableElement) {
+            firstFocusableElement.focus()
+            e.preventDefault()
+        }
+    })
+    firstFocusableElement.focus()
+}
+
 /** *************** CONTACT  **************************** */
 const contactModal = document.querySelector('#contact_modal')
-// const contactOpenButton = document.querySelector('.contact_button')
-// const contactCloseButton = document.querySelector('#closeModal')
 
 export const onOpenContactModal = () => {
     onModal(contactModal)
+    trapFocus(contactModal)
 }
 //
 export const onCloseContactModal = () => {
@@ -26,6 +52,7 @@ const lightboxModal = document.querySelector('.lightbox_modal')
 
 export const onOpenLightboxModal = () => {
     onModal(lightboxModal)
+    trapFocus(lightboxModal)
 }
 //
 export const onCloseLightboxModal = () => {
@@ -73,34 +100,4 @@ export const onKeyDown = (target) => {
         // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
         event.preventDefault()
     }, true)
-}
-
-export function trapFocus(modal) {
-    // add all the elements inside modal which you want to make focusable
-    const focusableElements = Array.from(modal.querySelectorAll('button, i, img, div, input, textarea'))
-    // const modal = document.querySelector('#exampleModal'); // select the modal by it's id
-
-    const firstFocusableElement = focusableElements[0]
-    const lastFocusableElement = focusableElements[focusableElements.length - 1]
-    console.log(firstFocusableElement)
-    console.log(lastFocusableElement)
-    window.addEventListener('keydown', (e) => {
-        const isTabPressed = e.key === 'Tab' || e.code === '9'
-        console.log(isTabPressed)
-        if (!isTabPressed) {
-            return
-        }
-
-        if (e.shiftKey) { // if shift key pressed for shift + tab combination
-            if (document.activeElement === firstFocusableElement) {
-                lastFocusableElement.focus() // add focus for the last focusable element
-                e.preventDefault()
-            }
-        } else if (document.activeElement === lastFocusableElement) {
-            firstFocusableElement.focus()
-            e.preventDefault()
-        }
-    })
-
-    // firstFocusableElement.focus()
 }

@@ -488,7 +488,7 @@ header .logo {
   background: #C4C4C4;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
 }
-.photograph_media article video {
+.photograph_media article .plyr {
   height: 305px;
   width: 355px;
   border-radius: 10px;

@@ -62,15 +62,15 @@ export default class Carroussel {
         })
         // Close the lightbox
         closeButton.addEventListener('click', () => {
-            ModalAccessibility.onCloseLightboxModal(closeButton)
+            ModalAccessibility.onCloseLightboxModal()
             this.setCarouselItem(this.getActualItem())
         })
         // Accessibility Events handler
+        this.modalCarroussel.style.display = 'none'
         ModalAccessibility.onEnterClick(leftButton)
         ModalAccessibility.onEnterClick(rightButton)
         ModalAccessibility.onEnterClick(closeButton)
         ModalAccessibility.onKeyDown(this.modalCarroussel)
-        this.modalCarroussel.style.display = 'none'
     }
 
     carrousselRender() {

@@ -76,14 +76,14 @@ export default class MediaCard {
 
         media += `<div>
                     <h3>${this.title}</h3>
-                    <i class="fas fa-heart" aria-label="likes" tabindex="${index}"><div class="likes" >${this.likes}</div> </i>
+                    <i class="fas fa-heart" aria-label="Cliquez pour liker" tabindex="${index}"><div class="likes" >${this.likes}</div> </i>
                  </div>`
 
         this.$wrapperMedia.innerHTML = media
         this.mediaEventsHandler()
         this.wrapperMedia.appendChild(this.$wrapperMedia)
 
-        // const player = new Plyr('video', { captions: { active: false } })
-        // window.player = player
+        const player = new Plyr('video', { captions: { active: false } })
+        window.player = player
     }
 }

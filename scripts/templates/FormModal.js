@@ -44,7 +44,7 @@ export default class FormModal {
     }
 
     //* ******************** FORM VALIDATION  ***********************************/
-    formValidation(firstName, lastName, email, modalSubmit, formContent, modalSuccess) {
+    formValidation(firstName, lastName, email, modalSubmit, formContent) {
         // check all fields
         if (this.namesCheck(firstName) && this.namesCheck(lastName) && this.emailCheck(email)) {
             this.clearValidationMessage(modalSubmit)
@@ -52,21 +52,20 @@ export default class FormModal {
             // display json in logs
             const data = new FormData(formContent)
             const value = Object.fromEntries(data.entries())
+            // eslint-disable-next-line no-console
             console.log("/*********** Form's Datas ***********/\n", value, '\n/**********************************/')
-            // if all is ok, display success message
-            formContent.style.display = 'none'
-            modalSuccess.style.display = 'flex'
-        } else {
-            // display required message
-            this.setValidationMessage(modalSubmit, 'Veuillez compléter les champs obligatoires !')
+            this.clearForm(formContent, closeModal)
+            return true
         }
+        // display required message
+        this.setValidationMessage(modalSubmit, 'Veuillez compléter les champs obligatoires !')
+        return false
     }
 
     // form reset
-    clearForm(formContent, modalSuccess) {
+    clearForm(formContent) {
         formContent.style.display = 'block'
         formContent.reset()
-        modalSuccess.style.display = 'none'
         ModalAccessibility.onCloseContactModal(document.querySelector('#contact_modal'))
     }
 
@@ -79,11 +78,9 @@ export default class FormModal {
         // Buttons
         const contactButton = document.querySelector('.contact_button')
         const modalSubmit = form.querySelector('.submit_button')
-        const successButton = form.querySelector('.success_button')
         const closeModal = form.querySelector('#closeModal')
         // Form & Success
         const formContent = form.querySelector('#contactForm')
-        const modalSuccess = form.querySelector('#modalSuccess')
         // Fileds
         const firstName = form.querySelector('#first')
         const lastName = form.querySelector('#last')
@@ -91,18 +88,14 @@ export default class FormModal {
 
         //* ******************** EVENTS ***********************************/
         modalSubmit.addEventListener('click', () => {
-            this.formValidation(firstName, lastName, email, modalSubmit, formContent, modalSuccess)
-            successButton.focus()
-        })
-        successButton.addEventListener('click', () => {
-            this.clearForm(formContent, modalSuccess, closeModal)
+            this.formValidation(firstName, lastName, email, modalSubmit, formContent)
         })
         contactButton.addEventListener('click', () => {
             ModalAccessibility.onOpenContactModal(modal)
             firstName.focus()
         })
         closeModal.addEventListener('click', () => {
-            this.clearForm(formContent, modalSuccess, closeModal)
+            this.clearForm(formContent, closeModal)
         })
         firstName.addEventListener('change', () => {
             this.namesCheck(firstName)
@@ -113,17 +106,16 @@ export default class FormModal {
         email.addEventListener('change', () => {
             this.emailCheck(email)
         })
-        modal.style.display = 'none'
-        ModalAccessibility.onEnterClick(modalSubmit)
-        ModalAccessibility.onEnterClick(successButton)
-        ModalAccessibility.onEnterClick(closeModal)
-        ModalAccessibility.onEscapeClick(modal)
         modal.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 closeModal.click()
                 event.preventDefault()
             }
         })
+        modal.style.display = 'none'
+        ModalAccessibility.onEnterClick(modalSubmit)
+        ModalAccessibility.onEnterClick(closeModal)
+        ModalAccessibility.onEscapeClick(modal)
     }
 
     getFormRender() {
@@ -131,9 +123,9 @@ export default class FormModal {
         this.$wrapperForm.innerHTML = `
                         <header> 
                             <h2 id="formTitle">Contactez-moi ${this.photographerName}</h2>
-                            <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" tabindex="1" autofocus/>
+                            <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" tabindex="1" />
                         </header>
-                        <form  id="contactForm" action="photographer.html" onsubmit="return formValidation();" novalidate>
+                        <form  id="contactForm" action="" onsubmit="return formValidation();" novalidate>
                             <!-- First Name -->
                             <div class="formData">
                                 <label id="firstLabel" for="first">Prénom</label><br>
@@ -155,17 +147,11 @@ export default class FormModal {
                                 <textarea class="text-control" type="text" id="message" name="message" rows="3" cols="50" placeholder="Entrer votre message" aria-labelledBy="messageLabel"></textarea><br>
                             </div>
                             <div class="formData">
-                                <input type="button" role="button" class="contact_button submit_button button" value="Envoyer" aria-label="Envoyer votre message"></button>
+                                <input role="button" type="button" class="contact_button submit_button button" value="Envoyer" aria-label="Envoyer votre message" />
                             </div>
-                        </form>
-                        <!-- Modal Success Message -->
-                        <div id="modalSuccess">
-                            <span>Merci pour <br/>votre message</span>
-                            <input role="button" class="contact_button success_button button" value="Fermer" aria-label="Fermer le formulaire de contacte" />
-                        </div>`
+                        </form>`
 
         this.handleEvents()
         this.wrapperModal.appendChild(this.$wrapperForm)
-        ModalAccessibility.trapFocus(this.wrapperModal)
     }
 }
