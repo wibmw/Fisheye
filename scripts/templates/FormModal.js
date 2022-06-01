@@ -166,5 +166,6 @@ export default class FormModal {
 
         this.handleEvents()
         this.wrapperModal.appendChild(this.$wrapperForm)
+        ModalAccessibility.trapFocus(this.wrapperModal)
     }
 }

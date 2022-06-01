@@ -74,3 +74,33 @@ export const onKeyDown = (target) => {
         event.preventDefault()
     }, true)
 }
+
+export function trapFocus(modal) {
+    // add all the elements inside modal which you want to make focusable
+    const focusableElements = Array.from(modal.querySelectorAll('button, i, img, div, input, textarea'))
+    // const modal = document.querySelector('#exampleModal'); // select the modal by it's id
+
+    const firstFocusableElement = focusableElements[0]
+    const lastFocusableElement = focusableElements[focusableElements.length - 1]
+    console.log(firstFocusableElement)
+    console.log(lastFocusableElement)
+    window.addEventListener('keydown', (e) => {
+        const isTabPressed = e.key === 'Tab' || e.code === '9'
+        console.log(isTabPressed)
+        if (!isTabPressed) {
+            return
+        }
+
+        if (e.shiftKey) { // if shift key pressed for shift + tab combination
+            if (document.activeElement === firstFocusableElement) {
+                lastFocusableElement.focus() // add focus for the last focusable element
+                e.preventDefault()
+            }
+        } else if (document.activeElement === lastFocusableElement) {
+            firstFocusableElement.focus()
+            e.preventDefault()
+        }
+    })
+
+    // firstFocusableElement.focus()
+}
