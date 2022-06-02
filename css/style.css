@@ -280,11 +280,11 @@ input {
   align-items: baseline;
   font-weight: 600;
 }
-.photograph_likes div i {
+.photograph_likes div em {
   display: flex;
   flex-flow: row-reverse;
 }
-.photograph_likes div i .totalLikes {
+.photograph_likes div em .totalLikes {
   font-size: 1.5rem;
   margin-right: 5px;
   font-family: "Open Sans";
@@ -526,14 +526,14 @@ header .logo {
   text-overflow: ellipsis;
   max-width: 290px;
 }
-.photograph_media article div i {
+.photograph_media article div em {
   display: flex;
   flex-flow: row-reverse;
   font-size: 1.5em;
   font-weight: bold;
   cursor: pointer;
 }
-.photograph_media article div i div {
+.photograph_media article div em div {
   margin-right: 5px;
   font-family: "Open Sans";
 }

@@ -18,7 +18,7 @@ export default class PhotographerCard {
 
     getPhotographerPicture() {
         // return the photographer picture only
-        const img = `<img src="${this.picture}" alt="" aria-label="Photo du photographe ${this.name}"> `
+        const img = `<img src="${this.picture}" alt="Photo du photographe ${this.name}" aria-label="Photo du photographe ${this.name}"> `
         this.$wrapperDiv.innerHTML = img
 
         return this.$wrapperDiv
@@ -37,7 +37,7 @@ export default class PhotographerCard {
     getPhotographerCard() {
         // return photographer Card
         const article = `<a href="photographer.html?id=${this.id}" title="Aller à la page du photographe ${this.name}" aria-label="${this.name}">
-                            <img src="${this.picture}" alt="">
+                            <img src="${this.picture}" alt="Aller à la page du photographe ${this.name}">
                             <h2>${this.name}</h2>
                         </a>
                         <div>
@@ -51,7 +51,7 @@ export default class PhotographerCard {
 
     getPhotographerLikes(likes) {
         // return photographer info
-        const like = `<i class="fas fa-heart" ><span class="totalLikes" aria-label="likes"> ${likes} </span></i>
+        const like = `<em class="fas fa-heart" ><span class="totalLikes" aria-label="likes"> ${likes} </span></em>
                         <span aria-label="tarif">${this.price} € / jour</span>`
         this.$wrapperDiv.innerHTML = like
 

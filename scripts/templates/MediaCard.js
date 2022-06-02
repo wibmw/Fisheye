@@ -24,7 +24,7 @@ export default class MediaCard {
         // DOM $Wrapper
         const media = this.$wrapperMedia
         const likes = media.querySelector('.likes')
-        const icone = likes.closest('i')
+        const icone = likes.closest('em')
         let box
 
         // Buttons
@@ -76,7 +76,7 @@ export default class MediaCard {
 
         media += `<div>
                     <h3>${this.title}</h3>
-                    <i class="fas fa-heart" aria-label="Cliquez pour liker" tabindex="${index}"><div class="likes" >${this.likes}</div> </i>
+                    <em class="fas fa-heart" aria-label="Cliquez pour liker" tabindex="${index}"><div class="likes" >${this.likes}</div> </em>
                  </div>`
 
         this.$wrapperMedia.innerHTML = media
