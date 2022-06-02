@@ -35,7 +35,7 @@ export default class MediaCard {
 
         //* ******************** EVENTS ***********************************/
         box.addEventListener('click', () => {
-            const item = document.querySelector(`li[name="item-${this.position}"]`)
+            const item = document.querySelector(`li[data-name="item-${this.position}"]`)
             this.mediaType === 'ImageM' ? item.setAttribute('class', 'active-item') : item.setAttribute('class', 'active-item-video')
             ModalAccessibility.onOpenLightboxModal()
             document.querySelector('#close').focus()

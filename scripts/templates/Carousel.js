@@ -15,7 +15,7 @@ export default class Carroussel {
     // Get actual item position
     getActualPosition() {
         const actualItem = this.getActualItem()
-        return parseInt(actualItem.getAttribute('name').split('-')[1])
+        return parseInt(actualItem.getAttribute('data-name').split('-')[1])
     }
 
     // Get the lastest position

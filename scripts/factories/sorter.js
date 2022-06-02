@@ -10,7 +10,7 @@ export default class sorterApi {
                         data: Array.from(data).sort((a, b) => b.likes - a.likes),
                     }
                     resolve(result)
-                })
+                }, 0)
             })
         // Date Sort section
         } if (orderBy === 'DATE') {
@@ -29,7 +29,7 @@ export default class sorterApi {
                         }),
                     }
                     resolve(result)
-                })
+                }, 0)
             })
         // Title Sort section
         } if (orderBy === 'TITRE') {
@@ -48,7 +48,7 @@ export default class sorterApi {
                         }),
                     }
                     resolve(result)
-                })
+                }, 0)
             })
         }
         throw error
