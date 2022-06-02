@@ -11,7 +11,7 @@ export default class Lightbox {
 
         // Create Carousel Element
         this.$wrapperLightbox = document.createElement('li')
-        this.$wrapperLightbox.setAttribute('name', `item-${position}`)
+        this.$wrapperLightbox.setAttribute('data-name', `item-${position}`)
         this.$wrapperLightbox.setAttribute('class', 'carousel-item')
         this.modalLightbox = document.querySelector('.carousel')
     }

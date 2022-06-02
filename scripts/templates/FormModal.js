@@ -125,7 +125,7 @@ export default class FormModal {
                             <h2 id="formTitle">Contactez-moi ${this.photographerName}</h2>
                             <img id="closeModal" role="button" src="assets/icons/close.svg" alt="Fermer le formulaire de contacte" tabindex="1" />
                         </header>
-                        <form  id="contactForm" action="" onsubmit="return formValidation();" novalidate>
+                        <form  id="contactForm" action="photographer.html" onsubmit="return formValidation();" novalidate>
                             <!-- First Name -->
                             <div class="formData">
                                 <label id="firstLabel" for="first">Prénom</label><br>
@@ -144,7 +144,7 @@ export default class FormModal {
                             <!-- Message -->
                             <div class="formData">
                                 <label id="messageLabel" for="message">Message</label><br>
-                                <textarea class="text-control" type="text" id="message" name="message" rows="3" cols="50" placeholder="Entrer votre message" aria-labelledBy="messageLabel"></textarea><br>
+                                <textarea class="text-control" id="message" name="message" rows="3" cols="50" placeholder="Entrer votre message" aria-labelledBy="messageLabel"></textarea><br>
                             </div>
                             <div class="formData">
                                 <input role="button" type="button" class="contact_button submit_button button" value="Envoyer" aria-label="Envoyer votre message" />

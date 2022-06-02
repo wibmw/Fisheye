@@ -46,7 +46,7 @@ export default class Carroussel {
         // Display next item
         rightButton.addEventListener('click', () => {
             const nextPosition = this.getActualPosition() + 1
-            const nextItem = document.querySelector(`li[name="item-${nextPosition}"]`) ? document.querySelector(`li[name="item-${nextPosition}"]`) : document.querySelector('li[name="item-1"]')
+            const nextItem = document.querySelector(`li[data-name="item-${nextPosition}"]`) ? document.querySelector(`li[data-name="item-${nextPosition}"]`) : document.querySelector('li[data-name="item-1"]')
 
             this.setCarouselItem(this.getActualItem())
             this.setActiveItem(nextItem)
@@ -55,7 +55,7 @@ export default class Carroussel {
         leftButton.addEventListener('click', () => {
             const previousPosition = this.getActualPosition() - 1
             const lastPosition = this.getLatestPosition()
-            const previousItem = document.querySelector(`li[name="item-${previousPosition}"]`) ? document.querySelector(`li[name="item-${previousPosition}"]`) : document.querySelector(`li[name="item-${lastPosition}"]`)
+            const previousItem = document.querySelector(`li[data-name="item-${previousPosition}"]`) ? document.querySelector(`li[data-name="item-${previousPosition}"]`) : document.querySelector(`li[data-name="item-${lastPosition}"]`)
 
             this.setCarouselItem(this.getActualItem())
             this.setActiveItem(previousItem)

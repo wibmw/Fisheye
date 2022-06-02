@@ -15,7 +15,6 @@ export default class MediaCard {
         this.position = position
 
         this.$wrapperMedia = document.createElement('article')
-        this.$wrapperMedia.setAttribute('name', `item-${position}`)
         this.wrapperMedia = document.querySelector('.photograph_media')
     }
 
@@ -24,7 +23,7 @@ export default class MediaCard {
         // DOM $Wrapper
         const media = this.$wrapperMedia
         const likes = media.querySelector('.likes')
-        const icone = likes.closest('em')
+        const icone = likes.closest('div')
         let box
 
         // Buttons
@@ -69,14 +68,14 @@ export default class MediaCard {
             media = `  <video class="player" aria-hidden="true" tabindex="-1">
                             <source src="${this.mediaLink}" type="video/mp4" />
                         </video>
-                    <div class="playMask" aria-label="${this.title}, closeup view" tabindex="${index}">
-                        <span class="sr-only" aria-live="polite">Lire la Video</span>
+                    <div class="playMask" tabindex="${index}">
+                        <span class="sr-only" aria-live="polite">Lire la Video, ${this.title}</span>
                     </div>`
         }
 
         media += `<div>
                     <h3>${this.title}</h3>
-                    <em class="fas fa-heart" aria-label="Cliquez pour liker" tabindex="${index}"><div class="likes" >${this.likes}</div> </em>
+                    <div class="fas fa-heart" tabindex="${index}"><span class="likes" >${this.likes}</span> </div>
                  </div>`
 
         this.$wrapperMedia.innerHTML = media

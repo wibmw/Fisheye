@@ -80,13 +80,13 @@ export default class SorterForm {
     render() {
         // Generate the sorter element
         const sorterForm = `
-                        <label for="dropdownSort">Trier par : </label>
-                        <span class="dropdown-el" id="dropdownSort" aria-label="Liste de trie" role="listbox" tabindex="3">
-                            <input type="radio" name="sortbest" role="option" value="POP" id="sort-best" aria-labelledBy="bestLabel">
+                        <label id="dropdownForSort">Trier par : </label>
+                        <span class="dropdown-el" id="dropdownSort" aria-labelledBy="dropdownForSort" role="group" tabindex="3">
+                            <input type="radio" name="sortbest" role="menuitemradio" value="POP" id="sort-best" aria-labelledBy="bestLabel">
                                 <label id="bestLabel" for="sort-best"  aria-label="Trier par popularité" tabindex="3">Popularité</label>
-                            <input type="radio" name="sortdate" role="option"  value="DATE" id="sort-date" aria-labelledBy="dateLabel">
+                            <input type="radio" name="sortdate" role="menuitemradio"  value="DATE" id="sort-date" aria-labelledBy="dateLabel">
                                 <label id="dateLabel" for="sort-date" class="unselected" aria-label="Trier par date" tabindex="3">Date</label>
-                            <input type="radio" name="sorttitle" role="option" value="TITRE" id="sort-title" aria-labelledBy="titleLabel">
+                            <input type="radio" name="sorttitle" role="menuitemradio" value="TITRE" id="sort-title" aria-labelledBy="titleLabel">
                                 <label id="titleLabel" for="sort-title" class="unselected" aria-label="Trier par titre" tabindex="3">Titre</label>
                         </span>`
 

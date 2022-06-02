@@ -56,14 +56,14 @@
                 text-overflow: ellipsis;
                 max-width: 290px;
             }
-            & em {
+            & div {
                 display: flex;
                 flex-flow : row-reverse;
                 font-size: 1.5em;
                 font-weight: bold;
                 cursor: pointer;
                 // transition: 1s all ease-in-out;
-                & div {
+                & span {
                     margin-right: 5px;
                     font-family: "Open Sans";
                 }

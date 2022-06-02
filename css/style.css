@@ -526,14 +526,14 @@ header .logo {
   text-overflow: ellipsis;
   max-width: 290px;
 }
-.photograph_media article div em {
+.photograph_media article div div {
   display: flex;
   flex-flow: row-reverse;
   font-size: 1.5em;
   font-weight: bold;
   cursor: pointer;
 }
-.photograph_media article div em div {
+.photograph_media article div div span {
   margin-right: 5px;
   font-family: "Open Sans";
 }
