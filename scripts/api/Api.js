@@ -1,10 +1,10 @@
 /* eslint-disable max-classes-per-file */
-import Photographer from '../models/photographer.js'
-import * as Media from '../models/media.js'
+import mediaFactory from '../factories/media.js'
+import photographerFactory from '../factories/photographer.js'
 
 class Api {
-    constructor(url, type) {
-        this.url = url
+    constructor(type) {
+        this.url = 'data/photographers.json'
         this.type = type
         this.cache = []
     }
@@ -23,7 +23,7 @@ class Api {
             json = this.type == 'photographers' ? json.photographers : json.media
             const data = {
                 key: this.type,
-                data: Array.from(json),
+                data: [...json],
             }
             this.cache.push(data)
             return data
@@ -34,18 +34,20 @@ class Api {
 
 export class PhotographerApi extends Api {
     // Get only one photographer
-    async getPhotographer(id) {
-        const getPhotographers = await this.get()
-        const photographerData = await getPhotographers.data.filter((photographer) => photographer.id == id)
-        const photographer = await photographerData.map((photographer) => new Photographer(photographer))
+    async getOnePhotographer(id) {
+        const result = await this.get()
+        result.type = 'photographer'
+        const photographer = await photographerFactory(result, id)
 
         return photographer
     }
 
     // Get all photographers
-    async getPhotographers() {
-        const getPhotographers = await this.get()
-        const photographers = await getPhotographers.data.map((photographer) => new Photographer(photographer))
+    async getAllPhotographers() {
+        const result = await this.get()
+        console.log(result)
+        result.type = 'photographers'
+        const photographers = await photographerFactory(result, 0)
 
         return photographers
     }
@@ -56,7 +58,7 @@ export class MediaApi extends Api {
     async getMediaOfPhotographer(id) {
         let getMedia = await this.get()
         getMedia = await getMedia.data.filter((media) => media.photographerId == id)
-        const medias = await getMedia.map((media) => (media.image ? new Media.ImageM(media) : new Media.VideoM(media)))
+        const medias = await getMedia.map((media) => (mediaFactory(media)))
 
         return medias
     }

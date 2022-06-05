@@ -1,11 +1,14 @@
 import * as ModalAccessibility from '../utils/modalAccessibility.js'
+import {
+    CreaE, QS, SetAt, ApC, EById,
+} from '../utils/domUtils.js'
 
 export default class FormModal {
     constructor(photographerName) {
         this.photographerName = photographerName
-        this.$wrapperForm = document.createElement('div')
-        this.$wrapperForm.setAttribute('class', 'modal')
-        this.wrapperModal = document.getElementById('contact_modal')
+        this.$wrapperForm = CreaE('div')
+        SetAt('modal', this.$wrapperForm)
+        this.wrapperModal = EById('contact_modal')
         this.wrapperModal.setAttribute('aria-labelledBy', 'formTitle')
     }
 
@@ -48,7 +51,6 @@ export default class FormModal {
         // check all fields
         if (this.namesCheck(firstName) && this.namesCheck(lastName) && this.emailCheck(email)) {
             this.clearValidationMessage(modalSubmit)
-
             // display json in logs
             const data = new FormData(formContent)
             const value = Object.fromEntries(data.entries())
@@ -66,7 +68,7 @@ export default class FormModal {
     clearForm(formContent) {
         formContent.style.display = 'block'
         formContent.reset()
-        ModalAccessibility.onCloseContactModal(document.querySelector('#contact_modal'))
+        ModalAccessibility.onCloseContactModal(EById('contact_modal'))
     }
 
     // Events handler
@@ -74,17 +76,17 @@ export default class FormModal {
         // DOM $Wrapper
         const form = this.$wrapperForm
         // Modal
-        const modal = document.querySelector('#contact_modal')
+        const modal = EById('contact_modal')
         // Buttons
-        const contactButton = document.querySelector('.contact_button')
-        const modalSubmit = form.querySelector('.submit_button')
-        const closeModal = form.querySelector('#closeModal')
+        const contactButton = QS('.contact_button')
+        const modalSubmit = QS('.submit_button', form)
+        const closeModal = QS('#closeModal', form)
         // Form & Success
-        const formContent = form.querySelector('#contactForm')
+        const formContent = QS('#contactForm', form)
         // Fileds
-        const firstName = form.querySelector('#first')
-        const lastName = form.querySelector('#last')
-        const email = form.querySelector('#email')
+        const firstName = QS('#first', form)
+        const lastName = QS('#last', form)
+        const email = QS('#email', form)
 
         //* ******************** EVENTS ***********************************/
         modalSubmit.addEventListener('click', () => {
@@ -129,29 +131,34 @@ export default class FormModal {
                             <!-- First Name -->
                             <div class="formData">
                                 <label id="firstLabel" for="first">Prénom</label><br>
-                                <input class="text-control" type="text" id="first" name="first" placeholder="Entrer votre prénom" aria-labelledBy="firstLabel"/><br>
+                                <input class="text-control" type="text" id="first" name="first" placeholder="Entrer votre prénom" 
+                                aria-labelledBy="firstLabel"/><br>
                             </div>
                             <!-- Last Name -->
                             <div class="formData">
                                 <label id="lastLabel" for="last">Nom</label><br>
-                                <input class="text-control" type="text" id="last" name="last" placeholder="Entrer votre nom" aria-labelledBy="lastLabel"/><br>
+                                <input class="text-control" type="text" id="last" name="last" placeholder="Entrer votre nom" 
+                                aria-labelledBy="lastLabel"/><br>
                             </div>
                             <!-- Email -->
                             <div class="formData">
                                 <label id="emailLabel" for="email">E-mail</label><br>
-                                <input class="text-control" type="email" id="email" name="email" placeholder="Entrer votre email" aria-labelledBy="emailLabel"/><br>
+                                <input class="text-control" type="email" id="email" name="email" placeholder="Entrer votre email" 
+                                aria-labelledBy="emailLabel"/><br>
                             </div>
                             <!-- Message -->
                             <div class="formData">
                                 <label id="messageLabel" for="message">Message</label><br>
-                                <textarea class="text-control" id="message" name="message" rows="3" cols="50" placeholder="Entrer votre message" aria-labelledBy="messageLabel"></textarea><br>
+                                <textarea class="text-control" id="message" name="message" rows="3" cols="50" placeholder="Entrer votre message" 
+                                aria-labelledBy="messageLabel"></textarea><br>
                             </div>
                             <div class="formData">
-                                <input role="button" type="button" class="contact_button submit_button button" value="Envoyer" aria-label="Envoyer votre message" />
+                                <input role="button" type="button" class="contact_button submit_button button" value="Envoyer"
+                                aria-label="Envoyer votre message" />
                             </div>
                         </form>`
 
         this.handleEvents()
-        this.wrapperModal.appendChild(this.$wrapperForm)
+        ApC(this.$wrapperForm, this.wrapperModal)
     }
 }

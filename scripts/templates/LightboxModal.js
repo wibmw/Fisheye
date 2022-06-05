@@ -1,12 +1,12 @@
 export default class Lightbox {
     constructor(media) {
         const {
-            id, title, mediaLink, mediaType, position,
+            id, title, link, type, position,
         } = media
         this.id = id
         this.title = title
-        this.mediaType = mediaType
-        this.mediaLink = mediaLink
+        this.mediaType = type
+        this.mediaLink = link
         this.position = position
 
         // Create Carousel Element
@@ -32,7 +32,7 @@ export default class Lightbox {
         this.modalLightbox.appendChild(this.$wrapperLightbox)
 
         // Expose player so it can be used from the console
-        const player = new Plyr('video', { captions: { active: true } })
+        const player = new Plyr('video')
         window.player = player
     }
 }

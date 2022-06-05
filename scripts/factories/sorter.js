@@ -1,24 +1,16 @@
 export default class sorterApi {
     static async sorter(data, orderBy) {
         const error = 'unknow orderBy type'
-        // Most Popular Sort section
-        if (orderBy === 'POP') {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    const result = {
-                        key: orderBy,
-                        data: Array.from(data).sort((a, b) => b.likes - a.likes),
-                    }
-                    resolve(result)
-                }, 0)
-            })
-        // Date Sort section
-        } if (orderBy === 'DATE') {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    const result = {
-                        key: orderBy,
-                        data: Array.from(data).sort((a, b) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                const result = {
+                    key: orderBy,
+                    data: Array.from(data).sort((a, b) => {
+                        switch (orderBy) {
+                        case 'POP': { // Most Popular Sort section
+                            return b.likes - a.likes
+                        }
+                        case 'DATE': { // Date Sort section
                             if (a.date > b.date) {
                                 return -1
                             }
@@ -26,18 +18,8 @@ export default class sorterApi {
                                 return 1
                             }
                             return 0
-                        }),
-                    }
-                    resolve(result)
-                }, 0)
-            })
-        // Title Sort section
-        } if (orderBy === 'TITRE') {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    const result = {
-                        key: orderBy,
-                        data: Array.from(data).sort((a, b) => {
+                        }
+                        case 'TITRE': { // Title Sort section
                             if (a.title > b.title) {
                                 return 1
                             }
@@ -45,12 +27,14 @@ export default class sorterApi {
                                 return -1
                             }
                             return 0
-                        }),
-                    }
-                    resolve(result)
-                }, 0)
-            })
-        }
-        throw error
+                        }
+                        default:
+                            throw error
+                        }
+                    }),
+                }
+                resolve(result)
+            }, 0)
+        })
     }
 }

@@ -1,50 +1,53 @@
 import * as ModalAccessibility from '../utils/modalAccessibility.js'
+import {
+    CreaE, QS, SetAt, ApC,
+} from '../utils/domUtils.js'
 
 export default class MediaCard {
     constructor(media) {
         const {
-            id, title, likes, date, price, mediaLink, mediaType, position,
+            id, title, likes, date, price, link, type, position,
         } = media
         this.id = id
         this.title = title
         this.likes = likes
         this.date = date
         this.price = price
-        this.mediaType = mediaType
-        this.mediaLink = mediaLink
+        this.type = type
+        this.link = link
         this.position = position
 
-        this.$wrapperMedia = document.createElement('article')
-        this.wrapperMedia = document.querySelector('.photograph_media')
+        this.$wrapperMedia = CreaE('article')
+        this.wrapperMedia = QS('.photograph_media')
     }
 
     // Events handler
     mediaEventsHandler() {
         // DOM $Wrapper
         const media = this.$wrapperMedia
-        const likes = media.querySelector('.likes')
+        const likes = QS('.likes', media)
         const icone = likes.closest('div')
         let box
 
         // Buttons
-        if (this.mediaType === 'ImageM') {
-            box = media.querySelector('img')
-        } else if (this.mediaType === 'VideoM') {
-            box = media.querySelector('.playMask')
+        if (this.type === 'ImageM') {
+            box = QS('img', media)
+        } else if (this.type === 'VideoM') {
+            box = QS('.playMask', media)
         }
 
         //* ******************** EVENTS ***********************************/
         box.addEventListener('click', () => {
-            const item = document.querySelector(`li[data-name="item-${this.position}"]`)
-            this.mediaType === 'ImageM' ? item.setAttribute('class', 'active-item') : item.setAttribute('class', 'active-item-video')
+            const item = QS(`li[data-name="item-${this.position}"]`)
+            this.type === 'ImageM' ? SetAt('active-item', item) : SetAt('active-item-video', item)
             ModalAccessibility.onOpenLightboxModal()
-            document.querySelector('#close').focus()
+            QS('#close').focus()
         })
         ModalAccessibility.onEnterClick(box)
 
         // Likes management
         icone.addEventListener('click', () => {
-            const totalLikes = document.querySelector('.totalLikes')
+            const totalLikes = QS('.totalLikes')
             if (this.likes == likes.textContent) {
                 likes.textContent = parseInt(likes.textContent) + 1
                 totalLikes.textContent = parseInt(totalLikes.textContent) + 1
@@ -62,11 +65,11 @@ export default class MediaCard {
     // Generate the media cards
         let media = ''
         const index = this.position + 4
-        if (this.mediaType === 'ImageM') {
-            media = `<img src="${this.mediaLink}" alt="${this.title}, closeup view" aria-label="Photo de ${this.title}"  tabindex="${index}"> `
-        } else if (this.mediaType === 'VideoM') {
+        if (this.type === 'ImageM') {
+            media = `<img src="${this.link}" alt="${this.title}, closeup view" aria-label="Photo de ${this.title}"  tabindex="${index}"> `
+        } else if (this.type === 'VideoM') {
             media = `  <video class="player" aria-hidden="true" tabindex="-1">
-                            <source src="${this.mediaLink}" type="video/mp4" />
+                            <source src="${this.link}" type="video/mp4" />
                         </video>
                     <div class="playMask" tabindex="${index}">
                         <span class="sr-only" aria-live="polite">Lire la Video, ${this.title}</span>
@@ -80,9 +83,9 @@ export default class MediaCard {
 
         this.$wrapperMedia.innerHTML = media
         this.mediaEventsHandler()
-        this.wrapperMedia.appendChild(this.$wrapperMedia)
+        ApC(this.$wrapperMedia, this.wrapperMedia)
 
-        const player = new Plyr('video', { captions: { active: false } })
+        const player = new Plyr('video')
         window.player = player
     }
 }

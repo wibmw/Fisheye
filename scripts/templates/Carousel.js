@@ -1,15 +1,18 @@
 import * as ModalAccessibility from '../utils/modalAccessibility.js'
+import {
+    CreaE, QS, QSAll, SetAt, ApC,
+} from '../utils/domUtils.js'
 
 export default class Carroussel {
     constructor(photographerName) {
         this.name = photographerName
-        this.modalCarroussel = document.querySelector('.lightbox_modal')
-        this.$wrapperCarroussel = document.createElement('div')
+        this.modalCarroussel = QS('.lightbox_modal')
+        this.$wrapperCarroussel = CreaE('div')
     }
 
     // Get displayed item
     getActualItem() {
-        return document.querySelector('.active-item') ? document.querySelector('.active-item') : document.querySelector('.active-item-video')
+        return QS('.active-item') ? QS('.active-item') : QS('.active-item-video')
     }
 
     // Get actual item position
@@ -20,17 +23,17 @@ export default class Carroussel {
 
     // Get the lastest position
     getLatestPosition() {
-        return parseInt(document.querySelectorAll('li').length)
+        return parseInt(QSAll('li').length)
     }
 
     // Display new item
     setActiveItem(item) {
-        item.querySelector('img') ? item.setAttribute('class', 'active-item') : item.setAttribute('class', 'active-item-video')
+        QS('img', item) ? SetAt('active-item', item) : SetAt('active-item-video', item)
     }
 
     // Hide last item
     setCarouselItem(item) {
-        item.setAttribute('class', 'carousel-item')
+        SetAt('carousel-item', item)
     }
 
     // Events handler
@@ -38,15 +41,16 @@ export default class Carroussel {
         // DOM $Wrapper
         const carroussel = this.$wrapperCarroussel
         // Buttons
-        const leftButton = carroussel.querySelector('.fa-chevron-left')
-        const rightButton = carroussel.querySelector('.fa-chevron-right')
-        const closeButton = carroussel.querySelector('.fa-times')
+        const leftButton = QS('.fa-chevron-left', carroussel)
+        const rightButton = QS('.fa-chevron-right', carroussel)
+        const closeButton = QS('.fa-times', carroussel)
 
         //* ******************** EVENTS ***********************************/
         // Display next item
         rightButton.addEventListener('click', () => {
             const nextPosition = this.getActualPosition() + 1
-            const nextItem = document.querySelector(`li[data-name="item-${nextPosition}"]`) ? document.querySelector(`li[data-name="item-${nextPosition}"]`) : document.querySelector('li[data-name="item-1"]')
+            const nextItem = QS(`li[data-name="item-${nextPosition}"]`)
+                ? QS(`li[data-name="item-${nextPosition}"]`) : QS('li[data-name="item-1"]')
 
             this.setCarouselItem(this.getActualItem())
             this.setActiveItem(nextItem)
@@ -55,7 +59,8 @@ export default class Carroussel {
         leftButton.addEventListener('click', () => {
             const previousPosition = this.getActualPosition() - 1
             const lastPosition = this.getLatestPosition()
-            const previousItem = document.querySelector(`li[data-name="item-${previousPosition}"]`) ? document.querySelector(`li[data-name="item-${previousPosition}"]`) : document.querySelector(`li[data-name="item-${lastPosition}"]`)
+            const previousItem = QS(`li[data-name="item-${previousPosition}"]`)
+                ? QS(`li[data-name="item-${previousPosition}"]`) : QS(`li[data-name="item-${lastPosition}"]`)
 
             this.setCarouselItem(this.getActualItem())
             this.setActiveItem(previousItem)
@@ -81,6 +86,6 @@ export default class Carroussel {
             <em class="fas fa-times" id="close" aria-label="Fermer la lightbox" tabindex="1"></em>`
 
         this.carrousselEventsHandler()
-        this.modalCarroussel.appendChild(this.$wrapperCarroussel)
+        ApC(this.$wrapperCarroussel, this.modalCarroussel)
     }
 }

@@ -1,12 +1,15 @@
 export default class Photographer {
     constructor(data) {
-        this._name = data.name
-        this._id = data.id
-        this._city = data.city
-        this._country = data.country
-        this._tagline = data.tagline
-        this._price = data.price
-        this._portrait = data.portrait
+        const {
+            name, id, city, country, tagline, price, portrait,
+        } = data
+        this._name = name
+        this._id = id
+        this._city = city
+        this._country = country
+        this._tagline = tagline
+        this._price = price
+        this._portrait = portrait
     }
 
     get name() {
@@ -18,7 +21,7 @@ export default class Photographer {
     }
 
     get location() {
-        return `${this._city  }, ${  this._country}`
+        return `${this._city}, ${this._country}`
     }
 
     get tagline() {

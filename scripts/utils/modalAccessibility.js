@@ -1,17 +1,21 @@
+import { QS, Tog } from './domUtils.js'
+
 /** *************** GLOBAL **************************** */
 const body = document.querySelector('body')
 const main = document.querySelector('#main')
 
 function onModal(target) {
     main.style.display = main.style.display === 'none' ? 'block' : 'none'
-    body.classList.toggle('no-scroll')
+    Tog('no-scroll', body)
     target.toggleAttribute('aria-hidden')
     target.style.display = target.style.display === 'none' ? 'block' : 'none'
 }
 
 export const trapFocus = (modal) => {
     // add all the elements inside modal which you want to make focusable
-    const focusableElements = Array.from(modal.querySelectorAll('button[type=submit], i[tabindex="1"], img[id="closeModal"], input, textarea, li[class="active-item"], [tabindex]:not([tabindex="-1"])'))
+    const focusableElements = Array.from(modal.querySelectorAll(
+        'button[type=submit], i[tabindex="1"], img[id="closeModal"], input, textarea, li[class="active-item"], [tabindex]:not([tabindex="-1"])',
+    ))
     // const modal = document.querySelector('#exampleModal'); // select the modal by it's id
     const firstFocusableElement = focusableElements[0]
     const lastFocusableElement = focusableElements[focusableElements.length - 1]
@@ -36,7 +40,7 @@ export const trapFocus = (modal) => {
 }
 
 /** *************** CONTACT  **************************** */
-const contactModal = document.querySelector('#contact_modal')
+const contactModal = QS('#contact_modal')
 
 export const onOpenContactModal = () => {
     onModal(contactModal)
@@ -47,8 +51,7 @@ export const onCloseContactModal = () => {
     onModal(contactModal)
 }
 /** *************** LIGHTBOX  **************************** */
-const lightboxModal = document.querySelector('.lightbox_modal')
-// const lightboxCloseButton = document.querySelector('#close')
+const lightboxModal = QS('.lightbox_modal')
 
 export const onOpenLightboxModal = () => {
     onModal(lightboxModal)
@@ -83,15 +86,15 @@ export const onKeyDown = (target) => {
         switch (event.key) {
         case 'ArrowLeft':
             // Faire quelque chose pour la touche "left arrow" pressée.
-            target.querySelector('.fa-chevron-left').click()
+            QS('.fa-chevron-left', target).click()
             break
         case 'ArrowRight':
             // Faire quelque chose pour la touche "right arrow" pressée.
-            target.querySelector('.fa-chevron-right').click()
+            QS('.fa-chevron-right', target).click()
             break
         case 'Escape':
             // Faire quelque chose pour la touche "esc" pressée.
-            target.querySelector('.fa-times').click()
+            QS('.fa-times', target).click()
             break
         default:
             return // Quitter lorsque cela ne gère pas l'événement touche.

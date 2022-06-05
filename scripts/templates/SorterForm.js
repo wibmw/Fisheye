@@ -1,15 +1,19 @@
+import Lightbox from './LightboxModal.js'
+import MediaCard from './MediaCard.js'
 import ProxyRatingSorter from '../proxy/cacheProxy.js'
-import mediaFactory from '../factories/media.js'
-import * as ModalAccessibility from './modalAccessibility.js'
+import * as ModalAccessibility from '../utils/modalAccessibility.js'
+import {
+    CreaE, QS, SetAt, Tog, ApC,
+} from '../utils/domUtils.js'
 
 export default class SorterForm {
     constructor(medias, name) {
         this.medias = medias
         this.name = name
-        this.$wrapper = document.createElement('div')
-        this.$sorterFormWrapper = document.querySelector('.sorter_media')
-        this.$mediasWrapper = document.querySelector('.photograph_media')
-        this.$carouselWrapper = document.querySelector('.carousel')
+        this.$wrapper = CreaE('div')
+        this.$sorterFormWrapper = QS('.sorter_media')
+        this.$mediasWrapper = QS('.photograph_media')
+        this.$carouselWrapper = QS('.carousel')
 
         this.ProxyRatingSorter = new ProxyRatingSorter()
     }
@@ -21,29 +25,30 @@ export default class SorterForm {
         if (sorter) {
             const sortedData = await this.ProxyRatingSorter.sorter(this.medias, sorter)
             const SortedMovies = sortedData.data
-
             SortedMovies.forEach((media) => {
-                mediaFactory(media, this.name, position)
+                // get media link
+                media.link = media.type === 'ImageM' ? media.getImage(this.name) : media.getVideo(this.name)
+                media.position = position
+                new Lightbox(media).lightboxRender()
+                new MediaCard(media).getMediaCardDOM()
+
                 position += 1
             })
         } else {
-            this.medias.forEach((media) => {
-                mediaFactory(media, this.name, position)
-                position += 1
-            })
+            throw new Error('No sorter selected')
         }
     }
 
     unselect() {
-        this.$wrapper.querySelector('label[for="sort-best"').setAttribute('class', 'unselected')
-        this.$wrapper.querySelector('label[for="sort-date"').setAttribute('class', 'unselected')
-        this.$wrapper.querySelector('label[for="sort-title"').setAttribute('class', 'unselected')
+        SetAt('unselected', QS('label[for="sort-best"', this.$wrapper))
+        SetAt('unselected', QS('label[for="sort-date"', this.$wrapper))
+        SetAt('unselected', QS('label[for="sort-title"', this.$wrapper))
     }
 
     clearSelect() {
-        this.$wrapper.querySelector('label[for="sort-best"').setAttribute('class', '')
-        this.$wrapper.querySelector('label[for="sort-date"').setAttribute('class', '')
-        this.$wrapper.querySelector('label[for="sort-title"').setAttribute('class', '')
+        SetAt('', QS('label[for="sort-best"', this.$wrapper))
+        SetAt('', QS('label[for="sort-date"', this.$wrapper))
+        SetAt('', QS('label[for="sort-title"', this.$wrapper))
     }
 
     onChangeSorter() {
@@ -53,12 +58,12 @@ export default class SorterForm {
         dropdown.addEventListener('click', (e) => {
             e.preventDefault()
             e.stopPropagation()
-            const selectedItem = this.$wrapper.querySelector(`#${e.target.htmlFor}`)
+            const selectedItem = QS(`#${e.target.htmlFor}`, this.$wrapper)
             if (!dropdown.classList.contains('expanded')) {
                 this.clearSelect()
-                dropdown.classList.toggle('expanded')
+                Tog('expanded', dropdown)
             } else if (selectedItem) {
-                dropdown.classList.toggle('expanded')
+                Tog('expanded', dropdown)
                 this.unselect()
                 e.target.setAttribute('class', 'selected')
                 this.sorterMovies(selectedItem.value)
@@ -68,7 +73,6 @@ export default class SorterForm {
         })
         ModalAccessibility.onEnterClick(dropdown)
         this.sorterMovies('POP')
-        // dropdown.classList.toggle('expanded')
     }
 
     clearWrappers() {
@@ -92,6 +96,6 @@ export default class SorterForm {
 
         this.$wrapper.innerHTML = sorterForm
         this.onChangeSorter()
-        this.$sorterFormWrapper.appendChild(this.$wrapper)
+        ApC(this.$wrapper, this.$sorterFormWrapper)
     }
 }

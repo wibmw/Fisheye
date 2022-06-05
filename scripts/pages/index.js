@@ -1,5 +1,5 @@
 import * as Api from '../api/Api.js'
-import photographerFactory from '../factories/photographer.js'
+import PhotographerCard from '../templates/PhotographerCard.js'
 
 class IndexPage {
     async displayIndexData(photographers) {
@@ -8,7 +8,9 @@ class IndexPage {
             // Generate Photographers Card
             photographers.forEach((photographer) => {
                 photographer.index = index
-                photographerFactory(photographer, 'photographers_section')
+                const card = new PhotographerCard(photographer)
+                // display photographer's informations
+                document.querySelector('.photographers_section').appendChild(card.getPhotographerCard())
                 index += 1
             })
         }
@@ -16,8 +18,7 @@ class IndexPage {
 
     async init() {
         // Get photographes data
-        const api = new Api.PhotographerApi('data/photographers.json', 'photographers')
-        const photographers = await api.getPhotographers()
+        const photographers = await new Api.PhotographerApi('photographers').getAllPhotographers()
         this.displayIndexData(photographers)
     }
 }

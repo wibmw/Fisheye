@@ -1,18 +1,19 @@
-import PhotographerCard from '../templates/PhotographerCard.js'
+import Photographer from '../models/photographer.js'
 
 // ************* PHOTOGRAPHER FACTORY ****************************//
-export default function photographerFactory(data, page, likes) {
-    const card = new PhotographerCard(data)
+export default function photographerFactory(result, id) {
     // Select type of protographer information needed
-    if (page === 'photograph_picture') {
-        document.querySelector('.photograph_picture').appendChild(card.getPhotographerPicture())
-    } else if (page === 'photograph_info') {
-        document.querySelector('.photograph_info').appendChild(card.getPhotographerInfo())
-    } else if (page === 'photographers_section') {
-        document.querySelector('.photographers_section').appendChild(card.getPhotographerCard())
-    } else if (page === 'photograph_likes') {
-        document.querySelector('.photograph_likes').appendChild(card.getPhotographerLikes(likes))
-    } else {
-        console.log('Erreur PhotographerFactory')
+    switch (result.type) {
+    case 'photographer': {
+        // Get photographe's data by ID
+        const photographerData = result.data.filter((photographer) => photographer.id == id)
+        return new Photographer(photographerData[0])
+    }
+    case 'photographers': {
+        // Get photographes data
+        return result.data.map((photographer) => new Photographer(photographer))
+    }
+    default:
+        throw new Error('No type')
     }
 }

@@ -13,15 +13,16 @@ export default class PhotographerCard {
         this.index = index
 
         this.$wrapperArticle = document.createElement('article')
-        this.$wrapperDiv = document.createElement('div')
+        this.$wrapperPic = document.createElement('div')
+        this.$wrapperLikes = document.createElement('div')
     }
 
     getPhotographerPicture() {
         // return the photographer picture only
         const img = `<img src="${this.picture}" alt="Photo du photographe ${this.name}" aria-label="Photo du photographe ${this.name}"> `
-        this.$wrapperDiv.innerHTML = img
+        this.$wrapperPic.innerHTML = img
 
-        return this.$wrapperDiv
+        return this.$wrapperPic
     }
 
     getPhotographerInfo() {
@@ -53,8 +54,8 @@ export default class PhotographerCard {
         // return photographer info
         const like = `<em class="fas fa-heart" ><span class="totalLikes" aria-label="likes"> ${likes} </span></em>
                         <span aria-label="tarif">${this.price} € / jour</span>`
-        this.$wrapperDiv.innerHTML = like
+        this.$wrapperLikes.innerHTML = like
 
-        return this.$wrapperDiv
+        return this.$wrapperLikes
     }
 }
