@@ -1,4 +1,4 @@
-![FishEye](https://wibmw.github.io/Front-End-Fisheye/assets/images/logo.png) 
+![FishEye](https://wibmw.github.io/Fisheye/assets/images/logo.png) 
 
 
 
@@ -71,7 +71,7 @@ trois champs dans les logs de la console.
 ---
 ## Technologies
 
-**Autorisés:** 	
+**Autorisés:**
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
 
 **Linter:**     
