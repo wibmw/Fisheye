@@ -1,6 +1,6 @@
 {
-  "name": "front_end_fisheye",
-  "version": "1.0.0",
+  "name": "fisheye",
+  "version": "2.0.0",
   "description": "P6 - Accessibility",
   "main": "index.html",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wibmw/Front-End-Fisheye.git"
+    "url": "git+https://github.com/wibmw/Fisheye.git"
   },
   "author": "ILAOUER",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wibmw/Front-End-Fisheye/issues"
+    "url": "https://github.com/wibmw/Fisheye/issues"
   },
-  "homepage": "https://github.com/wibmw/Front-End-Fisheye#readme",
+  "homepage": "https://github.com/wibmw/Fisheye#readme",
   "dependencies": {
     "normalize.css": "^8.0.1"
   },
